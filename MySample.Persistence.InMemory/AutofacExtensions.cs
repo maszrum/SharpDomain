@@ -19,6 +19,7 @@ namespace MySample.Persistence.InMemory
             containerBuilder
                 .RegisterAssemblyTypes(assembly)
                 .Where(t => t.Name.Contains("Repository") && !t.IsAbstract)
+                .InstancePerLifetimeScope()
                 .AsImplementedInterfaces();
             
             return containerBuilder;
@@ -28,6 +29,7 @@ namespace MySample.Persistence.InMemory
         {
             containerBuilder
                 .RegisterType<InMemoryDatasource>()
+                .InstancePerLifetimeScope()
                 .AsSelf();
             
             return containerBuilder;

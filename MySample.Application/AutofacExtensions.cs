@@ -52,6 +52,7 @@ namespace MySample.Application
             
             containerBuilder
                 .RegisterTypes(requestHandlerTypes)
+                .InstancePerDependency()
                 .AsImplementedInterfaces();
             
             return containerBuilder;
@@ -71,6 +72,7 @@ namespace MySample.Application
             
             containerBuilder
                 .RegisterTypes(notificationHandlerTypes)
+                .InstancePerDependency()
                 .AsImplementedInterfaces();
             
             return containerBuilder;

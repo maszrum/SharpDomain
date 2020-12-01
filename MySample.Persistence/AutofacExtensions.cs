@@ -29,6 +29,7 @@ namespace MySample.Persistence
             
             containerBuilder
                 .RegisterTypes(notificationHandlerTypes)
+                .InstancePerDependency()
                 .AsImplementedInterfaces();
             
             return containerBuilder;
