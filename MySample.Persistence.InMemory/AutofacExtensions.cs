@@ -5,7 +5,7 @@ namespace MySample.Persistence.InMemory
 {
     public static class AutofacExtensions
     {
-        public static ContainerBuilder RegisterInMemoryRepositories(this ContainerBuilder containerBuilder)
+        public static ContainerBuilder RegisterInMemoryPersistence(this ContainerBuilder containerBuilder)
         {
             return containerBuilder
                 .RegisterRepositories()
