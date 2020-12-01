@@ -8,7 +8,7 @@ namespace MySample.Persistence.InMemory.MyModelRepository
     // ReSharper disable once UnusedType.Global
     internal class MyModelReadRepository : IMyModelReadRepository
     {
-        public Task<MyModel> Get(Guid id)
+        public Task<MyModel?> Get(Guid id)
         {
             throw new NotImplementedException();
         }

@@ -6,6 +6,6 @@ namespace MySample.Core.InfrastructureInterfaces
 {
     public interface IMyModelReadRepository
     {
-        Task<MyModel> Get(Guid id);
+        Task<MyModel?> Get(Guid id);
     }
 }
