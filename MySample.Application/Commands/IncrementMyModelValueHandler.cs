@@ -1,25 +1,36 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using MySample.Application.Exceptions;
 using MySample.Application.ViewModels;
+using MySample.Core.InfrastructureInterfaces;
 using MySample.Core.Models;
 
 namespace MySample.Application.Commands
 {
     internal class IncrementMyModelValueHandler : IRequestHandler<IncrementMyModelValue, MyModelViewModel>
     {
-        public Task<MyModelViewModel> Handle(IncrementMyModelValue request, CancellationToken cancellationToken)
+        private readonly IMyModelReadRepository _repository;
+
+        public IncrementMyModelValueHandler(IMyModelReadRepository repository)
+        {
+            _repository = repository;
+        }
+
+        public async Task<MyModelViewModel> Handle(IncrementMyModelValue request, CancellationToken cancellationToken)
         {
             // validate request
             
-            // read model from repository
-            var model = MyModel.CreateNew();
+            var model = await _repository.Get(request.Id);
+            if (model is null)
+            {
+                throw new ObjectNotFoundException<MyModel>(request.Id);
+            }
             
-            model.IncrementInteger();
+            await model.IncrementInteger();
             
             // map model to view model
-            return Task.FromResult(new MyModelViewModel());
+            return new MyModelViewModel();
         }
     }
 }
