@@ -6,6 +6,8 @@ using MediatR;
 using MySample.Application;
 using MySample.Application.Commands;
 using MySample.Application.Queries;
+using MySample.Core.Models;
+using MySample.Persistence;
 using MySample.Persistence.InMemory;
 
 namespace MySample.ConsoleApp
@@ -17,7 +19,8 @@ namespace MySample.ConsoleApp
         {
             var containerBuilder = new ContainerBuilder()
                 .RegisterApplicationLayer()
-                .RegisterInMemoryRepositories();
+                .RegisterPersistenceLayer()
+                .RegisterInMemoryPersistence();
             
             await using var container = containerBuilder.Build();
             
@@ -25,7 +28,7 @@ namespace MySample.ConsoleApp
             
             var createModel = new CreateMyModel();
             var createResult = await mediator.Send(createModel);
-
+            
             var increment = new IncrementMyModelValue()
             {
                 Id = createResult.Id
