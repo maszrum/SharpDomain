@@ -8,4 +8,8 @@
       <Folder Include="Mappers" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\MySample.Core\MySample.Core.csproj" />
+    </ItemGroup>
+
 </Project>

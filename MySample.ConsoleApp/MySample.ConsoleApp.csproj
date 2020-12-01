@@ -11,6 +11,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\MySample.Application\MySample.Application.csproj" />
+      <ProjectReference Include="..\MySample.Persistence.InMemory\MySample.Persistence.InMemory.csproj" />
     </ItemGroup>
 
 </Project>
