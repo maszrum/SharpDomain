@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using MySample.Core.Models;
 
-namespace MySample.Application.InfrastructureInterfaces
+namespace MySample.Core.InfrastructureInterfaces
 {
-    internal interface IMyModelWriteRepository
+    public interface IMyModelWriteRepository
     {
         Task<MyModel> Create(MyModel model);
         Task Update(MyModel model);

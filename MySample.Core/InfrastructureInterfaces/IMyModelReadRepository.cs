@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using MySample.Core.Models;
 
-namespace MySample.Application.InfrastructureInterfaces
+namespace MySample.Core.InfrastructureInterfaces
 {
-    internal interface IMyModelReadRepository
+    public interface IMyModelReadRepository
     {
         Task<MyModel> Get(Guid id);
     }
