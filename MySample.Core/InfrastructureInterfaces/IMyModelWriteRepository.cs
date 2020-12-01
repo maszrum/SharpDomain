@@ -6,7 +6,7 @@ namespace MySample.Core.InfrastructureInterfaces
 {
     public interface IMyModelWriteRepository
     {
-        Task<MyModel> Create(MyModel model);
+        Task Create(MyModel model);
         Task Update(MyModel model);
         Task Delete(Guid id);
     }

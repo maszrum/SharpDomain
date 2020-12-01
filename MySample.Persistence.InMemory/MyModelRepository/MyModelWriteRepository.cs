@@ -8,7 +8,7 @@ namespace MySample.Persistence.InMemory.MyModelRepository
     // ReSharper disable once UnusedType.Global
     internal class MyModelWriteRepository : IMyModelWriteRepository
     {
-        public Task<MyModel> Create(MyModel model)
+        public Task Create(MyModel model)
         {
             throw new NotImplementedException();
         }
