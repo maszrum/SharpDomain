@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using MySample.Core.Events;
 using MySample.Core.Exceptions;
+using MySample.Core.Shared;
 
 namespace MySample.Core.Models
 {
