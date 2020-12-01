@@ -4,4 +4,19 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Folder Include="Exceptions" />
+      <Folder Include="InfrastructureInterfaces" />
+      <Folder Include="Queries" />
+      <Folder Include="Validators" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Autofac" Version="6.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\MySample.Core\MySample.Core.csproj" />
+    </ItemGroup>
+
 </Project>
