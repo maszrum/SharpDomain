@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace MySample.Core.Shared
 {
@@ -8,16 +9,40 @@ namespace MySample.Core.Shared
     {
         public Guid Id { get; protected set; }
         
-        private ModelModifier<T>? _modifier;
+        private ModelPropertiesModifier<T>? _modifier;
         
         protected bool ModifyAllowed => !_modifier?.IsDisposed ?? false;
         
-        public IAsyncDisposable StartModifying()
+        public IAsyncDisposable ModifyProperties()
         {
             if (this is T objectTyped)
             {
-                _modifier = new ModelModifier<T>(objectTyped);
+                _modifier = new ModelPropertiesModifier<T>(objectTyped);
                 return _modifier;
+            }
+            
+            throw new InvalidOperationException();
+        }
+        
+        protected Task ModifyProperties(Action<T> action)
+        {
+            async Task StartModifyingAndDo(Action<T> a, T obj)
+            {
+                await using (ModifyProperties())
+                {
+                    a(obj);
+                }
+            }
+            
+            if (this is T objectTyped)
+            {
+                if (ModifyAllowed)
+                {
+                    action(objectTyped);
+                    return Task.CompletedTask;
+                }
+
+                return StartModifyingAndDo(action, objectTyped);
             }
             
             throw new InvalidOperationException();
@@ -28,7 +53,7 @@ namespace MySample.Core.Shared
             if (!ModifyAllowed)
             {
                 throw new InvalidOperationException(
-                    $"{nameof(StartModifying)} method must be called before using property setter");
+                    $"{nameof(ModifyProperties)} method must be called before using property setter");
             }
             
             var propertyName = GetPropertyName(propertySelector);
