@@ -5,6 +5,8 @@ using Autofac;
 using MediatR;
 using MySample.Application;
 using MySample.Application.Commands;
+using MySample.Application.Queries;
+using MySample.Persistence.InMemory;
 
 namespace MySample.ConsoleApp
 {
@@ -14,7 +16,8 @@ namespace MySample.ConsoleApp
         private static async Task Main(string[] args)
         {
             var containerBuilder = new ContainerBuilder()
-                .RegisterApplicationLayer();
+                .RegisterApplicationLayer()
+                .RegisterInMemoryRepositories();
             
             await using var container = containerBuilder.Build();
             
@@ -23,7 +26,23 @@ namespace MySample.ConsoleApp
             var createModel = new CreateMyModel();
             var createResult = await mediator.Send(createModel);
 
-            Console.WriteLine(createResult);
+            var increment = new IncrementMyModelValue()
+            {
+                Id = createResult.Id
+            };
+            
+            for (var i = 1; i <= 10; i++)
+            {
+                _ = await mediator.Send(increment);
+            }
+            
+            var getModel = new GetMyModel()
+            {
+                Id = createResult.Id
+            };
+            var viewModel = await mediator.Send(getModel);
+            
+            Console.WriteLine(viewModel);
         }
     }
 }
