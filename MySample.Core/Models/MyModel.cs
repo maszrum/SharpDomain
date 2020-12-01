@@ -5,7 +5,7 @@ using MySample.Core.Exceptions;
 
 namespace MySample.Core.Models
 {
-    public class MyModel : AggregateRoot
+    public class MyModel : AggregateRoot<MyModel>
     {
         private const int MaxIntegerValue = 10;
         
@@ -13,8 +13,14 @@ namespace MySample.Core.Models
         {
             Id = id;
         }
-
-        public string StringProperty { get; set; }
+        
+        private string _stringProperty;
+        public string StringProperty
+        {
+            get => _stringProperty;
+            set => SetPropertyValue(model => model.StringProperty, ref _stringProperty, value);
+        }
+        
         public int IntProperty { get; private set; }
         
         public async Task IncrementInteger()
