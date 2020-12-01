@@ -12,4 +12,8 @@
       <ProjectReference Include="..\MySample.Core\MySample.Core.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Autofac" Version="6.0.0" />
+    </ItemGroup>
+
 </Project>
