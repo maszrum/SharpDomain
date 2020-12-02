@@ -1,18 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using MediatR;
 
-namespace MySample.Core.Events
+namespace ModelStateTracker
 {
-    public class ModelChanged<T> : INotification
+    public class ComparisionResult<T>
     {
-        public ModelChanged(T model, IEnumerable<string> propertiesChanged)
+        public ComparisionResult(T model, IEnumerable<string> propertiesChanged)
         {
             Model = model;
             PropertiesChanged = propertiesChanged as IReadOnlyList<string> ?? propertiesChanged.ToList();
         }
         
         public T Model { get; }
-        public IReadOnlyList<string> PropertiesChanged;
+        public IReadOnlyList<string> PropertiesChanged { get; }
     }
 }

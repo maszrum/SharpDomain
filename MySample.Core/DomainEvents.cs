@@ -8,7 +8,7 @@ namespace MySample.Core
     // singleton
     public static class DomainEvents
     {
-        private static IMediator _mediator;
+        private static IMediator? _mediator;
         
         public static void Init(IMediator mediator)
         {
@@ -23,6 +23,6 @@ namespace MySample.Core
         
         public static Task Publish<TNotification>(TNotification notification, CancellationToken cancellationToken = default) 
             where TNotification : INotification =>
-            _mediator.Publish(notification, cancellationToken);
+            _mediator!.Publish(notification, cancellationToken);
     }
 }

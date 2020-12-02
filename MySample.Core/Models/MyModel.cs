@@ -12,30 +12,24 @@ namespace MySample.Core.Models
         private MyModel(Guid id)
         {
             Id = id;
+            StringProperty = string.Empty;
         }
 
-        private string _stringProperty;
-        public string StringProperty
-        {
-            get => _stringProperty;
-            set => SetPropertyValue(model => model.StringProperty, ref _stringProperty, value);
-        }
+        public string StringProperty { get; set; }
         
-        private int _intProperty;
-        public int IntProperty
-        {
-            get => _intProperty;
-            private set => SetPropertyValue(model => model.IntProperty, ref _intProperty, value);
-        }
+        public int IntProperty { get; private set; }
 
-        public Task IncrementInteger()
+        public async Task IncrementInteger()
         {
             if (IntProperty >= MaxIntegerValue)
             {
                 throw new MaximumValueReachedException();
             }
-
-            return PublishChanges(model => model.IntProperty++);
+            
+            await using(this.PublishChanges())
+            {
+                IntProperty++;
+            }
         }
 
         public static MyModel CreateNew()
