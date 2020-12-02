@@ -31,7 +31,7 @@ namespace ModelStateTracker
             
             var currentStateSnapshot = CreateModelSnapshot();
             
-            var propertiesChanged = currentStateSnapshot.GetDifferingPropertyNames(_snapshot);
+            var propertiesChanged = currentStateSnapshot.GetDifferingProperties(_snapshot);
             var result = new ComparisionResult<T>(_model, propertiesChanged);
             
             return result;

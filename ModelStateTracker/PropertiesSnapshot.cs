@@ -16,7 +16,7 @@ namespace ModelStateTracker
         public bool TryGetValue(string propertyName, out int? value) =>
             _propertyValues.TryGetValue(propertyName, out value);
 
-        public IEnumerable<string> GetDifferingPropertyNames(PropertiesSnapshot other)
+        public IEnumerable<string> GetDifferingProperties(PropertiesSnapshot other)
         {
             var result = new List<string>();
             
