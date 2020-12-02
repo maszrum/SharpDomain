@@ -9,26 +9,26 @@ namespace MySample.Core.Shared
     {
         public Guid Id { get; protected set; }
         
-        private ModelPropertiesModifier<T>? _modifier;
+        private ModelChangesPublisher<T>? _changesPublisher;
         
-        protected bool ModifyAllowed => !_modifier?.IsDisposed ?? false;
+        protected bool ModifyAllowed => !_changesPublisher?.IsDisposed ?? false;
         
-        public IAsyncDisposable ModifyProperties()
+        public IAsyncDisposable PublishChanges()
         {
             if (this is T objectTyped)
             {
-                _modifier = new ModelPropertiesModifier<T>(objectTyped);
-                return _modifier;
+                _changesPublisher = new ModelChangesPublisher<T>(objectTyped);
+                return _changesPublisher;
             }
             
             throw new InvalidOperationException();
         }
         
-        protected Task ModifyProperties(Action<T> action)
+        protected Task PublishChanges(Action<T> action)
         {
             async Task StartModifyingAndDo(Action<T> a, T obj)
             {
-                await using (ModifyProperties())
+                await using (PublishChanges())
                 {
                     a(obj);
                 }
@@ -53,11 +53,14 @@ namespace MySample.Core.Shared
             if (!ModifyAllowed)
             {
                 throw new InvalidOperationException(
-                    $"{nameof(ModifyProperties)} method must be called before using property setter");
+                    $"{nameof(PublishChanges)} method must be called before using property setter");
             }
             
-            var propertyName = GetPropertyName(propertySelector);
-            _modifier?.AppendPropertyModified(propertyName);
+            if (!(_changesPublisher is null))
+            {
+                var propertyName = GetPropertyName(propertySelector);
+                _changesPublisher.AppendPropertyModified(propertyName);
+            }
             
             backingField = propertyValue;
         }
