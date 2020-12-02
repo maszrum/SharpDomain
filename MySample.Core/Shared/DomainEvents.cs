@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 
-namespace MySample.Core
+namespace MySample.Core.Shared
 {
     // singleton
     public static class DomainEvents

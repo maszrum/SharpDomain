@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using Autofac;
 using MediatR;
-using MySample.Core;
+using MySample.Core.Shared;
 
 namespace MySample.Application
 {

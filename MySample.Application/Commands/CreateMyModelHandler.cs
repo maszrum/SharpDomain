@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using MediatR;
 using MySample.Application.ViewModels;
-using MySample.Core;
+using MySample.Core.Shared;
 using MySample.Core.Events;
 using MySample.Core.Models;
 
