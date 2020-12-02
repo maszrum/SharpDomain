@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Reflection;
 using Autofac;
+using AutoMapper.Configuration;
 using MediatR;
 using MySample.Persistence.Entities;
 
@@ -12,7 +13,8 @@ namespace MySample.Persistence
         public static ContainerBuilder RegisterPersistenceLayer(this ContainerBuilder containerBuilder)
         {
             return containerBuilder
-                .RegisterPersistenceHandlers();
+                .RegisterPersistenceHandlers()
+                .RegisterMappers();
         }
         
         private static ContainerBuilder RegisterPersistenceHandlers(this ContainerBuilder containerBuilder)
@@ -31,6 +33,19 @@ namespace MySample.Persistence
                 .RegisterTypes(notificationHandlerTypes)
                 .InstancePerDependency()
                 .AsImplementedInterfaces();
+            
+            return containerBuilder;
+        }
+        
+        private static ContainerBuilder RegisterMappers(this ContainerBuilder containerBuilder)
+        {
+            containerBuilder.RegisterBuildCallback(context =>
+            {
+                var assembly = typeof(AutofacExtensions).GetTypeInfo().Assembly;
+                
+                var mappings = context.Resolve<MapperConfigurationExpression>();
+                mappings.AddMaps(assembly);
+            });
             
             return containerBuilder;
         }

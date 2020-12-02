@@ -17,10 +17,12 @@ namespace MySample.Persistence.InMemory.MyModelRepository
 
         public Task<MyModel?> Get(Guid id)
         {
-            if (!_datasource.MyModels.TryGetValue(id, out var entity)) return Task.FromResult<MyModel?>(null);
+            if (!_datasource.MyModels.TryGetValue(id, out var entity))
+            {
+                return Task.FromResult<MyModel?>(null);
+            }
 
-            // TODO: map entity to model
-            var model = MyModel.CreateNew();
+            var model = new MyModel(entity.Id, entity.IntProperty, entity.StringProperty);
             
             return Task.FromResult(model)!;
         }

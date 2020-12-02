@@ -9,13 +9,14 @@ namespace MySample.Core.Models
     {
         private const int MaxIntegerValue = 10;
 
-        private MyModel(Guid id)
+        public MyModel(Guid id, int intProperty, string? stringProperty)
         {
             Id = id;
-            StringProperty = string.Empty;
+            IntProperty = intProperty;
+            StringProperty = stringProperty;
         }
 
-        public string StringProperty { get; set; }
+        public string? StringProperty { get; set; }
         
         public int IntProperty { get; private set; }
 
@@ -32,10 +33,10 @@ namespace MySample.Core.Models
             }
         }
 
-        public static MyModel CreateNew()
+        public static MyModel CreateNew(int intProperty, string? stringProperty)
         {
             var id = Guid.NewGuid();
-            return new MyModel(id);
+            return new MyModel(id, intProperty, stringProperty);
         }
     }
 }

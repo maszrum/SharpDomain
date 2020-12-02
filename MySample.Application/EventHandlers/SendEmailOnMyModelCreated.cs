@@ -5,6 +5,7 @@ using MySample.Core.Events;
 
 namespace MySample.Application.EventHandlers
 {
+    // ReSharper disable once UnusedType.Global
     internal class SendEmailOnMyModelCreated : INotificationHandler<MyModelCreated>
     {
         public Task Handle(MyModelCreated notification, CancellationToken cancellationToken)

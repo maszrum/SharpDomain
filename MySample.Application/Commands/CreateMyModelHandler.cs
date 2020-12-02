@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using AutoMapper;
 using MediatR;
 using MySample.Application.ViewModels;
 using MySample.Core.Shared;
@@ -11,19 +12,24 @@ namespace MySample.Application.Commands
     // ReSharper disable once UnusedType.Global
     internal class CreateMyModelHandler : IRequestHandler<CreateMyModel, MyModelViewModel>
     {
+        private readonly IMapper _mapper;
+
+        public CreateMyModelHandler(IMapper mapper)
+        {
+            _mapper = mapper;
+        }
+
         public async Task<MyModelViewModel> Handle(CreateMyModel request, CancellationToken cancellationToken)
         {
-            // here validation of request
+            // TODO: validation of request
             
-            var model = MyModel.CreateNew();
-            
-            // rewrite properties from request to model
+            var model = MyModel.CreateNew(request.IntProperty, request.StringProperty);
             
             var @event = new MyModelCreated(model);
             await DomainEvents.Publish(@event, cancellationToken);
             
-            // map model to view model
-            return new MyModelViewModel();
+            var viewModel = _mapper.Map<MyModel, MyModelViewModel>(model);
+            return viewModel;
         }
     }
 }

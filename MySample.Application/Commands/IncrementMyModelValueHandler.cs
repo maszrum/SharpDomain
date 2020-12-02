@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using AutoMapper;
 using MediatR;
 using MySample.Application.Exceptions;
 using MySample.Application.ViewModels;
@@ -8,18 +9,23 @@ using MySample.Core.Models;
 
 namespace MySample.Application.Commands
 {
+    // ReSharper disable once UnusedType.Global
     internal class IncrementMyModelValueHandler : IRequestHandler<IncrementMyModelValue, MyModelViewModel>
     {
         private readonly IMyModelReadRepository _repository;
+        private readonly IMapper _mapper;
 
-        public IncrementMyModelValueHandler(IMyModelReadRepository repository)
+        public IncrementMyModelValueHandler(
+            IMyModelReadRepository repository, 
+            IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         public async Task<MyModelViewModel> Handle(IncrementMyModelValue request, CancellationToken cancellationToken)
         {
-            // validate request
+            // TODO: validate request
             
             var model = await _repository.Get(request.Id);
             if (model is null)
@@ -29,8 +35,8 @@ namespace MySample.Application.Commands
             
             await model.IncrementInteger();
             
-            // map model to view model
-            return new MyModelViewModel();
+            var viewModel = _mapper.Map<MyModel, MyModelViewModel>(model);
+            return viewModel;
         }
     }
 }

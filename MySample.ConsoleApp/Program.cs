@@ -35,7 +35,8 @@ namespace MySample.ConsoleApp
             
             for (var i = 1; i <= 10; i++)
             {
-                _ = await mediator.Send(increment);
+                var incrementResult = await mediator.Send(increment);
+                Console.WriteLine(incrementResult);
             }
             
             var getModel = new GetMyModel()
@@ -45,6 +46,7 @@ namespace MySample.ConsoleApp
             var viewModel = await mediator.Send(getModel);
             
             Console.WriteLine(viewModel);
+            Console.ReadKey();
         }
     }
 }

@@ -5,15 +5,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Mappers" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\MySample.Core\MySample.Core.csproj" />
     </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="Autofac" Version="6.0.0" />
+      <PackageReference Include="AutoMapper" Version="10.1.1" />
     </ItemGroup>
 
 </Project>

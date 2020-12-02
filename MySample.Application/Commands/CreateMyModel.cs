@@ -5,7 +5,7 @@ namespace MySample.Application.Commands
 {
     public class CreateMyModel : IRequest<MyModelViewModel>
     {
-        public string StringProperty { get; set; }
-        public string IntProperty { get; set; }
+        public string? StringProperty { get; set; }
+        public int IntProperty { get; set; }
     }
 }

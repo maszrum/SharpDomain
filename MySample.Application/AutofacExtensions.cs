@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Reflection;
 using Autofac;
+using AutoMapper;
+using AutoMapper.Configuration;
 using MediatR;
 using MySample.Core.Shared;
 
@@ -14,7 +16,9 @@ namespace MySample.Application
             return containerBuilder
                 .RegisterMediatR()
                 .RegisterRequestHandlers()
-                .RegisterNotificationHandlers();
+                .RegisterNotificationHandlers()
+                .RegisterAutomapper()
+                .RegisterMappers();
         }
         
         private static ContainerBuilder RegisterMediatR(this ContainerBuilder containerBuilder)
@@ -74,6 +78,47 @@ namespace MySample.Application
                 .RegisterTypes(notificationHandlerTypes)
                 .InstancePerDependency()
                 .AsImplementedInterfaces();
+            
+            return containerBuilder;
+        }
+        
+        private static ContainerBuilder RegisterAutomapper(this ContainerBuilder containerBuilder)
+        {
+            containerBuilder
+                .RegisterType<MapperConfigurationExpression>()
+                .AsSelf()
+                .SingleInstance();
+            
+            containerBuilder.Register(c =>
+            {
+                var context = c.Resolve<IComponentContext>();
+                var configExpression = context.Resolve<MapperConfigurationExpression>();
+                return new MapperConfiguration(configExpression);
+            })
+                .AsSelf()
+                .SingleInstance();
+            
+            containerBuilder.Register(c =>
+            {
+               var context = c.Resolve<IComponentContext>();
+               var config = context.Resolve<MapperConfiguration>();
+               return config.CreateMapper(context.Resolve);
+            })
+                .As<IMapper>()
+                .InstancePerLifetimeScope();
+            
+            return containerBuilder;
+        }
+        
+        private static ContainerBuilder RegisterMappers(this ContainerBuilder containerBuilder)
+        {
+            containerBuilder.RegisterBuildCallback(context =>
+            {
+                var assembly = typeof(AutofacExtensions).GetTypeInfo().Assembly;
+                
+                var mappings = context.Resolve<MapperConfigurationExpression>();
+                mappings.AddMaps(assembly);
+            });
             
             return containerBuilder;
         }

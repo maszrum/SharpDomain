@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using AutoMapper;
 using MySample.Core.InfrastructureInterfaces;
 using MySample.Core.Models;
 using MySample.Persistence.Entities;
@@ -10,16 +11,19 @@ namespace MySample.Persistence.InMemory.MyModelRepository
     internal class MyModelWriteRepository : IMyModelWriteRepository
     {
         private readonly InMemoryDatasource _datasource;
+        private readonly IMapper _mapper;
 
-        public MyModelWriteRepository(InMemoryDatasource datasource)
+        public MyModelWriteRepository(
+            InMemoryDatasource datasource, 
+            IMapper mapper)
         {
             _datasource = datasource;
+            _mapper = mapper;
         }
 
         public Task Create(MyModel model)
         {
-            // TODO: map model to entity
-            var entity = new MyModelEntity();
+            var entity = _mapper.Map<MyModel, MyModelEntity>(model);
             
             if (!_datasource.MyModels.TryAdd(entity.Id, entity))
             {
@@ -32,8 +36,7 @@ namespace MySample.Persistence.InMemory.MyModelRepository
 
         public Task Update(MyModel model)
         {
-            // TODO: map model to entity
-            var entity = new MyModelEntity();
+            var entity = _mapper.Map<MyModel, MyModelEntity>(model);
             
             if (!_datasource.MyModels.TryRemove(entity.Id, out _))
             {
