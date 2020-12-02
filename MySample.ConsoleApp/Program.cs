@@ -6,7 +6,6 @@ using MediatR;
 using MySample.Application;
 using MySample.Application.Commands;
 using MySample.Application.Queries;
-using MySample.Core.Models;
 using MySample.Persistence;
 using MySample.Persistence.InMemory;
 
