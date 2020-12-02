@@ -20,7 +20,7 @@ namespace MySample.Core.Models
             get => _stringProperty;
             set => SetPropertyValue(model => model.StringProperty, ref _stringProperty, value);
         }
-
+        
         private int _intProperty;
         public int IntProperty
         {
@@ -30,9 +30,12 @@ namespace MySample.Core.Models
 
         public Task IncrementInteger()
         {
-            if (IntProperty >= MaxIntegerValue) throw new MaximumValueReachedException();
+            if (IntProperty >= MaxIntegerValue)
+            {
+                throw new MaximumValueReachedException();
+            }
 
-            return ModifyProperties(model => model.IntProperty++);
+            return PublishChanges(model => model.IntProperty++);
         }
 
         public static MyModel CreateNew()

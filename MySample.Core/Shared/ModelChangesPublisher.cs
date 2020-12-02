@@ -5,12 +5,12 @@ using MySample.Core.Events;
 
 namespace MySample.Core.Shared
 {
-    public class ModelPropertiesModifier<T> : IAsyncDisposable where T : AggregateRoot<T>
+    public class ModelChangesPublisher<T> : IAsyncDisposable where T : AggregateRoot<T>
     {
         private readonly T _model;
         private readonly List<string> _propertiesModified = new List<string>();
 
-        public ModelPropertiesModifier(T model)
+        public ModelChangesPublisher(T model)
         {
             _model = model;
         }
