@@ -1,28 +1,32 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 
 namespace MySample.Core.Shared
 {
-    // singleton
-    public static class DomainEvents
+    internal class DomainEvents : IDomainEvents
     {
-        private static IMediator? _mediator;
-        
-        public static void Init(IMediator mediator)
-        {
-            if (_mediator != default)
-            {
-                throw new InvalidOperationException(
-                    "init method must be called only once");
-            }
+        private readonly IMediator _mediator;
+        private readonly List<INotification> _events = new List<INotification>();
 
-            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+        public DomainEvents(IMediator mediator)
+        {
+            _mediator = mediator;
         }
-        
-        public static Task Publish<TNotification>(TNotification notification, CancellationToken cancellationToken = default) 
-            where TNotification : INotification =>
-            _mediator!.Publish(notification, cancellationToken);
+
+        public async Task PublishCollected(CancellationToken cancellationToken = default)
+        {
+            foreach (var @event in _events)
+            {
+                await _mediator.Publish(@event, cancellationToken);
+            }
+        }
+
+        public void Collect(INotification @event) => 
+            _events.Add(@event);
+
+        public void Collect(IEnumerable<INotification> events) => 
+            _events.AddRange(events);
     }
 }

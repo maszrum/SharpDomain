@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Globalization;
 using System.Threading.Tasks;
 
 namespace ModelStateTracker
 {
-    public class ModelChangesPublisher<T> : IAsyncDisposable where T : class
+    public class ModelChangesPublisher<T> : IDisposable where T : class
     {
-        private Func<ComparisionResult<T>, Task> _publishCallback;
+        private Action<ComparisionResult<T>> _publishCallback;
         private readonly PropertiesTracker<T> _propertiesTracker;
 
         public ModelChangesPublisher(T model)
@@ -15,7 +14,7 @@ namespace ModelStateTracker
             _propertiesTracker.SaveSnapshot();
         }
         
-        public ModelChangesPublisher<T> OnCompare(Func<ComparisionResult<T>, Task> callback)
+        public ModelChangesPublisher<T> OnCompare(Action<ComparisionResult<T>> callback)
         {
             if (_publishCallback != default)
             {
@@ -28,7 +27,7 @@ namespace ModelStateTracker
             return this;
         }
         
-        public ValueTask DisposeAsync()
+        public void Dispose()
         {
             if (_publishCallback == default)
             {
@@ -40,11 +39,8 @@ namespace ModelStateTracker
             
             if (comparisionResult.PropertiesChanged.Count > 0)
             {
-                var task = _publishCallback(comparisionResult);
-                return new ValueTask(task);
+                _publishCallback(comparisionResult);
             }
-            
-            return default;
         }
     }
 }

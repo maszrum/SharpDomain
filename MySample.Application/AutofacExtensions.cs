@@ -33,12 +33,6 @@ namespace MySample.Application
                 return t => c.Resolve(t);
             });
             
-            containerBuilder.RegisterBuildCallback(context =>
-            {
-                var mediator = context.Resolve<IMediator>();
-                DomainEvents.Init(mediator);
-            });
-            
             return containerBuilder;
         }
         

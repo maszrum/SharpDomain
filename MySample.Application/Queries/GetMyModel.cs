@@ -6,6 +6,11 @@ namespace MySample.Application.Queries
 {
     public class GetMyModel : IRequest<MyModelViewModel>
     {
-        public Guid Id { get; set; }
+        public GetMyModel(Guid id)
+        {
+            Id = id;
+        }
+
+        public Guid Id { get; }
     }
 }

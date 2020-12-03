@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Threading.Tasks;
+using MySample.Core.Events;
 using MySample.Core.Exceptions;
 using MySample.Core.Shared;
 
@@ -20,23 +20,28 @@ namespace MySample.Core.Models
         
         public int IntProperty { get; private set; }
 
-        public async Task IncrementInteger()
+        public IDomainResult<MyModel> IncrementInteger()
         {
             if (IntProperty >= MaxIntegerValue)
             {
                 throw new MaximumValueReachedException();
             }
             
-            await using(this.PublishChanges())
-            {
-                IntProperty++;
-            }
+            IntProperty++;
+            
+            var propertyChangedEvent = new ModelChanged<MyModel>(this, nameof(IntProperty));
+            
+            return Event(propertyChangedEvent);
         }
 
-        public static MyModel CreateNew(int intProperty, string? stringProperty)
+        public static IDomainResult<MyModel> Create(int intProperty, string? stringProperty)
         {
             var id = Guid.NewGuid();
-            return new MyModel(id, intProperty, stringProperty);
+            var model = new MyModel(id, intProperty, stringProperty);
+            
+            var createdEvent = new MyModelCreated(model);
+            
+            return Event(createdEvent, model);
         }
     }
 }

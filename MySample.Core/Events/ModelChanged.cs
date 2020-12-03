@@ -12,7 +12,13 @@ namespace MySample.Core.Events
             PropertiesChanged = propertiesChanged as IReadOnlyList<string> ?? propertiesChanged.ToList();
         }
         
+        public ModelChanged(T model, params string[] propertiesChanged)
+        {
+            Model = model;
+            PropertiesChanged = propertiesChanged;
+        }
+        
         public T Model { get; }
-        public IReadOnlyList<string> PropertiesChanged;
+        public IReadOnlyList<string> PropertiesChanged { get; }
     }
 }
