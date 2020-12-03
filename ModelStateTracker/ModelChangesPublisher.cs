@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Threading.Tasks;
 
 namespace ModelStateTracker
@@ -27,7 +28,7 @@ namespace ModelStateTracker
             return this;
         }
         
-        public async ValueTask DisposeAsync()
+        public ValueTask DisposeAsync()
         {
             if (_publishCallback == default)
             {
@@ -36,7 +37,14 @@ namespace ModelStateTracker
             }
             
             var comparisionResult = _propertiesTracker.CompareWithCurrentState();
-            await _publishCallback(comparisionResult);
+            
+            if (comparisionResult.PropertiesChanged.Count > 0)
+            {
+                var task = _publishCallback(comparisionResult);
+                return new ValueTask(task);
+            }
+            
+            return default;
         }
     }
 }
