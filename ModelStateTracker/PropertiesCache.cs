@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 
 namespace ModelStateTracker
@@ -23,10 +22,10 @@ namespace ModelStateTracker
         
         public IEnumerable<PropertyInfo> GetCachedProperties()
         {
-            PropertyInfo[] result;
+            IEnumerable<PropertyInfo> result;
             lock (_lock)
             {
-                result = _properties.Values.ToArray();
+                result = new List<PropertyInfo>(_properties.Values);
             }
             
             return result;
