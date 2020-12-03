@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
-using MySample.Core.InfrastructureInterfaces;
+using MySample.Core.InfrastructureAbstractions;
 using MySample.Core.Models;
 
 namespace MySample.Persistence.InMemory.MyModelRepository
 {
     // ReSharper disable once UnusedType.Global
-    internal class MyModelReadRepository : IMyModelReadRepository
+    internal class MyModelReadRepository : IMyModelRepository
     {
         private readonly InMemoryDatasource _datasource;
 

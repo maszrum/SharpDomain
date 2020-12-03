@@ -6,6 +6,7 @@ using MySample.Core.InfrastructureInterfaces;
 
 namespace MySample.Persistence.EventHandlers
 {
+    // ReSharper disable once UnusedType.Global
     internal class MyModelCreatedHandler : INotificationHandler<MyModelCreated>
     {
         private readonly IMyModelWriteRepository _repository;

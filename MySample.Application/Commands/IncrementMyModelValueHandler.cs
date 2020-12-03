@@ -4,7 +4,7 @@ using AutoMapper;
 using MediatR;
 using MySample.Application.Exceptions;
 using MySample.Application.ViewModels;
-using MySample.Core.InfrastructureInterfaces;
+using MySample.Core.InfrastructureAbstractions;
 using MySample.Core.Models;
 using MySample.Core.Shared;
 
@@ -13,12 +13,12 @@ namespace MySample.Application.Commands
     // ReSharper disable once UnusedType.Global
     internal class IncrementMyModelValueHandler : IRequestHandler<IncrementMyModelValue, MyModelViewModel>
     {
-        private readonly IMyModelReadRepository _repository;
+        private readonly IMyModelRepository _repository;
         private readonly IMapper _mapper;
         private readonly IDomainEvents _domainEvents;
 
         public IncrementMyModelValueHandler(
-            IMyModelReadRepository repository, 
+            IMyModelRepository repository, 
             IMapper mapper, 
             IDomainEvents domainEvents)
         {

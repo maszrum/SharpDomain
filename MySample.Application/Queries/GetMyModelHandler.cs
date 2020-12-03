@@ -4,18 +4,19 @@ using AutoMapper;
 using MediatR;
 using MySample.Application.Exceptions;
 using MySample.Application.ViewModels;
-using MySample.Core.InfrastructureInterfaces;
+using MySample.Core.InfrastructureAbstractions;
 using MySample.Core.Models;
 
 namespace MySample.Application.Queries
 {
+    // ReSharper disable once UnusedType.Global
     internal class GetMyModelHandler : IRequestHandler<GetMyModel, MyModelViewModel>
     {
-        private readonly IMyModelReadRepository _repository;
+        private readonly IMyModelRepository _repository;
         private readonly IMapper _mapper;
 
         public GetMyModelHandler(
-            IMyModelReadRepository repository, 
+            IMyModelRepository repository, 
             IMapper mapper)
         {
             _repository = repository;
