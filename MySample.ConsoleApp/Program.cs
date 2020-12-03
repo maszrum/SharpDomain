@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 using System.Threading.Tasks;
 using Autofac;
 using MediatR;
@@ -8,6 +9,7 @@ using MySample.Application.Commands;
 using MySample.Application.Queries;
 using MySample.Core;
 using MySample.Persistence;
+using MySample.Persistence.Entities;
 using MySample.Persistence.InMemory;
 
 namespace MySample.ConsoleApp
@@ -19,7 +21,13 @@ namespace MySample.ConsoleApp
         {
             var containerBuilder = new ContainerBuilder()
                 .RegisterDomainLayer()
-                .RegisterApplicationLayer()
+                .RegisterApplicationLayer(config =>
+                {
+                    config.ForbidMediatorInHandlers = true;
+                    
+                    var persistenceAssembly = typeof(MyModelEntity).GetTypeInfo().Assembly;
+                    config.PermitWriteRepositoriesInHandlersOnlyIn(persistenceAssembly);
+                })
                 .RegisterPersistenceLayer()
                 .RegisterInMemoryPersistence();
             

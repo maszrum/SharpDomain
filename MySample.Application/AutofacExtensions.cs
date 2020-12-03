@@ -5,12 +5,37 @@ using Autofac;
 using AutoMapper;
 using AutoMapper.Configuration;
 using MediatR;
-using MySample.Core.Shared;
 
 namespace MySample.Application
 {
     public static class AutofacExtensions
     {
+        public static ContainerBuilder RegisterApplicationLayer(
+            this ContainerBuilder containerBuilder, 
+            Action<ApplicationLayerConfiguration> configurationAction)
+        {
+            var configuration = new ApplicationLayerConfiguration();
+            configurationAction(configuration);
+            
+            var legalityChecker = new DependencyLegalityChecker(configuration);
+            containerBuilder
+                .RegisterInstance(legalityChecker)
+                .AsSelf();
+            
+            containerBuilder.RegisterBuildCallback(context =>
+            {
+                var checker = context.Resolve<DependencyLegalityChecker>();
+                
+                foreach (var registration in context.ComponentRegistry.Registrations)
+                {
+                    var serviceType = registration.Activator.LimitType;
+                    checker.ThrowIfIllegalDependency(serviceType);
+                }
+            });
+            
+            return RegisterApplicationLayer(containerBuilder);
+        }
+        
         public static ContainerBuilder RegisterApplicationLayer(this ContainerBuilder containerBuilder)
         {
             return containerBuilder
