@@ -55,8 +55,14 @@ namespace MySample.Application
                 .ToArray();
         
         private static bool IsRequestHandler(Type type) =>
-            typeof(IBaseRequest).IsAssignableFrom(type);
-        
+            type.GetInterfaces()
+                .Where(i => i.IsGenericType)
+                .Any(i =>
+                {
+                    var gtd = i.GetGenericTypeDefinition();
+                    return gtd == typeof(IRequestHandler<>) || gtd == typeof(IRequestHandler<,>);
+                });
+
         private static bool IsEventHandler(Type type) =>
             type.GetInterfaces()
                 .Where(i => i.IsGenericType)
