@@ -29,7 +29,7 @@ namespace MySample.Persistence.InMemory
         {
             containerBuilder
                 .RegisterType<InMemoryDatasource>()
-                .InstancePerLifetimeScope()
+                .SingleInstance()
                 .AsSelf();
             
             return containerBuilder;
