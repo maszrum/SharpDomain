@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using Autofac;
+using SharpDomain.Persistence.InMemory.Datastore;
 
 namespace SharpDomain.Persistence.InMemory
 {
@@ -28,9 +29,9 @@ namespace SharpDomain.Persistence.InMemory
         private static ContainerBuilder RegisterInMemoryDatasource(this ContainerBuilder containerBuilder)
         {
             containerBuilder
-                .RegisterType<InMemoryDatasource>()
-                .SingleInstance()
-                .AsSelf();
+                .RegisterType<InMemoryDatastore>()
+                .As<IDatastore>()
+                .InstancePerLifetimeScope();
             
             return containerBuilder;
         }

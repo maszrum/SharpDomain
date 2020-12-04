@@ -11,6 +11,7 @@ using SharpDomain.Persistence.InMemory;
 using SharpDomain.Application.Commands;
 using SharpDomain.Application.Queries;
 using SharpDomain.Persistence.Entities;
+using SharpDomain.Persistence.InMemory.Datastore;
 
 namespace SharpDomain.ConsoleApp
 {
@@ -30,23 +31,33 @@ namespace SharpDomain.ConsoleApp
                 })
                 .RegisterPersistenceLayer()
                 .RegisterInMemoryPersistence();
+                //.RegisterTransactionality();
             
             await using var container = containerBuilder.Build();
-            
+
+            Guid id;
             await using (var scope = container.BeginLifetimeScope())
             {
-                await DoSomething(scope);
+                id = await AddModel(scope);
             }
             
             await using (var scope = container.BeginLifetimeScope())
             {
-                await DoSomething(scope);
+                await IncrementModel(scope, id);
+            }
+            
+            await using (var scope = container.BeginLifetimeScope())
+            {
+                await ReadModel(scope, id);
             }
         }
         
-        private static async Task DoSomething(IComponentContext context)
+        private static async Task<Guid> AddModel(IComponentContext context)
         {
             var mediator = context.Resolve<IMediator>();
+            var datastore = context.Resolve<IDatastore>();
+
+            await using var transaction = await datastore.BeginTransaction();
             
             var createModel = new CreateMyModel()
             {
@@ -54,18 +65,36 @@ namespace SharpDomain.ConsoleApp
                 StringProperty = "sample string"
             };
             var createResult = await mediator.Send(createModel);
+                
+            await transaction.Commit();
             
-            var increment = new IncrementMyModelValue(createResult.Id);
+            return createResult.Id;
+        }
+        
+        private static async Task IncrementModel(IComponentContext context, Guid id)
+        {
+            var mediator = context.Resolve<IMediator>();
+            var datastore = context.Resolve<IDatastore>();
+
+            await using var transaction = await datastore.BeginTransaction();
+            
+            var increment = new IncrementMyModelValue(id);
             
             for (var i = 1; i <= 3; i++)
             {
-                var incrementResult = await mediator.Send(increment);
-                Console.WriteLine(incrementResult);
+                await mediator.Send(increment);
             }
             
-            var getModel = new GetMyModel(createResult.Id);
-            var viewModel = await mediator.Send(getModel);
+            await transaction.Rollback();
+        }
+        
+        private static async Task ReadModel(IComponentContext context, Guid id)
+        {
+            var mediator = context.Resolve<IMediator>();
             
+            var getModel = new GetMyModel(id);
+            var viewModel = await mediator.Send(getModel);
+
             Console.WriteLine(viewModel);
         }
     }
