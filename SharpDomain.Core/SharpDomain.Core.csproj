@@ -11,7 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\ModelStateTracker\ModelStateTracker.csproj" />
+      <ProjectReference Include="..\Libraries\ModelStateTracker\ModelStateTracker.csproj" />
     </ItemGroup>
 
 </Project>
