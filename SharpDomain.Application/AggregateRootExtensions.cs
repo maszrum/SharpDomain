@@ -1,5 +1,5 @@
 ﻿using System;
-using ModelStateTracker;
+using SharpDomain.ModelStateTracker;
 using SharpDomain.Core.Events;
 using SharpDomain.Core.Shared;
 

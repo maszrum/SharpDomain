@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace ModelStateTracker
+namespace SharpDomain.ModelStateTracker
 {
     public class ModelChangesPublisher<T> : IDisposable where T : class
     {

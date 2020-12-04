@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Reflection;
 
-namespace ModelStateTracker
+namespace SharpDomain.ModelStateTracker
 {
     internal class PropertiesSnapshotFactory<T> where T : class
     {

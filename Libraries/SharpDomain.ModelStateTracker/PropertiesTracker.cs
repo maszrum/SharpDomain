@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices.ComTypes;
 
-namespace ModelStateTracker
+namespace SharpDomain.ModelStateTracker
 {
     internal class PropertiesTracker<T> where T : class
     {
