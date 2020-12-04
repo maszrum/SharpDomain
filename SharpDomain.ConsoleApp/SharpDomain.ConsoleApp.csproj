@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <Nullable>disable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Autofac" Version="6.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SharpDomain.Application\SharpDomain.Application.csproj" />
+      <ProjectReference Include="..\SharpDomain.Persistence.InMemory\SharpDomain.Persistence.InMemory.csproj" />
+    </ItemGroup>
+
+</Project>
