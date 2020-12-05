@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace SharpDomain.Persistence.InMemory.Datastore
 {
@@ -34,7 +33,7 @@ namespace SharpDomain.Persistence.InMemory.Datastore
             
             lock (TypeLock<TEntity>.Lock)
             {
-                foreach (var action in _models.Actions.Reverse())
+                foreach (var action in _models.Actions)
                 {
                     action(DataStore);
                 }
