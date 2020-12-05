@@ -7,7 +7,7 @@ namespace SharpDomain.Persistence.InMemory.Datastore
 {
     // TODO: internal
     // ReSharper disable once ClassNeverInstantiated.Global
-    public class InMemoryDatastore : IDatastore
+    public class InMemoryDatastore
     {
         private readonly ModelDatastore<MyModelEntity> _myModelStore 
             = new ModelDatastore<MyModelEntity>();
@@ -15,16 +15,16 @@ namespace SharpDomain.Persistence.InMemory.Datastore
         public IDictionary<Guid, MyModelEntity> MyModels => _myModelStore.Models;
         
         public Task<Transaction> BeginTransaction() =>
-            Task.FromResult(new Transaction(this));
+            Task.FromResult(new Transaction(Commit, Rollback));
 
-        public Task Commit()
+        private Task Commit()
         {
             _myModelStore.Commit();
             
             return Task.CompletedTask;
         }
         
-        public Task Rollback()
+        private Task Rollback()
         {
             _myModelStore.Rollback();
             

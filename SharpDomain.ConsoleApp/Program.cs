@@ -55,7 +55,7 @@ namespace SharpDomain.ConsoleApp
         private static async Task<Guid> AddModel(IComponentContext context)
         {
             var mediator = context.Resolve<IMediator>();
-            var datastore = context.Resolve<IDatastore>();
+            var datastore = context.Resolve<InMemoryDatastore>();
 
             await using var transaction = await datastore.BeginTransaction();
             
@@ -74,7 +74,7 @@ namespace SharpDomain.ConsoleApp
         private static async Task IncrementModel(IComponentContext context, Guid id)
         {
             var mediator = context.Resolve<IMediator>();
-            var datastore = context.Resolve<IDatastore>();
+            var datastore = context.Resolve<InMemoryDatastore>();
 
             await using var transaction = await datastore.BeginTransaction();
             

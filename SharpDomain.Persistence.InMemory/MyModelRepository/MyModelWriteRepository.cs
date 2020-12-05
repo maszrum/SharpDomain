@@ -11,11 +11,11 @@ namespace SharpDomain.Persistence.InMemory.MyModelRepository
     // ReSharper disable once UnusedType.Global
     internal class MyModelWriteRepository : IMyModelWriteRepository
     {
-        private readonly IDatastore _datastore;
+        private readonly InMemoryDatastore _datastore;
         private readonly IMapper _mapper;
 
         public MyModelWriteRepository(
-            IDatastore datastore, 
+            InMemoryDatastore datastore, 
             IMapper mapper)
         {
             _datastore = datastore;

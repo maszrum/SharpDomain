@@ -6,18 +6,22 @@ namespace SharpDomain.Persistence.InMemory.Datastore
     // TODO: internal
     public class Transaction : IAsyncDisposable
     {
-        private readonly InMemoryDatastore _datastore;
-        
-        public Transaction(InMemoryDatastore datastore)
+        private readonly Func<Task> _commitAction;
+        private readonly Func<Task> _rollbackAction;
+
+        public Transaction(
+            Func<Task> commitAction, 
+            Func<Task> rollbackAction)
         {
-            _datastore = datastore;
+            _commitAction = commitAction;
+            _rollbackAction = rollbackAction;
         }
         
         public Task Commit() => 
-            _datastore.Commit();
+            _commitAction();
 
         public Task Rollback() =>
-            _datastore.Rollback();
+            _rollbackAction();
 
         public ValueTask DisposeAsync() => default;
     }

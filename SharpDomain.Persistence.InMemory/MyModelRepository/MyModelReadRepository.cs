@@ -9,9 +9,9 @@ namespace SharpDomain.Persistence.InMemory.MyModelRepository
     // ReSharper disable once UnusedType.Global
     internal class MyModelReadRepository : IMyModelRepository
     {
-        private readonly IDatastore _datastore;
+        private readonly InMemoryDatastore _datastore;
 
-        public MyModelReadRepository(IDatastore datastore)
+        public MyModelReadRepository(InMemoryDatastore datastore)
         {
             _datastore = datastore;
         }

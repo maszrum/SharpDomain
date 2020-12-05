@@ -30,7 +30,7 @@ namespace SharpDomain.Persistence.InMemory
         {
             containerBuilder
                 .RegisterType<InMemoryDatastore>()
-                .As<IDatastore>()
+                .AsSelf()
                 .InstancePerLifetimeScope();
             
             return containerBuilder;
