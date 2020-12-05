@@ -5,6 +5,7 @@ using Autofac;
 using AutoMapper;
 using AutoMapper.Configuration;
 using MediatR;
+using MediatR.Pipeline;
 
 namespace SharpDomain.Application
 {
@@ -57,6 +58,17 @@ namespace SharpDomain.Application
                 var c = context.Resolve<IComponentContext>(); 
                 return t => c.Resolve(t);
             });
+            
+            // ensure order: behaviors, exception handlers, exception actions
+            containerBuilder
+                .RegisterGeneric(typeof(RequestExceptionActionProcessorBehavior<,>))
+                .As(typeof(IPipelineBehavior<,>))
+                .InstancePerDependency();
+            
+            containerBuilder
+                .RegisterGeneric(typeof(RequestExceptionProcessorBehavior<,>))
+                .As(typeof(IPipelineBehavior<,>))
+                .InstancePerDependency();
             
             return containerBuilder;
         }
