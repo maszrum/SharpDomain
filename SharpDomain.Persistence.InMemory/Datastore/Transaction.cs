@@ -8,13 +8,16 @@ namespace SharpDomain.Persistence.InMemory.Datastore
     {
         private readonly Func<Task> _commitAction;
         private readonly Func<Task> _rollbackAction;
+        private readonly Action _disposeAction;
 
         public Transaction(
             Func<Task> commitAction, 
-            Func<Task> rollbackAction)
+            Func<Task> rollbackAction, 
+            Action disposeAction)
         {
             _commitAction = commitAction;
             _rollbackAction = rollbackAction;
+            _disposeAction = disposeAction;
         }
         
         public Task Commit() => 
@@ -23,6 +26,10 @@ namespace SharpDomain.Persistence.InMemory.Datastore
         public Task Rollback() =>
             _rollbackAction();
 
-        public ValueTask DisposeAsync() => default;
+        public ValueTask DisposeAsync()
+        {
+            _disposeAction();
+            return default;
+        }
     }
 }

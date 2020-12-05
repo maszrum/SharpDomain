@@ -9,24 +9,60 @@ namespace SharpDomain.Persistence.InMemory.Datastore
     // ReSharper disable once ClassNeverInstantiated.Global
     public class InMemoryDatastore
     {
-        private readonly ModelDatastore<MyModelEntity> _myModelStore 
-            = new ModelDatastore<MyModelEntity>();
-        
-        public IDictionary<Guid, MyModelEntity> MyModels => _myModelStore.Models;
-        
-        public Task<Transaction> BeginTransaction() =>
-            Task.FromResult(new Transaction(Commit, Rollback));
-
-        private Task Commit()
+        public InMemoryDatastore()
         {
-            _myModelStore.Commit();
+            _myEntityStore = new EntityDatastore<MyModelEntity>();
+            
+            _datastores = new IEntityDatastore[] 
+            {
+                _myEntityStore
+            };
+        }
+        
+        private readonly EntityDatastore<MyModelEntity> _myEntityStore;
+        private readonly IEntityDatastore[] _datastores;
+        
+        public IDictionary<Guid, MyModelEntity> MyModels => _myEntityStore.Models;
+        
+        public Task<Transaction> BeginTransaction()
+        {
+            OnTransactionBegin();
+            
+            return Task.FromResult(new Transaction(OnCommit, OnRollback, OnTransactionDispose));
+        }
+        
+        private void OnTransactionBegin()
+        {
+            foreach (var datastore in _datastores)
+            {
+                datastore.SetSourceToCopy();
+            }
+        }
+        
+        private void OnTransactionDispose()
+        {
+            foreach (var datastore in _datastores)
+            {
+                datastore.SetSourceToOrigin();
+            }
+        }
+            
+        private Task OnCommit()
+        {
+            foreach (var datastore in _datastores)
+            {
+                datastore.Commit();
+            }
             
             return Task.CompletedTask;
         }
-        
-        private Task Rollback()
+            
+        private Task OnRollback()
         {
-            _myModelStore.Rollback();
+            foreach (var datastore in _datastores)
+            {
+                datastore.Rollback();
+            }
             
             return Task.CompletedTask;
         }
