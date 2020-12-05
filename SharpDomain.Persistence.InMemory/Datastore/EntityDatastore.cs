@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace SharpDomain.Persistence.InMemory.Datastore
 {
-    internal class ModelDatastore<TModel> where TModel : class
+    internal class EntityDatastore<TEntity> where TEntity : class
     {
         private static class TypeLock<T>
         {
@@ -12,21 +12,21 @@ namespace SharpDomain.Persistence.InMemory.Datastore
             public static readonly object Lock = new object();
         }
         
-        private static readonly Dictionary<Guid, TModel> DataStore  =
-            new Dictionary<Guid, TModel>();
+        private static readonly Dictionary<Guid, TEntity> DataStore  =
+            new Dictionary<Guid, TEntity>();
 
-        public ModelDatastore()
+        public EntityDatastore()
         {
-            _models = new DictionaryWithHistory<TModel>(DataStore);
+            _models = new DictionaryWithHistory<TEntity>(DataStore);
         }
         
-        private DictionaryWithHistory<TModel> _models;
+        private DictionaryWithHistory<TEntity> _models;
         
-        public IDictionary<Guid, TModel> Models => _models;
+        public IDictionary<Guid, TEntity> Models => _models;
         
         public void Commit()
         {
-            lock (TypeLock<TModel>.Lock)
+            lock (TypeLock<TEntity>.Lock)
             {
                 foreach (var action in _models.Actions.Reverse())
                 {
@@ -36,6 +36,6 @@ namespace SharpDomain.Persistence.InMemory.Datastore
         }
         
         public void Rollback() => 
-            _models = new DictionaryWithHistory<TModel>(DataStore);
+            _models = new DictionaryWithHistory<TEntity>(DataStore);
     }
 }

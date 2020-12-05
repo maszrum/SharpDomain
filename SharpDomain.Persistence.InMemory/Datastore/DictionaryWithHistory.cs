@@ -4,24 +4,24 @@ using System.Collections.Generic;
 
 namespace SharpDomain.Persistence.InMemory.Datastore
 {
-    internal class DictionaryWithHistory<TModel> : IDictionary<Guid, TModel>
+    internal class DictionaryWithHistory<TEntity> : IDictionary<Guid, TEntity>
     {
-        public DictionaryWithHistory(IDictionary<Guid, TModel> dictionary)
+        public DictionaryWithHistory(IDictionary<Guid, TEntity> dictionary)
         {
-            _dictionary = new Dictionary<Guid, TModel>(dictionary);
+            _dictionary = new Dictionary<Guid, TEntity>(dictionary);
         }
         
-        private readonly Dictionary<Guid, TModel> _dictionary;
-        private readonly List<Action<IDictionary<Guid, TModel>>> _actions = 
-            new List<Action<IDictionary<Guid, TModel>>>();
+        private readonly Dictionary<Guid, TEntity> _dictionary;
+        private readonly List<Action<IDictionary<Guid, TEntity>>> _actions = 
+            new List<Action<IDictionary<Guid, TEntity>>>();
 
-        public IReadOnlyList<Action<IDictionary<Guid, TModel>>> Actions => _actions;
+        public IReadOnlyList<Action<IDictionary<Guid, TEntity>>> Actions => _actions;
         
         /*
          * indexer
          */
         
-        public TModel this[Guid key]
+        public TEntity this[Guid key]
         {
             get => _dictionary[key];
             set
@@ -37,11 +37,11 @@ namespace SharpDomain.Persistence.InMemory.Datastore
         
         public ICollection<Guid> Keys => _dictionary.Keys;
 
-        public ICollection<TModel> Values => _dictionary.Values;
+        public ICollection<TEntity> Values => _dictionary.Values;
         
         public int Count => _dictionary.Count;
         
-        public IEnumerator<KeyValuePair<Guid, TModel>> GetEnumerator() => _dictionary.GetEnumerator();
+        public IEnumerator<KeyValuePair<Guid, TEntity>> GetEnumerator() => _dictionary.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable) _dictionary).GetEnumerator();
 
@@ -52,7 +52,7 @@ namespace SharpDomain.Persistence.InMemory.Datastore
         public bool ContainsKey(Guid key) => 
             _dictionary.ContainsKey(key);
         
-        public bool TryGetValue(Guid key, out TModel value) => 
+        public bool TryGetValue(Guid key, out TEntity value) => 
             _dictionary.TryGetValue(key, out value);
         
         public void Clear()
@@ -61,7 +61,7 @@ namespace SharpDomain.Persistence.InMemory.Datastore
             _actions.Add(dict => dict.Clear());
         }
 
-        public void Add(Guid key, TModel value)
+        public void Add(Guid key, TEntity value)
         {
             _dictionary.Add(key, value);
             _actions.Add(dict => dict.Add(key, value));
@@ -78,27 +78,27 @@ namespace SharpDomain.Persistence.InMemory.Datastore
          * implicit methods & properties
          */
         
-        bool ICollection<KeyValuePair<Guid, TModel>>.IsReadOnly => DictionaryAsCollection().IsReadOnly;
+        bool ICollection<KeyValuePair<Guid, TEntity>>.IsReadOnly => DictionaryAsCollection().IsReadOnly;
         
-        bool ICollection<KeyValuePair<Guid, TModel>>.Contains(KeyValuePair<Guid, TModel> item) => 
+        bool ICollection<KeyValuePair<Guid, TEntity>>.Contains(KeyValuePair<Guid, TEntity> item) => 
             DictionaryAsCollection().Contains(item);
         
-        void ICollection<KeyValuePair<Guid, TModel>>.CopyTo(KeyValuePair<Guid, TModel>[] array, int arrayIndex) => 
+        void ICollection<KeyValuePair<Guid, TEntity>>.CopyTo(KeyValuePair<Guid, TEntity>[] array, int arrayIndex) => 
             DictionaryAsCollection().CopyTo(array, arrayIndex);
 
-        bool ICollection<KeyValuePair<Guid, TModel>>.Remove(KeyValuePair<Guid, TModel> item)
+        bool ICollection<KeyValuePair<Guid, TEntity>>.Remove(KeyValuePair<Guid, TEntity> item)
         {
             var result = DictionaryAsCollection().Remove(item);
             _actions.Add(dict => dict.Remove(item.Key));
             return result;
         }
 
-        void ICollection<KeyValuePair<Guid, TModel>>.Add(KeyValuePair<Guid, TModel> item)
+        void ICollection<KeyValuePair<Guid, TEntity>>.Add(KeyValuePair<Guid, TEntity> item)
         {
             DictionaryAsCollection().Add(item);
             _actions.Add(dict => dict.Add(item.Key, item.Value));
         }
 
-        private ICollection<KeyValuePair<Guid, TModel>> DictionaryAsCollection() => _dictionary;
+        private ICollection<KeyValuePair<Guid, TEntity>> DictionaryAsCollection() => _dictionary;
     }
 }
