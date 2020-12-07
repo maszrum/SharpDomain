@@ -6,6 +6,7 @@ using AutoMapper;
 using AutoMapper.Configuration;
 using MediatR;
 using MediatR.Pipeline;
+using SharpDomain.Application.Shared;
 
 namespace SharpDomain.Application
 {

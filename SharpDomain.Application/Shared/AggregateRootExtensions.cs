@@ -3,7 +3,7 @@ using SharpDomain.ModelStateTracker;
 using SharpDomain.Core.Events;
 using SharpDomain.Core.Shared;
 
-namespace SharpDomain.Application
+namespace SharpDomain.Application.Shared
 {
     internal static class AggregateRootExtensions
     {

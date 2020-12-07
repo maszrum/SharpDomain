@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
 using SharpDomain.Application.Exceptions;
+using SharpDomain.Application.Shared;
 using SharpDomain.Application.ViewModels;
 using SharpDomain.Core.InfrastructureAbstractions;
 using SharpDomain.Core.Models;
