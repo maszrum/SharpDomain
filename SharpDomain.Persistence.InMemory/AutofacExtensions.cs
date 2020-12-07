@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using Autofac;
+using SharpDomain.Persistence.InMemory.AutoTransactions;
 using SharpDomain.Persistence.InMemory.Datastore;
+using SharpDomain.Transactions;
 
 namespace SharpDomain.Persistence.InMemory
 {
@@ -10,7 +12,8 @@ namespace SharpDomain.Persistence.InMemory
         {
             return containerBuilder
                 .RegisterRepositories()
-                .RegisterInMemoryDatasource();
+                .RegisterInMemoryDatasource()
+                .RegisterAutoTransactionHandler();
         }
         
         private static ContainerBuilder RegisterRepositories(this ContainerBuilder containerBuilder)
@@ -32,6 +35,16 @@ namespace SharpDomain.Persistence.InMemory
                 .RegisterType<InMemoryDatastore>()
                 .AsSelf()
                 .InstancePerLifetimeScope();
+            
+            return containerBuilder;
+        }
+        
+        private static ContainerBuilder RegisterAutoTransactionHandler(this ContainerBuilder containerBuilder)
+        {
+            containerBuilder
+                .RegisterGeneric(typeof(InMemoryTransactionHandler<,>))
+                .As(typeof(TransactionHandler<,>))
+                .InstancePerDependency();
             
             return containerBuilder;
         }

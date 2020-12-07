@@ -2,17 +2,12 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
-        <Nullable>enable</Nullable>
+        <RootNamespace>SharpDomain.Transactions</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
       <PackageReference Include="Autofac" Version="6.0.0" />
       <PackageReference Include="MediatR" Version="9.0.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\Libraries\SharpDomain.AutoTransaction\SharpDomain.AutoTransaction.csproj" />
-      <ProjectReference Include="..\Libraries\SharpDomain.ModelStateTracker\SharpDomain.ModelStateTracker.csproj" />
     </ItemGroup>
 
 </Project>

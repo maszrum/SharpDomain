@@ -3,14 +3,13 @@ using System.Threading.Tasks;
 
 namespace SharpDomain.Persistence.InMemory.Datastore
 {
-    // TODO: internal
-    public class Transaction : IAsyncDisposable
+    internal class InMemoryTransaction : IAsyncDisposable
     {
         private readonly Func<Task> _commitAction;
         private readonly Func<Task> _rollbackAction;
         private readonly Action _disposeAction;
 
-        public Transaction(
+        public InMemoryTransaction(
             Func<Task> commitAction, 
             Func<Task> rollbackAction, 
             Action disposeAction)

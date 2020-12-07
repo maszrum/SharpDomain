@@ -16,6 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Libraries\SharpDomain.AutoTransaction\SharpDomain.AutoTransaction.csproj" />
       <ProjectReference Include="..\SharpDomain.Core\SharpDomain.Core.csproj" />
     </ItemGroup>
 

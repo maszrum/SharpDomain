@@ -11,7 +11,7 @@ using SharpDomain.Persistence.InMemory;
 using SharpDomain.Application.Commands;
 using SharpDomain.Application.Queries;
 using SharpDomain.Persistence.Entities;
-using SharpDomain.Persistence.InMemory.Datastore;
+using SharpDomain.Transactions;
 
 namespace SharpDomain.ConsoleApp
 {
@@ -29,9 +29,9 @@ namespace SharpDomain.ConsoleApp
                     var persistenceAssembly = typeof(MyModelEntity).GetTypeInfo().Assembly;
                     config.PermitWriteRepositoriesInHandlersOnlyIn(persistenceAssembly);
                 })
+                .RegisterAutoTransaction()
                 .RegisterPersistenceLayer()
                 .RegisterInMemoryPersistence();
-                //.RegisterTransactionality();
             
             await using var container = containerBuilder.Build();
 
@@ -55,9 +55,6 @@ namespace SharpDomain.ConsoleApp
         private static async Task<Guid> AddModel(IComponentContext context)
         {
             var mediator = context.Resolve<IMediator>();
-            var datastore = context.Resolve<InMemoryDatastore>();
-
-            await using var transaction = await datastore.BeginTransaction();
             
             var createModel = new CreateMyModel()
             {
@@ -65,8 +62,6 @@ namespace SharpDomain.ConsoleApp
                 StringProperty = "sample string"
             };
             var createResult = await mediator.Send(createModel);
-                
-            await transaction.Commit();
             
             return createResult.Id;
         }
@@ -74,9 +69,6 @@ namespace SharpDomain.ConsoleApp
         private static async Task IncrementModel(IComponentContext context, Guid id)
         {
             var mediator = context.Resolve<IMediator>();
-            var datastore = context.Resolve<InMemoryDatastore>();
-
-            await using var transaction = await datastore.BeginTransaction();
             
             var increment = new IncrementMyModelValue(id);
             
@@ -84,8 +76,6 @@ namespace SharpDomain.ConsoleApp
             {
                 await mediator.Send(increment);
             }
-            
-            await transaction.Rollback();
         }
         
         private static async Task ReadModel(IComponentContext context, Guid id)

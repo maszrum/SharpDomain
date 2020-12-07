@@ -13,11 +13,6 @@ namespace SharpDomain.Persistence.InMemory.Datastore
         
         private static readonly Dictionary<Guid, TEntity> DataStore  =
             new Dictionary<Guid, TEntity>();
-
-        public EntityDatastore()
-        {
-            _models = new DictionaryWithHistory<TEntity>(DataStore);
-        }
         
         private DictionaryWithHistory<TEntity>? _models;
         

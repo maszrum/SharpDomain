@@ -5,35 +5,33 @@ using SharpDomain.Persistence.Entities;
 
 namespace SharpDomain.Persistence.InMemory.Datastore
 {
-    // TODO: internal
-    // ReSharper disable once ClassNeverInstantiated.Global
-    public class InMemoryDatastore
+    internal class InMemoryDatastore
     {
         public InMemoryDatastore()
         {
             _myEntityStore = new EntityDatastore<MyModelEntity>();
             
-            _datastores = new IEntityDatastore[] 
+            _dataStores = new IEntityDatastore[] 
             {
                 _myEntityStore
             };
         }
         
         private readonly EntityDatastore<MyModelEntity> _myEntityStore;
-        private readonly IEntityDatastore[] _datastores;
+        private readonly IEntityDatastore[] _dataStores;
         
         public IDictionary<Guid, MyModelEntity> MyModels => _myEntityStore.Models;
         
-        public Task<Transaction> BeginTransaction()
+        public Task<InMemoryTransaction> BeginTransaction()
         {
             OnTransactionBegin();
             
-            return Task.FromResult(new Transaction(OnCommit, OnRollback, OnTransactionDispose));
+            return Task.FromResult(new InMemoryTransaction(OnCommit, OnRollback, OnTransactionDispose));
         }
         
         private void OnTransactionBegin()
         {
-            foreach (var datastore in _datastores)
+            foreach (var datastore in _dataStores)
             {
                 datastore.SetSourceToCopy();
             }
@@ -41,7 +39,7 @@ namespace SharpDomain.Persistence.InMemory.Datastore
         
         private void OnTransactionDispose()
         {
-            foreach (var datastore in _datastores)
+            foreach (var datastore in _dataStores)
             {
                 datastore.SetSourceToOrigin();
             }
@@ -49,7 +47,7 @@ namespace SharpDomain.Persistence.InMemory.Datastore
             
         private Task OnCommit()
         {
-            foreach (var datastore in _datastores)
+            foreach (var datastore in _dataStores)
             {
                 datastore.Commit();
             }
@@ -59,7 +57,7 @@ namespace SharpDomain.Persistence.InMemory.Datastore
             
         private Task OnRollback()
         {
-            foreach (var datastore in _datastores)
+            foreach (var datastore in _dataStores)
             {
                 datastore.Rollback();
             }
