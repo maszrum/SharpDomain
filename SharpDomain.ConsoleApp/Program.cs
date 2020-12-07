@@ -56,11 +56,10 @@ namespace SharpDomain.ConsoleApp
         {
             var mediator = context.Resolve<IMediator>();
             
-            var createModel = new CreateMyModel()
-            {
-                IntProperty = 1,
-                StringProperty = "sample string"
-            };
+            var createModel = new CreateMyModel(
+                intProperty: 1, 
+                stringProperty: "sample string");
+            
             var createResult = await mediator.Send(createModel);
             
             return createResult.Id;

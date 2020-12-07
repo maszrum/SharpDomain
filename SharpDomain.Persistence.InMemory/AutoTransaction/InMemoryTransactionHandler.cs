@@ -6,7 +6,7 @@ using MediatR;
 using SharpDomain.Persistence.InMemory.Datastore;
 using SharpDomain.Transactions;
 
-namespace SharpDomain.Persistence.InMemory.AutoTransactions
+namespace SharpDomain.Persistence.InMemory.AutoTransaction
 {
     internal class InMemoryTransactionHandler<TRequest, TResponse> : TransactionHandler<TRequest, TResponse> where TRequest : notnull
     {

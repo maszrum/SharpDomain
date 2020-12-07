@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using Autofac;
-using SharpDomain.Persistence.InMemory.AutoTransactions;
+using SharpDomain.Persistence.InMemory.AutoTransaction;
 using SharpDomain.Persistence.InMemory.Datastore;
 using SharpDomain.Transactions;
 
