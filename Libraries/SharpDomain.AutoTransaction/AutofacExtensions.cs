@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using MediatR;
 
-namespace SharpDomain.Transactions
+namespace SharpDomain.AutoTransaction
 {
     public static class AutofacExtensions
     {

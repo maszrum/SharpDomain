@@ -5,10 +5,12 @@ using MediatR;
 using SharpDomain.Application.ViewModels;
 using SharpDomain.Core.Models;
 using SharpDomain.Core.Shared;
+using SharpDomain.Persistence.InMemory.AutoTransaction;
+
+// ReSharper disable once UnusedType.Global
 
 namespace SharpDomain.Application.Commands
 {
-    // ReSharper disable once UnusedType.Global
     internal class CreateMyModelHandler : IRequestHandler<CreateMyModel, MyModelViewModel>
     {
         private readonly IMapper _mapper;

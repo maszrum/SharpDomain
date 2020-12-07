@@ -6,12 +6,12 @@ using Autofac;
 using MediatR;
 using SharpDomain.Application;
 using SharpDomain.Core;
-using SharpDomain.Persistence;
-using SharpDomain.Persistence.InMemory;
 using SharpDomain.Application.Commands;
 using SharpDomain.Application.Queries;
+using SharpDomain.AutoTransaction;
+using SharpDomain.Persistence;
 using SharpDomain.Persistence.Entities;
-using SharpDomain.Transactions;
+using SharpDomain.Persistence.InMemory;
 
 namespace SharpDomain.ConsoleApp
 {
@@ -55,7 +55,7 @@ namespace SharpDomain.ConsoleApp
         private static async Task<Guid> AddModel(IComponentContext context)
         {
             var mediator = context.Resolve<IMediator>();
-            
+
             var createModel = new CreateMyModel(
                 intProperty: 1, 
                 stringProperty: "sample string");

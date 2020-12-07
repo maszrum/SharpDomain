@@ -3,8 +3,8 @@ using System.Runtime.ExceptionServices;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using SharpDomain.AutoTransaction;
 using SharpDomain.Persistence.InMemory.Datastore;
-using SharpDomain.Transactions;
 
 namespace SharpDomain.Persistence.InMemory.AutoTransaction
 {
@@ -25,6 +25,7 @@ namespace SharpDomain.Persistence.InMemory.AutoTransaction
             var transaction = await _datastore.BeginTransaction();
             await using (transaction)
             {
+                var rolledBack = false;
                 try
                 {
                     response = await next();
@@ -34,12 +35,16 @@ namespace SharpDomain.Persistence.InMemory.AutoTransaction
                     if (IsRollingBackException(exception))
                     {
                         await transaction.Rollback();
+                        rolledBack = true;
                     }
                     
                     exceptionThrown = exception;
                 }
                 
-                await transaction.Commit();
+                if (!rolledBack)
+                {
+                    await transaction.Commit();
+                }
             }
             
             if (exceptionThrown != default)

@@ -8,9 +8,10 @@ using SharpDomain.Core.InfrastructureAbstractions;
 using SharpDomain.Core.Models;
 using SharpDomain.Core.Shared;
 
+// ReSharper disable once UnusedType.Global
+
 namespace SharpDomain.Application.Commands
 {
-    // ReSharper disable once UnusedType.Global
     internal class IncrementMyModelValueHandler : IRequestHandler<IncrementMyModelValue, MyModelViewModel>
     {
         private readonly IMyModelRepository _repository;

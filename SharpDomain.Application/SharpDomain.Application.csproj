@@ -3,6 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <Nullable>enable</Nullable>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
@@ -16,8 +17,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Libraries\SharpDomain.AutoTransaction\SharpDomain.AutoTransaction.csproj" />
       <ProjectReference Include="..\SharpDomain.Core\SharpDomain.Core.csproj" />
+      <ProjectReference Include="..\SharpDomain.Persistence.InMemory\SharpDomain.Persistence.InMemory.csproj" />
     </ItemGroup>
 
 </Project>

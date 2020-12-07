@@ -8,7 +8,7 @@ namespace SharpDomain.Core.Shared
     internal class DomainEvents : IDomainEvents
     {
         private readonly IMediator _mediator;
-        private readonly List<INotification> _events = new List<INotification>();
+        private readonly List<INotification> _events = new();
 
         public DomainEvents(IMediator mediator)
         {
@@ -17,6 +17,8 @@ namespace SharpDomain.Core.Shared
 
         public async Task PublishCollected(CancellationToken cancellationToken = default)
         {
+            // TODO: send ModelChanged<T> event first
+            
             foreach (var @event in _events)
             {
                 await _mediator.Publish(@event, cancellationToken);

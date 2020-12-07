@@ -1,9 +1,7 @@
 ﻿using System;
-using SharpDomain.Transactions;
 
 namespace SharpDomain.Application.Exceptions
 {
-    [RollingBackException]
     internal class ObjectNotFoundException<T> : ApplicationException
     {
         public Type ObjectType { get; }
