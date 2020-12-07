@@ -27,7 +27,7 @@ namespace SharpDomain.ConsoleApp
                     config.ForbidMediatorInHandlers = true;
                     
                     var persistenceAssembly = typeof(MyModelEntity).GetTypeInfo().Assembly;
-                    config.PermitWriteRepositoriesInHandlersOnlyIn(persistenceAssembly);
+                    config.ForbidWriteRepositoriesInHandlersExceptIn(persistenceAssembly);
                 })
                 .RegisterAutoTransaction()
                 .RegisterPersistenceLayer()

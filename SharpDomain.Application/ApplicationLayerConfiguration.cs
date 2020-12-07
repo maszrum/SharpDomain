@@ -10,7 +10,7 @@ namespace SharpDomain.Application
         
         public IReadOnlyList<Assembly> AssembliesThatHavePermittedWriteRepositories { get; private set; } = Array.Empty<Assembly>();
         
-        public void PermitWriteRepositoriesInHandlersOnlyIn(params Assembly[] assemblies)
+        public void ForbidWriteRepositoriesInHandlersExceptIn(params Assembly[] assemblies)
         {
             AssembliesThatHavePermittedWriteRepositories = assemblies;
         }
