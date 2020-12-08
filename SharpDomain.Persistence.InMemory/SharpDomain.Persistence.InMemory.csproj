@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Libraries\SharpDomain.AutoTransaction\SharpDomain.AutoTransaction.csproj" />
+      <ProjectReference Include="..\Shared\Libraries\SharpDomain.AutoTransaction\SharpDomain.AutoTransaction.csproj" />
       <ProjectReference Include="..\SharpDomain.Persistence\SharpDomain.Persistence.csproj" />
     </ItemGroup>
 
