@@ -1,12 +1,9 @@
-﻿using System;
-using MediatR;
+﻿using MediatR;
 
 namespace SharpDomain.Core
 {
-    public abstract class AggregateRoot<T> where T : AggregateRoot<T>
+    public abstract class AggregateRoot<T> : Aggregate<T> where T : AggregateRoot<T>
     {
-        public Guid Id { get; protected set; }
-        
         protected IDomainResult<T> Event(INotification @event) => new EventsResult<T>((this as T)!, @event);
 
         protected IDomainResult<T> Events(params INotification[] events) => new EventsResult<T>((this as T)!, events);

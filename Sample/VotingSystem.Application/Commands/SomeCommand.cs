@@ -3,9 +3,9 @@ using VotingSystem.Application.ViewModels;
 
 namespace VotingSystem.Application.Commands
 {
-    public class CreateMyModel : IRequest<MyModelViewModel>
+    public class SomeCommand : IRequest<SomeViewModel>
     {
-        public CreateMyModel(string? stringProperty, int intProperty)
+        public SomeCommand(string? stringProperty, int intProperty)
         {
             StringProperty = stringProperty;
             IntProperty = intProperty;
