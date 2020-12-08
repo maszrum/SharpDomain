@@ -12,8 +12,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\SharpDomain.Application\SharpDomain.Application.csproj" />
-      <ProjectReference Include="..\SharpDomain.Persistence.InMemory\SharpDomain.Persistence.InMemory.csproj" />
+      <ProjectReference Include="..\Shared\SharpDomain.Application\SharpDomain.Application.csproj" />
+      <ProjectReference Include="..\Shared\SharpDomain.Persistence.InMemory\SharpDomain.Persistence.InMemory.csproj" />
     </ItemGroup>
 
 </Project>

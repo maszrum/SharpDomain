@@ -1,12 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.Core", "SharpDomain.Core\SharpDomain.Core.csproj", "{476B9DC2-DE6A-42C6-8233-7E1078D3F134}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.Core", "Shared\SharpDomain.Core\SharpDomain.Core.csproj", "{476B9DC2-DE6A-42C6-8233-7E1078D3F134}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.Application", "SharpDomain.Application\SharpDomain.Application.csproj", "{B6BF68E8-8EEA-4C2B-AD9C-E020DB15950E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.Application", "Shared\SharpDomain.Application\SharpDomain.Application.csproj", "{B6BF68E8-8EEA-4C2B-AD9C-E020DB15950E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.Persistence", "SharpDomain.Persistence\SharpDomain.Persistence.csproj", "{B3E0693E-9293-4F21-A743-95911E4BA264}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.Persistence", "Shared\SharpDomain.Persistence\SharpDomain.Persistence.csproj", "{B3E0693E-9293-4F21-A743-95911E4BA264}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.Persistence.InMemory", "SharpDomain.Persistence.InMemory\SharpDomain.Persistence.InMemory.csproj", "{44F5A95E-0D88-4CD9-8D3E-53870A797201}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.Persistence.InMemory", "Shared\SharpDomain.Persistence.InMemory\SharpDomain.Persistence.InMemory.csproj", "{44F5A95E-0D88-4CD9-8D3E-53870A797201}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleDomain.ConsoleApp", "SampleDomain.ConsoleApp\SampleDomain.ConsoleApp.csproj", "{EE7E068F-10EA-48C6-99C2-3495A4BED07F}"
 EndProject

@@ -7,12 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Shared\Libraries\SharpDomain.AutoTransaction\SharpDomain.AutoTransaction.csproj" />
-      <ProjectReference Include="..\SharpDomain.Persistence\SharpDomain.Persistence.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
       <PackageReference Include="Autofac" Version="6.0.0" />
+      <PackageReference Include="MediatR" Version="9.0.0" />
     </ItemGroup>
 
 </Project>
