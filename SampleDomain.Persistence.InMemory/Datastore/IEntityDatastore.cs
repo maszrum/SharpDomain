@@ -1,4 +1,4 @@
-﻿namespace SharpDomain.Persistence.InMemory.Datastore
+﻿namespace SampleDomain.Persistence.InMemory.Datastore
 {
     internal interface IEntityDatastore
     {

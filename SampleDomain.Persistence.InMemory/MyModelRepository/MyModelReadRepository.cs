@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using SampleDomain.Core.InfrastructureAbstractions;
 using SampleDomain.Core.Models;
-using SharpDomain.Persistence.InMemory.Datastore;
+using SampleDomain.Persistence.InMemory.Datastore;
 
-namespace SharpDomain.Persistence.InMemory.MyModelRepository
+namespace SampleDomain.Persistence.InMemory.MyModelRepository
 {
     // ReSharper disable once UnusedType.Global
     internal class MyModelReadRepository : IMyModelRepository

@@ -3,10 +3,10 @@ using System.Runtime.ExceptionServices;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using SampleDomain.Persistence.InMemory.Datastore;
 using SharpDomain.AutoTransaction;
-using SharpDomain.Persistence.InMemory.Datastore;
 
-namespace SharpDomain.Persistence.InMemory.AutoTransaction
+namespace SampleDomain.Persistence.InMemory.AutoTransaction
 {
     internal class InMemoryTransactionHandler<TRequest, TResponse> : TransactionHandler<TRequest, TResponse> where TRequest : notnull
     {

@@ -3,10 +3,10 @@ using System.Threading.Tasks;
 using AutoMapper;
 using SampleDomain.Core.Models;
 using SampleDomain.Persistence.Entities;
+using SampleDomain.Persistence.InMemory.Datastore;
 using SampleDomain.Persistence.RepositoryInterfaces;
-using SharpDomain.Persistence.InMemory.Datastore;
 
-namespace SharpDomain.Persistence.InMemory.MyModelRepository
+namespace SampleDomain.Persistence.InMemory.MyModelRepository
 {
     // ReSharper disable once UnusedType.Global
     internal class MyModelWriteRepository : IMyModelWriteRepository

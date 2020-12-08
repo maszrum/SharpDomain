@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SharpDomain.Persistence.InMemory.Datastore
+namespace SampleDomain.Persistence.InMemory.Datastore
 {
     internal class EntityDatastore<TEntity> : IEntityDatastore where TEntity : class
     {

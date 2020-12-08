@@ -5,4 +5,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\SampleDomain.Persistence\SampleDomain.Persistence.csproj" />
+      <ProjectReference Include="..\Shared\Libraries\SharpDomain.AutoTransaction\SharpDomain.AutoTransaction.csproj" />
+    </ItemGroup>
+
 </Project>

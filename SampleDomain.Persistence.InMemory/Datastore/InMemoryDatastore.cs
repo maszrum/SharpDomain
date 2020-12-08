@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using SampleDomain.Persistence.Entities;
 
-namespace SharpDomain.Persistence.InMemory.Datastore
+namespace SampleDomain.Persistence.InMemory.Datastore
 {
     internal class InMemoryDatastore
     {

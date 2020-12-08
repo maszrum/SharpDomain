@@ -6,32 +6,35 @@ using MediatR;
 using SampleDomain.Application.Commands;
 using SampleDomain.Application.Queries;
 using SampleDomain.Persistence.Entities;
+using SampleDomain.Persistence.InMemory;
 using SharpDomain.Application;
 using SharpDomain.Core;
 using SharpDomain.AutoTransaction;
 using SharpDomain.Persistence;
-using SharpDomain.Persistence.InMemory;
+
+// ReSharper disable once ClassNeverInstantiated.Global
 
 namespace SampleDomain.ConsoleApp
 {
-    [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
     internal class Program
     {
         private static async Task Main(string[] args)
         {
+            var applicationAssembly = typeof(CreateMyModel).Assembly;
+            var persistenceAssembly = typeof(MyModelEntity).Assembly;
+            var inMemoryPersistenceAssembly = typeof(Persistence.InMemory.AutofacExtensions).Assembly;
+            
             var containerBuilder = new ContainerBuilder()
                 .RegisterDomainLayer()
                 .RegisterApplicationLayer(
-                    assembly: typeof(CreateMyModel).Assembly, 
+                    assembly: applicationAssembly, 
                     configurationAction: config =>
                     {
                         config.ForbidMediatorInHandlers = true;
-                    
-                        var persistenceAssembly = typeof(MyModelEntity).Assembly;
                         config.ForbidWriteRepositoriesInHandlersExceptIn(persistenceAssembly);
                     })
-                .RegisterAutoTransaction()
-                .RegisterPersistenceLayer(typeof(MyModelEntity).Assembly)
+                .RegisterAutoTransaction(inMemoryPersistenceAssembly)
+                .RegisterPersistenceLayer(persistenceAssembly)
                 .RegisterInMemoryPersistence();
             
             await using var container = containerBuilder.Build();
