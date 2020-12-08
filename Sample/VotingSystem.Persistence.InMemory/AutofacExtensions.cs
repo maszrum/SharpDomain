@@ -1,8 +1,8 @@
 ﻿using System.Reflection;
 using Autofac;
-using SampleDomain.Persistence.InMemory.Datastore;
+using VotingSystem.Persistence.InMemory.Datastore;
 
-namespace SampleDomain.Persistence.InMemory
+namespace VotingSystem.Persistence.InMemory
 {
     public static class AutofacExtensions
     {

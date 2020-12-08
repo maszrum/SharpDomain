@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SampleDomain.Persistence.InMemory.Datastore
+namespace VotingSystem.Persistence.InMemory.Datastore
 {
     internal class EntityDatastore<TEntity> : IEntityDatastore where TEntity : class
     {

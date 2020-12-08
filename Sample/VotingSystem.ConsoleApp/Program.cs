@@ -1,20 +1,19 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using Autofac;
 using MediatR;
-using SampleDomain.Application.Commands;
-using SampleDomain.Application.Queries;
-using SampleDomain.Persistence.Entities;
-using SampleDomain.Persistence.InMemory;
 using SharpDomain.Application;
 using SharpDomain.Core;
 using SharpDomain.AutoTransaction;
 using SharpDomain.Persistence;
+using VotingSystem.Application.Commands;
+using VotingSystem.Application.Queries;
+using VotingSystem.Persistence.Entities;
+using VotingSystem.Persistence.InMemory;
 
 // ReSharper disable once ClassNeverInstantiated.Global
 
-namespace SampleDomain.ConsoleApp
+namespace VotingSystem.ConsoleApp
 {
     internal class Program
     {

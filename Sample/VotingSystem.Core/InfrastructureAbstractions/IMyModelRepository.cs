@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using SampleDomain.Core.Models;
+using VotingSystem.Core.Models;
 
-namespace SampleDomain.Core.InfrastructureAbstractions
+namespace VotingSystem.Core.InfrastructureAbstractions
 {
     public interface IMyModelRepository
     {

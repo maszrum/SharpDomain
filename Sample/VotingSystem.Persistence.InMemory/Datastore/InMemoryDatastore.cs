@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using SampleDomain.Persistence.Entities;
+using VotingSystem.Persistence.Entities;
 
-namespace SampleDomain.Persistence.InMemory.Datastore
+namespace VotingSystem.Persistence.InMemory.Datastore
 {
     internal class InMemoryDatastore
     {

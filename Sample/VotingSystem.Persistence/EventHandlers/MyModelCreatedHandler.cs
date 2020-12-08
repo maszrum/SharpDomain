@@ -1,10 +1,10 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using SampleDomain.Core.Events;
-using SampleDomain.Persistence.RepositoryInterfaces;
+using VotingSystem.Core.Events;
+using VotingSystem.Persistence.RepositoryInterfaces;
 
-namespace SampleDomain.Persistence.EventHandlers
+namespace VotingSystem.Persistence.EventHandlers
 {
     // ReSharper disable once UnusedType.Global
     internal class MyModelCreatedHandler : INotificationHandler<MyModelCreated>

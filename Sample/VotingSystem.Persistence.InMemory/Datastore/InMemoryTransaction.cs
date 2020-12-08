@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace SampleDomain.Persistence.InMemory.Datastore
+namespace VotingSystem.Persistence.InMemory.Datastore
 {
     internal class InMemoryTransaction : IAsyncDisposable
     {

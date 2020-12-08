@@ -1,9 +1,9 @@
 ﻿using System;
-using SampleDomain.Core.Events;
-using SampleDomain.Core.Exceptions;
 using SharpDomain.Core;
+using VotingSystem.Core.Events;
+using VotingSystem.Core.Exceptions;
 
-namespace SampleDomain.Core.Models
+namespace VotingSystem.Core.Models
 {
     public class MyModel : AggregateRoot<MyModel>
     {

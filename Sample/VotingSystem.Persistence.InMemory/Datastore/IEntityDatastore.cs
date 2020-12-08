@@ -1,4 +1,4 @@
-﻿namespace SampleDomain.Persistence.InMemory.Datastore
+﻿namespace VotingSystem.Persistence.InMemory.Datastore
 {
     internal interface IEntityDatastore
     {

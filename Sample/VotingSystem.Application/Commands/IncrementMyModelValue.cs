@@ -1,8 +1,8 @@
 ﻿using System;
 using MediatR;
-using SampleDomain.Application.ViewModels;
+using VotingSystem.Application.ViewModels;
 
-namespace SampleDomain.Application.Commands
+namespace VotingSystem.Application.Commands
 {
     public class IncrementMyModelValue : IRequest<MyModelViewModel>
     {

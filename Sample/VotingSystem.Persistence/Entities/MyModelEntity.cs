@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SampleDomain.Persistence.Entities
+namespace VotingSystem.Persistence.Entities
 {
     public class MyModelEntity
     {

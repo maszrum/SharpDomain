@@ -2,16 +2,16 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
-using SampleDomain.Application.Exceptions;
-using SampleDomain.Application.ViewModels;
-using SampleDomain.Core.InfrastructureAbstractions;
-using SampleDomain.Core.Models;
 using SharpDomain.Application;
 using SharpDomain.Core;
+using VotingSystem.Application.Exceptions;
+using VotingSystem.Application.ViewModels;
+using VotingSystem.Core.InfrastructureAbstractions;
+using VotingSystem.Core.Models;
 
 // ReSharper disable once UnusedType.Global
 
-namespace SampleDomain.Application.Commands
+namespace VotingSystem.Application.Commands
 {
     internal class IncrementMyModelValueHandler : IRequestHandler<IncrementMyModelValue, MyModelViewModel>
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SampleDomain.Application.Exceptions
+namespace VotingSystem.Application.Exceptions
 {
     internal class ObjectNotFoundException<T> : ApplicationException
     {
