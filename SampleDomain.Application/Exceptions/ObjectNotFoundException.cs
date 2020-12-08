@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SharpDomain.Application.Exceptions
+namespace SampleDomain.Application.Exceptions
 {
     internal class ObjectNotFoundException<T> : ApplicationException
     {

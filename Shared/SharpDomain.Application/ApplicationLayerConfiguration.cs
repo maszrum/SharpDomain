@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace SharpDomain.Application.Shared
+namespace SharpDomain.Application
 {
     public class ApplicationLayerConfiguration
     {

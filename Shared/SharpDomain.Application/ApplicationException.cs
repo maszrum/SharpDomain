@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace SharpDomain.Application.Exceptions
+namespace SharpDomain.Application
 {
-    internal abstract class ApplicationException : Exception
+    public abstract class ApplicationException : Exception
     {
         protected ApplicationException(string? message) 
             : base(message)

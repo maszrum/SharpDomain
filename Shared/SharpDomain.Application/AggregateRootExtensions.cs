@@ -3,9 +3,9 @@ using SharpDomain.ModelStateTracker;
 using SharpDomain.Core.Events;
 using SharpDomain.Core.Shared;
 
-namespace SharpDomain.Application.Shared
+namespace SharpDomain.Application
 {
-    internal static class AggregateRootExtensions
+    public static class AggregateRootExtensions
     {
         public static T CollectEvents<T>(this IDomainResult<T> domainResult, IDomainEvents domainEvents)
         {

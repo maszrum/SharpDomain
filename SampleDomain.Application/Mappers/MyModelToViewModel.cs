@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using SharpDomain.Application.ViewModels;
+using SampleDomain.Application.ViewModels;
 using SharpDomain.Core.Models;
 
-namespace SharpDomain.Application.Mappers
+namespace SampleDomain.Application.Mappers
 {
     internal class MyModelToViewModel : Profile
     {

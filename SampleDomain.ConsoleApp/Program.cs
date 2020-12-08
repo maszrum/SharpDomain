@@ -4,10 +4,10 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Autofac;
 using MediatR;
+using SampleDomain.Application.Commands;
+using SampleDomain.Application.Queries;
 using SharpDomain.Application;
 using SharpDomain.Core;
-using SharpDomain.Application.Commands;
-using SharpDomain.Application.Queries;
 using SharpDomain.AutoTransaction;
 using SharpDomain.Persistence;
 using SharpDomain.Persistence.Entities;
@@ -22,13 +22,15 @@ namespace SampleDomain.ConsoleApp
         {
             var containerBuilder = new ContainerBuilder()
                 .RegisterDomainLayer()
-                .RegisterApplicationLayer(config =>
-                {
-                    config.ForbidMediatorInHandlers = true;
+                .RegisterApplicationLayer(
+                    assembly: typeof(CreateMyModel).Assembly, 
+                    configurationAction: config =>
+                    {
+                        config.ForbidMediatorInHandlers = true;
                     
-                    var persistenceAssembly = typeof(MyModelEntity).GetTypeInfo().Assembly;
-                    config.ForbidWriteRepositoriesInHandlersExceptIn(persistenceAssembly);
-                })
+                        var persistenceAssembly = typeof(MyModelEntity).GetTypeInfo().Assembly;
+                        config.ForbidWriteRepositoriesInHandlersExceptIn(persistenceAssembly);
+                    })
                 .RegisterAutoTransaction()
                 .RegisterPersistenceLayer()
                 .RegisterInMemoryPersistence();

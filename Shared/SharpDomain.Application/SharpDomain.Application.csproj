@@ -7,10 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Validators" />
-    </ItemGroup>
-
-    <ItemGroup>
       <PackageReference Include="Autofac" Version="6.0.0" />
       <PackageReference Include="AutoMapper" Version="10.1.1" />
       <PackageReference Include="AutoMapper.Contrib.Autofac.DependencyInjection" Version="5.1.0" />
@@ -19,7 +15,6 @@
     <ItemGroup>
       <ProjectReference Include="..\Libraries\SharpDomain.ModelStateTracker\SharpDomain.ModelStateTracker.csproj" />
       <ProjectReference Include="..\SharpDomain.Core\SharpDomain.Core.csproj" />
-      <ProjectReference Include="..\SharpDomain.Persistence.InMemory\SharpDomain.Persistence.InMemory.csproj" />
     </ItemGroup>
 
 </Project>

@@ -2,12 +2,12 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
-using SharpDomain.Application.Exceptions;
-using SharpDomain.Application.ViewModels;
+using SampleDomain.Application.Exceptions;
+using SampleDomain.Application.ViewModels;
 using SharpDomain.Core.InfrastructureAbstractions;
 using SharpDomain.Core.Models;
 
-namespace SharpDomain.Application.Queries
+namespace SampleDomain.Application.Queries
 {
     // ReSharper disable once UnusedType.Global
     internal class GetMyModelHandler : IRequestHandler<GetMyModel, MyModelViewModel>

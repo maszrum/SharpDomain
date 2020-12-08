@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using MediatR;
 using SharpDomain.Core.Events;
 
-namespace SharpDomain.Application.EventHandlers
+namespace SampleDomain.Application.EventHandlers
 {
     // ReSharper disable once UnusedType.Global
     internal class SendEmailOnMyModelCreated : INotificationHandler<MyModelCreated>

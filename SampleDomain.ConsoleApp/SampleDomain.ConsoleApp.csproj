@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netcoreapp5.0</TargetFramework>
         <OutputType>Exe</OutputType>
-        <Nullable>disable</Nullable>
+        <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
@@ -12,7 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Shared\SharpDomain.Application\SharpDomain.Application.csproj" />
+      <ProjectReference Include="..\SampleDomain.Application\SampleDomain.Application.csproj" />
       <ProjectReference Include="..\Shared\SharpDomain.Persistence.InMemory\SharpDomain.Persistence.InMemory.csproj" />
     </ItemGroup>
 

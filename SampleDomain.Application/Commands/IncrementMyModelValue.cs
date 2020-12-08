@@ -1,8 +1,8 @@
 ﻿using System;
 using MediatR;
-using SharpDomain.Application.ViewModels;
+using SampleDomain.Application.ViewModels;
 
-namespace SharpDomain.Application.Commands
+namespace SampleDomain.Application.Commands
 {
     public class IncrementMyModelValue : IRequest<MyModelViewModel>
     {

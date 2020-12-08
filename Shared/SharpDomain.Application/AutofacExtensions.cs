@@ -6,7 +6,6 @@ using AutoMapper;
 using AutoMapper.Configuration;
 using MediatR;
 using MediatR.Pipeline;
-using SharpDomain.Application.Shared;
 
 namespace SharpDomain.Application
 {
@@ -14,6 +13,7 @@ namespace SharpDomain.Application
     {
         public static ContainerBuilder RegisterApplicationLayer(
             this ContainerBuilder containerBuilder, 
+            Assembly assembly,
             Action<ApplicationLayerConfiguration> configurationAction)
         {
             var configuration = new ApplicationLayerConfiguration();
@@ -35,17 +35,19 @@ namespace SharpDomain.Application
                 }
             });
             
-            return RegisterApplicationLayer(containerBuilder);
+            return RegisterApplicationLayer(containerBuilder, assembly);
         }
         
-        public static ContainerBuilder RegisterApplicationLayer(this ContainerBuilder containerBuilder)
+        public static ContainerBuilder RegisterApplicationLayer(
+            this ContainerBuilder containerBuilder,
+            Assembly assembly)
         {
             return containerBuilder
                 .RegisterMediatR()
-                .RegisterRequestHandlers()
-                .RegisterNotificationHandlers()
+                .RegisterRequestHandlers(assembly)
+                .RegisterNotificationHandlers(assembly)
                 .RegisterAutomapper()
-                .RegisterMappers();
+                .RegisterMappers(assembly);
         }
         
         private static ContainerBuilder RegisterMediatR(this ContainerBuilder containerBuilder)
@@ -74,12 +76,12 @@ namespace SharpDomain.Application
             return containerBuilder;
         }
         
-        private static ContainerBuilder RegisterRequestHandlers(this ContainerBuilder containerBuilder)
+        private static ContainerBuilder RegisterRequestHandlers(
+            this ContainerBuilder containerBuilder,
+            Assembly assembly)
         {
             static bool IsRequestHandler(Type t) =>
                 t.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRequestHandler<,>));
-            
-            var assembly = typeof(AutofacExtensions).GetTypeInfo().Assembly;
 
             var requestHandlerTypes = assembly.DefinedTypes
                 .Where(IsRequestHandler)
@@ -94,12 +96,12 @@ namespace SharpDomain.Application
             return containerBuilder;
         } 
         
-        private static ContainerBuilder RegisterNotificationHandlers(this ContainerBuilder containerBuilder)
+        private static ContainerBuilder RegisterNotificationHandlers(
+            this ContainerBuilder containerBuilder,
+            Assembly assembly)
         {
             static bool IsNotificationHandler(Type t) =>
                 t.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(INotificationHandler<>));
-            
-            var assembly = typeof(AutofacExtensions).GetTypeInfo().Assembly;
 
             var notificationHandlerTypes = assembly.DefinedTypes
                 .Where(IsNotificationHandler)
@@ -142,12 +144,12 @@ namespace SharpDomain.Application
             return containerBuilder;
         }
         
-        private static ContainerBuilder RegisterMappers(this ContainerBuilder containerBuilder)
+        private static ContainerBuilder RegisterMappers(
+            this ContainerBuilder containerBuilder, 
+            Assembly assembly)
         {
             containerBuilder.RegisterBuildCallback(context =>
             {
-                var assembly = typeof(AutofacExtensions).GetTypeInfo().Assembly;
-                
                 var mappings = context.Resolve<MapperConfigurationExpression>();
                 mappings.AddMaps(assembly);
             });

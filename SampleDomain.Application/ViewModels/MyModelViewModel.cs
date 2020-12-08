@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace SharpDomain.Application.ViewModels
+namespace SampleDomain.Application.ViewModels
 {
     public class MyModelViewModel
     {

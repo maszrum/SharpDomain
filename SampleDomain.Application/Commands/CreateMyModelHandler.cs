@@ -2,14 +2,14 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
-using SharpDomain.Application.Shared;
-using SharpDomain.Application.ViewModels;
+using SampleDomain.Application.ViewModels;
+using SharpDomain.Application;
 using SharpDomain.Core.Models;
 using SharpDomain.Core.Shared;
 
 // ReSharper disable once UnusedType.Global
 
-namespace SharpDomain.Application.Commands
+namespace SampleDomain.Application.Commands
 {
     internal class CreateMyModelHandler : IRequestHandler<CreateMyModel, MyModelViewModel>
     {
