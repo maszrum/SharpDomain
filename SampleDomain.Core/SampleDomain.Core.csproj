@@ -5,4 +5,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Shared\SharpDomain.Core\SharpDomain.Core.csproj" />
+    </ItemGroup>
+
 </Project>

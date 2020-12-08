@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using SharpDomain.Core.Events;
+using SampleDomain.Core.Events;
 
 namespace SampleDomain.Application.EventHandlers
 {

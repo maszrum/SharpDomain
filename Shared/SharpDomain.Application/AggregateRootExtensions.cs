@@ -1,7 +1,6 @@
 ﻿using System;
+using SharpDomain.Core;
 using SharpDomain.ModelStateTracker;
-using SharpDomain.Core.Events;
-using SharpDomain.Core.Shared;
 
 namespace SharpDomain.Application
 {

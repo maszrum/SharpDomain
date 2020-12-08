@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using SharpDomain.Core.Models;
+using SampleDomain.Core.Models;
 
-namespace SharpDomain.Core.InfrastructureAbstractions
+namespace SampleDomain.Core.InfrastructureAbstractions
 {
     public interface IMyModelRepository
     {

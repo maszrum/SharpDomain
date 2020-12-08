@@ -1,9 +1,9 @@
 ﻿using System;
-using SharpDomain.Core.Events;
-using SharpDomain.Core.Exceptions;
-using SharpDomain.Core.Shared;
+using SampleDomain.Core.Events;
+using SampleDomain.Core.Exceptions;
+using SharpDomain.Core;
 
-namespace SharpDomain.Core.Models
+namespace SampleDomain.Core.Models
 {
     public class MyModel : AggregateRoot<MyModel>
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using SharpDomain.Core.Models;
+using SampleDomain.Core.Models;
 
 namespace SharpDomain.Core.InfrastructureInterfaces
 {

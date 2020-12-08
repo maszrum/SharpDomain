@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using SharpDomain.Core.Models;
+using SampleDomain.Core.Models;
 using SharpDomain.Persistence.Entities;
 
 namespace SharpDomain.Persistence.Mappers

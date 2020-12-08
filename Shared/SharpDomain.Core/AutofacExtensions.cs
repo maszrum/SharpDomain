@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using SharpDomain.Core.Shared;
 
 namespace SharpDomain.Core
 {

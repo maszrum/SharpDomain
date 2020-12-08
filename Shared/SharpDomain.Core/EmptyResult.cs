@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using MediatR;
 
-namespace SharpDomain.Core.Shared
+namespace SharpDomain.Core
 {
     internal class EmptyResult<T> : IDomainResult<T>
     {

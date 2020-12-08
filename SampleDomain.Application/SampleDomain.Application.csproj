@@ -10,6 +10,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\SampleDomain.Core\SampleDomain.Core.csproj" />
       <ProjectReference Include="..\Shared\SharpDomain.Application\SharpDomain.Application.csproj" />
     </ItemGroup>
 

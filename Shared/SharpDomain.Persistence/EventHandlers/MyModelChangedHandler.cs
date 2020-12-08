@@ -1,9 +1,9 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using SharpDomain.Core.Events;
+using SampleDomain.Core.Models;
+using SharpDomain.Core;
 using SharpDomain.Core.InfrastructureInterfaces;
-using SharpDomain.Core.Models;
 
 namespace SharpDomain.Persistence.EventHandlers
 {

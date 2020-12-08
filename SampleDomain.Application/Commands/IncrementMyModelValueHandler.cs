@@ -4,10 +4,10 @@ using AutoMapper;
 using MediatR;
 using SampleDomain.Application.Exceptions;
 using SampleDomain.Application.ViewModels;
+using SampleDomain.Core.InfrastructureAbstractions;
+using SampleDomain.Core.Models;
 using SharpDomain.Application;
-using SharpDomain.Core.InfrastructureAbstractions;
-using SharpDomain.Core.Models;
-using SharpDomain.Core.Shared;
+using SharpDomain.Core;
 
 // ReSharper disable once UnusedType.Global
 

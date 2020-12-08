@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SharpDomain.Core.Exceptions
+namespace SharpDomain.Core
 {
     public abstract class DomainException : Exception
     {

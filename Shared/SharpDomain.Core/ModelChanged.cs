@@ -2,7 +2,7 @@
 using System.Linq;
 using MediatR;
 
-namespace SharpDomain.Core.Events
+namespace SharpDomain.Core
 {
     public class ModelChanged<T> : INotification
     {

@@ -4,8 +4,8 @@ using AutoMapper;
 using MediatR;
 using SampleDomain.Application.Exceptions;
 using SampleDomain.Application.ViewModels;
-using SharpDomain.Core.InfrastructureAbstractions;
-using SharpDomain.Core.Models;
+using SampleDomain.Core.InfrastructureAbstractions;
+using SampleDomain.Core.Models;
 
 namespace SampleDomain.Application.Queries
 {

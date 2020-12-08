@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using AutoMapper;
+using SampleDomain.Core.Models;
 using SharpDomain.Core.InfrastructureInterfaces;
-using SharpDomain.Core.Models;
 using SharpDomain.Persistence.Entities;
 using SharpDomain.Persistence.InMemory.Datastore;
 

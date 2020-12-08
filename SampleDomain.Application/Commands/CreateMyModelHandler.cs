@@ -3,9 +3,9 @@ using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
 using SampleDomain.Application.ViewModels;
+using SampleDomain.Core.Models;
 using SharpDomain.Application;
-using SharpDomain.Core.Models;
-using SharpDomain.Core.Shared;
+using SharpDomain.Core;
 
 // ReSharper disable once UnusedType.Global
 

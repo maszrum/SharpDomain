@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using SampleDomain.Application.ViewModels;
-using SharpDomain.Core.Models;
+using SampleDomain.Core.Models;
 
 namespace SampleDomain.Application.Mappers
 {

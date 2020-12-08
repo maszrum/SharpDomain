@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using MediatR;
 
-namespace SharpDomain.Core.Shared
+namespace SharpDomain.Core
 {
     internal class EventsResult<T> : IDomainResult<T>
     {

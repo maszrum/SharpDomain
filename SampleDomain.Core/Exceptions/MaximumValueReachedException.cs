@@ -1,4 +1,6 @@
-﻿namespace SharpDomain.Core.Exceptions
+﻿using SharpDomain.Core;
+
+namespace SampleDomain.Core.Exceptions
 {
     public class MaximumValueReachedException : DomainException
     {

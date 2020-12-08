@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using SharpDomain.Core.Models;
+using SampleDomain.Core.Models;
 
-namespace SharpDomain.Core.Events
+namespace SampleDomain.Core.Events
 {
     public class MyModelCreated : INotification
     {
