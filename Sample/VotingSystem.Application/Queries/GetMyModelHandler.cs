@@ -2,12 +2,12 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
-using SampleDomain.Application.Exceptions;
-using SampleDomain.Application.ViewModels;
-using SampleDomain.Core.InfrastructureAbstractions;
-using SampleDomain.Core.Models;
+using VotingSystem.Application.Exceptions;
+using VotingSystem.Application.ViewModels;
+using VotingSystem.Core.InfrastructureAbstractions;
+using VotingSystem.Core.Models;
 
-namespace SampleDomain.Application.Queries
+namespace VotingSystem.Application.Queries
 {
     // ReSharper disable once UnusedType.Global
     internal class GetMyModelHandler : IRequestHandler<GetMyModel, MyModelViewModel>

@@ -1,8 +1,8 @@
 ﻿using System;
 using MediatR;
-using SampleDomain.Application.ViewModels;
+using VotingSystem.Application.ViewModels;
 
-namespace SampleDomain.Application.Queries
+namespace VotingSystem.Application.Queries
 {
     public class GetMyModel : IRequest<MyModelViewModel>
     {

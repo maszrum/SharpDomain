@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
-using SampleDomain.Core.InfrastructureAbstractions;
-using SampleDomain.Core.Models;
-using SampleDomain.Persistence.InMemory.Datastore;
+using VotingSystem.Core.InfrastructureAbstractions;
+using VotingSystem.Core.Models;
+using VotingSystem.Persistence.InMemory.Datastore;
 
-namespace SampleDomain.Persistence.InMemory.MyModelRepository
+namespace VotingSystem.Persistence.InMemory.MyModelRepository
 {
     // ReSharper disable once UnusedType.Global
     internal class MyModelReadRepository : IMyModelRepository

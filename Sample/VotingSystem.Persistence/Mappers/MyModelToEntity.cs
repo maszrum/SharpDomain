@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using SampleDomain.Core.Models;
-using SampleDomain.Persistence.Entities;
+using VotingSystem.Core.Models;
+using VotingSystem.Persistence.Entities;
 
-namespace SampleDomain.Persistence.Mappers
+namespace VotingSystem.Persistence.Mappers
 {
     // ReSharper disable once UnusedType.Global
     internal class MyModelToEntity : Profile

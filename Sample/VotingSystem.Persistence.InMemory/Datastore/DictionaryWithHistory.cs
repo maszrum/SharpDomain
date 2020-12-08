@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace SampleDomain.Persistence.InMemory.Datastore
+namespace VotingSystem.Persistence.InMemory.Datastore
 {
     internal class DictionaryWithHistory<TEntity> : IDictionary<Guid, TEntity>
     {

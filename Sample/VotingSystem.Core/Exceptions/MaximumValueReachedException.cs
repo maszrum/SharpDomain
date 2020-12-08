@@ -1,6 +1,6 @@
 ﻿using SharpDomain.Core;
 
-namespace SampleDomain.Core.Exceptions
+namespace VotingSystem.Core.Exceptions
 {
     public class MaximumValueReachedException : DomainException
     {

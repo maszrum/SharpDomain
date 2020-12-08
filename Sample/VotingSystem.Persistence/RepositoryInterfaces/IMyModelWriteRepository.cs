@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using SampleDomain.Core.Models;
+using VotingSystem.Core.Models;
 
-namespace SampleDomain.Persistence.RepositoryInterfaces
+namespace VotingSystem.Persistence.RepositoryInterfaces
 {
     public interface IMyModelWriteRepository
     {

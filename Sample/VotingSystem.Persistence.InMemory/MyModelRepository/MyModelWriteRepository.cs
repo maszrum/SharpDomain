@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
 using AutoMapper;
-using SampleDomain.Core.Models;
-using SampleDomain.Persistence.Entities;
-using SampleDomain.Persistence.InMemory.Datastore;
-using SampleDomain.Persistence.RepositoryInterfaces;
+using VotingSystem.Core.Models;
+using VotingSystem.Persistence.Entities;
+using VotingSystem.Persistence.InMemory.Datastore;
+using VotingSystem.Persistence.RepositoryInterfaces;
 
-namespace SampleDomain.Persistence.InMemory.MyModelRepository
+namespace VotingSystem.Persistence.InMemory.MyModelRepository
 {
     // ReSharper disable once UnusedType.Global
     internal class MyModelWriteRepository : IMyModelWriteRepository

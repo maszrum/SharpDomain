@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace SampleDomain.Application.ViewModels
+namespace VotingSystem.Application.ViewModels
 {
     public class MyModelViewModel
     {

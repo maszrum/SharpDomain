@@ -1,9 +1,9 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using SampleDomain.Core.Events;
+using VotingSystem.Core.Events;
 
-namespace SampleDomain.Application.EventHandlers
+namespace VotingSystem.Application.EventHandlers
 {
     // ReSharper disable once UnusedType.Global
     internal class SendEmailOnMyModelCreated : INotificationHandler<MyModelCreated>

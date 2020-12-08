@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using SampleDomain.Core.Models;
+using VotingSystem.Core.Models;
 
-namespace SampleDomain.Core.Events
+namespace VotingSystem.Core.Events
 {
     public class MyModelCreated : INotification
     {
