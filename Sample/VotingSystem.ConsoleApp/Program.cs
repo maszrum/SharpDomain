@@ -19,7 +19,7 @@ namespace VotingSystem.ConsoleApp
     {
         private static async Task Main(string[] args)
         {
-            var applicationAssembly = typeof(CreateMyModel).Assembly;
+            var applicationAssembly = typeof(SomeCommand).Assembly;
             var persistenceAssembly = typeof(MyModelEntity).Assembly;
             var inMemoryPersistenceAssembly = typeof(Persistence.InMemory.AutofacExtensions).Assembly;
             
@@ -38,56 +38,16 @@ namespace VotingSystem.ConsoleApp
             
             await using var container = containerBuilder.Build();
 
-            Guid id;
-            await using (var scope = container.BeginLifetimeScope())
-            {
-                id = await AddModel(scope);
-            }
-            
-            await using (var scope = container.BeginLifetimeScope())
-            {
-                await IncrementModel(scope, id);
-            }
-            
-            await using (var scope = container.BeginLifetimeScope())
-            {
-                await ReadModel(scope, id);
-            }
+            await using var scope = container.BeginLifetimeScope();
+                
+            await Run(scope);
         }
         
-        private static async Task<Guid> AddModel(IComponentContext context)
-        {
-            var mediator = context.Resolve<IMediator>();
-
-            var createModel = new CreateMyModel(
-                intProperty: 1, 
-                stringProperty: "sample string");
-            
-            var createResult = await mediator.Send(createModel);
-            
-            return createResult.Id;
-        }
-        
-        private static async Task IncrementModel(IComponentContext context, Guid id)
+        private static Task Run(IComponentContext context)
         {
             var mediator = context.Resolve<IMediator>();
             
-            var increment = new IncrementMyModelValue(id);
-            
-            for (var i = 1; i <= 3; i++)
-            {
-                await mediator.Send(increment);
-            }
-        }
-        
-        private static async Task ReadModel(IComponentContext context, Guid id)
-        {
-            var mediator = context.Resolve<IMediator>();
-            
-            var getModel = new GetMyModel(id);
-            var viewModel = await mediator.Send(getModel);
-
-            Console.WriteLine(viewModel);
+            throw new NotImplementedException();
         }
     }
 }

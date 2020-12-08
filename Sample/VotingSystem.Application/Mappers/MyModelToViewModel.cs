@@ -8,7 +8,7 @@ namespace VotingSystem.Application.Mappers
     {
         public MyModelToViewModel()
         {
-            CreateMap<MyModel, MyModelViewModel>();
+            CreateMap<Vote, SomeViewModel>();
         }
     }
 }

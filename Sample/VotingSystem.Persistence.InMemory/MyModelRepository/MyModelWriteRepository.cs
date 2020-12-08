@@ -22,18 +22,18 @@ namespace VotingSystem.Persistence.InMemory.MyModelRepository
             _mapper = mapper;
         }
 
-        public Task Create(MyModel model)
+        public Task Create(Vote model)
         {
-            var entity = _mapper.Map<MyModel, MyModelEntity>(model);
+            var entity = _mapper.Map<Vote, MyModelEntity>(model);
             
             _datastore.MyModels.Add(entity.Id, entity);
             
             return Task.CompletedTask;
         }
 
-        public Task Update(MyModel model)
+        public Task Update(Vote model)
         {
-            var entity = _mapper.Map<MyModel, MyModelEntity>(model);
+            var entity = _mapper.Map<Vote, MyModelEntity>(model);
             
             _datastore.MyModels[entity.Id] = entity;
             

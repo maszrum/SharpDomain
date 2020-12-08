@@ -6,8 +6,8 @@ namespace VotingSystem.Persistence.RepositoryInterfaces
 {
     public interface IMyModelWriteRepository
     {
-        Task Create(MyModel model);
-        Task Update(MyModel model);
+        Task Create(Vote model);
+        Task Update(Vote model);
         Task Delete(Guid id);
     }
 }

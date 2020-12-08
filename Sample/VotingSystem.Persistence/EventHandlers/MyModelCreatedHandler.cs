@@ -7,7 +7,7 @@ using VotingSystem.Persistence.RepositoryInterfaces;
 namespace VotingSystem.Persistence.EventHandlers
 {
     // ReSharper disable once UnusedType.Global
-    internal class MyModelCreatedHandler : INotificationHandler<MyModelCreated>
+    internal class MyModelCreatedHandler : INotificationHandler<VotePosted>
     {
         private readonly IMyModelWriteRepository _repository;
 
@@ -16,7 +16,7 @@ namespace VotingSystem.Persistence.EventHandlers
             _repository = repository;
         }
 
-        public Task Handle(MyModelCreated notification, CancellationToken cancellationToken) => 
-            _repository.Create(notification.Model);
+        public Task Handle(VotePosted notification, CancellationToken cancellationToken) => 
+            _repository.Create(notification.Vote);
     }
 }
