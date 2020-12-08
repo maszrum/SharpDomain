@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using SampleDomain.Core.Models;
-using SharpDomain.Core.InfrastructureInterfaces;
-using SharpDomain.Persistence.Entities;
+using SampleDomain.Persistence.Entities;
+using SampleDomain.Persistence.RepositoryInterfaces;
 using SharpDomain.Persistence.InMemory.Datastore;
 
 namespace SharpDomain.Persistence.InMemory.MyModelRepository

@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using SampleDomain.Core.Models;
 
-namespace SharpDomain.Core.InfrastructureInterfaces
+namespace SampleDomain.Persistence.RepositoryInterfaces
 {
     public interface IMyModelWriteRepository
     {

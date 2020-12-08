@@ -13,6 +13,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\SampleDomain.Application\SampleDomain.Application.csproj" />
+      <ProjectReference Include="..\SampleDomain.Persistence\SampleDomain.Persistence.csproj" />
       <ProjectReference Include="..\Shared\SharpDomain.Persistence.InMemory\SharpDomain.Persistence.InMemory.csproj" />
     </ItemGroup>
 

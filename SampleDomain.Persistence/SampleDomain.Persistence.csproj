@@ -5,4 +5,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\SampleDomain.Core\SampleDomain.Core.csproj" />
+      <ProjectReference Include="..\Shared\SharpDomain.Persistence\SharpDomain.Persistence.csproj" />
+    </ItemGroup>
+
 </Project>

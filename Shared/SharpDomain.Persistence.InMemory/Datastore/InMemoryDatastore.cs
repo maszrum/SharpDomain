@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using SharpDomain.Persistence.Entities;
+using SampleDomain.Persistence.Entities;
 
 namespace SharpDomain.Persistence.InMemory.Datastore
 {

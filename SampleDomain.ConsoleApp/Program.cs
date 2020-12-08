@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using System.Reflection;
 using System.Threading.Tasks;
 using Autofac;
 using MediatR;
 using SampleDomain.Application.Commands;
 using SampleDomain.Application.Queries;
+using SampleDomain.Persistence.Entities;
 using SharpDomain.Application;
 using SharpDomain.Core;
 using SharpDomain.AutoTransaction;
 using SharpDomain.Persistence;
-using SharpDomain.Persistence.Entities;
 using SharpDomain.Persistence.InMemory;
 
 namespace SampleDomain.ConsoleApp
@@ -28,11 +27,11 @@ namespace SampleDomain.ConsoleApp
                     {
                         config.ForbidMediatorInHandlers = true;
                     
-                        var persistenceAssembly = typeof(MyModelEntity).GetTypeInfo().Assembly;
+                        var persistenceAssembly = typeof(MyModelEntity).Assembly;
                         config.ForbidWriteRepositoriesInHandlersExceptIn(persistenceAssembly);
                     })
                 .RegisterAutoTransaction()
-                .RegisterPersistenceLayer()
+                .RegisterPersistenceLayer(typeof(MyModelEntity).Assembly)
                 .RegisterInMemoryPersistence();
             
             await using var container = containerBuilder.Build();

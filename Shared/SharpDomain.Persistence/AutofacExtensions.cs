@@ -4,25 +4,26 @@ using System.Reflection;
 using Autofac;
 using AutoMapper.Configuration;
 using MediatR;
-using SharpDomain.Persistence.Entities;
 
 namespace SharpDomain.Persistence
 {
     public static class AutofacExtensions
     {
-        public static ContainerBuilder RegisterPersistenceLayer(this ContainerBuilder containerBuilder)
+        public static ContainerBuilder RegisterPersistenceLayer(
+            this ContainerBuilder containerBuilder,
+            Assembly assembly)
         {
             return containerBuilder
-                .RegisterPersistenceHandlers()
-                .RegisterMappers();
+                .RegisterPersistenceHandlers(assembly)
+                .RegisterMappers(assembly);
         }
         
-        private static ContainerBuilder RegisterPersistenceHandlers(this ContainerBuilder containerBuilder)
+        private static ContainerBuilder RegisterPersistenceHandlers(
+            this ContainerBuilder containerBuilder, 
+            Assembly assembly)
         {
             static bool IsNotificationHandler(Type t) =>
                 t.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(INotificationHandler<>));
-            
-            var assembly = typeof(MyModelEntity).GetTypeInfo().Assembly;
 
             var notificationHandlerTypes = assembly.DefinedTypes
                 .Where(IsNotificationHandler)
@@ -37,12 +38,12 @@ namespace SharpDomain.Persistence
             return containerBuilder;
         }
         
-        private static ContainerBuilder RegisterMappers(this ContainerBuilder containerBuilder)
+        private static ContainerBuilder RegisterMappers(
+            this ContainerBuilder containerBuilder, 
+            Assembly assembly)
         {
             containerBuilder.RegisterBuildCallback(context =>
             {
-                var assembly = typeof(AutofacExtensions).GetTypeInfo().Assembly;
-                
                 var mappings = context.Resolve<MapperConfigurationExpression>();
                 mappings.AddMaps(assembly);
             });

@@ -2,10 +2,10 @@
 using System.Threading.Tasks;
 using MediatR;
 using SampleDomain.Core.Models;
+using SampleDomain.Persistence.RepositoryInterfaces;
 using SharpDomain.Core;
-using SharpDomain.Core.InfrastructureInterfaces;
 
-namespace SharpDomain.Persistence.EventHandlers
+namespace SampleDomain.Persistence.EventHandlers
 {
     // ReSharper disable once UnusedType.Global
     internal class MyModelChangedHandler : INotificationHandler<ModelChanged<MyModel>>

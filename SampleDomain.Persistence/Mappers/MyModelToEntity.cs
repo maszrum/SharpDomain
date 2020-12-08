@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using SampleDomain.Core.Models;
-using SharpDomain.Persistence.Entities;
+using SampleDomain.Persistence.Entities;
 
-namespace SharpDomain.Persistence.Mappers
+namespace SampleDomain.Persistence.Mappers
 {
     // ReSharper disable once UnusedType.Global
     internal class MyModelToEntity : Profile
