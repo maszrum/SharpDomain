@@ -12,9 +12,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\SampleDomain.Application\SampleDomain.Application.csproj" />
-      <ProjectReference Include="..\SampleDomain.Persistence.InMemory\SampleDomain.Persistence.InMemory.csproj" />
-      <ProjectReference Include="..\SampleDomain.Persistence\SampleDomain.Persistence.csproj" />
+      <ProjectReference Include="..\VotingSystem.Application\VotingSystem.Application.csproj" />
+      <ProjectReference Include="..\VotingSystem.Persistence.InMemory\VotingSystem.Persistence.InMemory.csproj" />
+      <ProjectReference Include="..\VotingSystem.Persistence\VotingSystem.Persistence.csproj" />
     </ItemGroup>
 
 </Project>

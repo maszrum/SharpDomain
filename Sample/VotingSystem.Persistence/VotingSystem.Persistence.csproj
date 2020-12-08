@@ -6,7 +6,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Shared\SharpDomain.Core\SharpDomain.Core.csproj" />
+      <ProjectReference Include="..\VotingSystem.Core\VotingSystem.Core.csproj" />
+      <ProjectReference Include="..\..\SharpDomain\SharpDomain.Persistence\SharpDomain.Persistence.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\VotingSystem.Persistence\VotingSystem.Persistence.csproj" />
+      <ProjectReference Include="..\..\SharpDomain\Libraries\SharpDomain.AutoTransaction\SharpDomain.AutoTransaction.csproj" />
+    </ItemGroup>
+
+</Project>
