@@ -10,8 +10,4 @@
       <ProjectReference Include="..\..\SharpDomain\SharpDomain.Core\SharpDomain.Core.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="ValueObjects" />
-    </ItemGroup>
-
 </Project>
