@@ -13,7 +13,7 @@ using SharpDomain.Persistence;
 using SharpDomain.Persistence.Entities;
 using SharpDomain.Persistence.InMemory;
 
-namespace SharpDomain.ConsoleApp
+namespace SampleDomain.ConsoleApp
 {
     [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
     internal class Program
