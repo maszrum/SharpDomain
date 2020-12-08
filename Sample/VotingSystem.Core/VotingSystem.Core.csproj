@@ -6,8 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\SampleDomain.Core\SampleDomain.Core.csproj" />
-      <ProjectReference Include="..\Shared\SharpDomain.Persistence\SharpDomain.Persistence.csproj" />
+      <ProjectReference Include="..\..\SharpDomain\SharpDomain.Core\SharpDomain.Core.csproj" />
     </ItemGroup>
 
 </Project>
