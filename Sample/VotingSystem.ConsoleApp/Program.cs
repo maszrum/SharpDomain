@@ -19,8 +19,8 @@ namespace VotingSystem.ConsoleApp
     {
         private static async Task Main(string[] args)
         {
-            var applicationAssembly = typeof(SomeCommand).Assembly;
-            var persistenceAssembly = typeof(MyModelEntity).Assembly;
+            var applicationAssembly = typeof(CreateQuestion).Assembly;
+            var persistenceAssembly = typeof(QuestionEntity).Assembly;
             var inMemoryPersistenceAssembly = typeof(Persistence.InMemory.AutofacExtensions).Assembly;
             
             var containerBuilder = new ContainerBuilder()

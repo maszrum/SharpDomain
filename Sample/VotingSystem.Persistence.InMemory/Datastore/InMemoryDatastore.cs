@@ -9,7 +9,7 @@ namespace VotingSystem.Persistence.InMemory.Datastore
     {
         public InMemoryDatastore()
         {
-            _myEntityStore = new EntityDatastore<MyModelEntity>();
+            _myEntityStore = new EntityDatastore<QuestionEntity>();
             
             _dataStores = new IEntityDatastore[] 
             {
@@ -17,10 +17,10 @@ namespace VotingSystem.Persistence.InMemory.Datastore
             };
         }
         
-        private readonly EntityDatastore<MyModelEntity> _myEntityStore;
+        private readonly EntityDatastore<QuestionEntity> _myEntityStore;
         private readonly IEntityDatastore[] _dataStores;
         
-        public IDictionary<Guid, MyModelEntity> MyModels => _myEntityStore.Models;
+        public IDictionary<Guid, QuestionEntity> MyModels => _myEntityStore.Models;
         
         public Task<InMemoryTransaction> BeginTransaction()
         {

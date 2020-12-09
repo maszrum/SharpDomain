@@ -24,7 +24,7 @@ namespace VotingSystem.Persistence.InMemory.MyModelRepository
 
         public Task Create(Vote model)
         {
-            var entity = _mapper.Map<Vote, MyModelEntity>(model);
+            var entity = _mapper.Map<Vote, QuestionEntity>(model);
             
             _datastore.MyModels.Add(entity.Id, entity);
             
@@ -33,7 +33,7 @@ namespace VotingSystem.Persistence.InMemory.MyModelRepository
 
         public Task Update(Vote model)
         {
-            var entity = _mapper.Map<Vote, MyModelEntity>(model);
+            var entity = _mapper.Map<Vote, QuestionEntity>(model);
             
             _datastore.MyModels[entity.Id] = entity;
             
