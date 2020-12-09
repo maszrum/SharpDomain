@@ -13,19 +13,19 @@ namespace VotingSystem.Application.EventHandlers
     internal class UpdateVotingResultOnVotePosted : INotificationHandler<VotePosted>
     {
         private readonly IDomainEvents _domainEvents;
-        private readonly IVotingResultsRepository _votingResultsRepository;
+        private readonly IAnswerResultsRepository _answerResultsRepository;
 
         public UpdateVotingResultOnVotePosted(
             IDomainEvents domainEvents, 
-            IVotingResultsRepository votingResultsRepository)
+            IAnswerResultsRepository answerResultsRepository)
         {
             _domainEvents = domainEvents;
-            _votingResultsRepository = votingResultsRepository;
+            _answerResultsRepository = answerResultsRepository;
         }
 
         public async Task Handle(VotePosted notification, CancellationToken cancellationToken)
         {
-            var answerResult = await _votingResultsRepository.GetAnswerResultByAnswerId(notification.AnswerId);
+            var answerResult = await _answerResultsRepository.GetAnswerResultByAnswerId(notification.AnswerId);
             
             if (answerResult is null)
             {
