@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using Autofac;
 using VotingSystem.Persistence.InMemory.Datastore;
 
@@ -15,11 +16,14 @@ namespace VotingSystem.Persistence.InMemory
         
         private static ContainerBuilder RegisterRepositories(this ContainerBuilder containerBuilder)
         {
+            static bool IsRepositoryType(Type t) => 
+                t.Name.ToLowerInvariant().Contains("repository") && !t.IsAbstract;
+            
             var assembly = typeof(AutofacExtensions).GetTypeInfo().Assembly;
             
             containerBuilder
                 .RegisterAssemblyTypes(assembly)
-                .Where(t => t.Name.Contains("Repository") && !t.IsAbstract)
+                .Where(IsRepositoryType)
                 .InstancePerLifetimeScope()
                 .AsImplementedInterfaces();
             
