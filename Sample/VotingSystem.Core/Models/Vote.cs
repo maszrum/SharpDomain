@@ -6,25 +6,28 @@ namespace VotingSystem.Core.Models
 {
     public class Vote : AggregateRoot<Vote>
     {
-        public Vote(Guid id, Guid voterId, Guid questionAnswerId)
+        public Vote(
+            Guid id, 
+            Guid voterId, 
+            Guid questionId)
         {
             Id = id;
             VoterId = voterId;
-            QuestionAnswerId = questionAnswerId;
+            QuestionId = questionId;
         }
 
         public override Guid Id { get; }
         
         public Guid VoterId { get; }
 
-        public Guid QuestionAnswerId { get; }
+        public Guid QuestionId { get; }
         
-        public static IDomainResult<Vote> Create(Guid voterId, Guid questionAnswerId)
+        public static IDomainResult<Vote> Create(Guid voterId, Guid questionId, Guid answerId)
         {
             var id = Guid.NewGuid();
-            var model = new Vote(id, voterId, questionAnswerId);
+            var model = new Vote(id, voterId, questionId);
             
-            var createdEvent = new VotePosted(model);
+            var createdEvent = new VotePosted(model, answerId);
             
             return Event(createdEvent, model);
         }

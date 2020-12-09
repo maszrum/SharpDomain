@@ -3,7 +3,7 @@ using System.Runtime.InteropServices.ComTypes;
 
 namespace SharpDomain.ModelStateTracker
 {
-    internal class PropertiesTracker<T> where T : class
+    public class PropertiesTracker<T> where T : class
     {
         private readonly T _model;
         

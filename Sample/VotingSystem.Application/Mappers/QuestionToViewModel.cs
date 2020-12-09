@@ -4,11 +4,11 @@ using VotingSystem.Core.Models;
 
 namespace VotingSystem.Application.Mappers
 {
-    internal class MyModelToViewModel : Profile
+    internal class QuestionToViewModel : Profile
     {
-        public MyModelToViewModel()
+        public QuestionToViewModel()
         {
-            CreateMap<Vote, SomeViewModel>();
+            CreateMap<Question, QuestionViewModel>();
         }
     }
 }

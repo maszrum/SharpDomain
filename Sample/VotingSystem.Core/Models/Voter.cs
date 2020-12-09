@@ -7,7 +7,9 @@ namespace VotingSystem.Core.Models
 {
     public class Voter : AggregateRoot<Voter>
     {
-        public Voter(Guid id, Pesel pesel)
+        public Voter(
+            Guid id, 
+            Pesel pesel)
         {
             Id = id;
             Pesel = pesel;

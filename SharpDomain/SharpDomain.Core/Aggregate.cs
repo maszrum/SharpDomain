@@ -1,8 +1,9 @@
 ﻿using System;
+using MediatR;
 
 namespace SharpDomain.Core
 {
-    public abstract class Aggregate<T> : IEquatable<Aggregate<T>>
+    public abstract class Aggregate<T> : IEquatable<Aggregate<T>> where T : Aggregate<T>
     {
         public abstract Guid Id { get; }
         
@@ -21,5 +22,13 @@ namespace SharpDomain.Core
         }
 
         public override int GetHashCode() => Id.GetHashCode();
+        
+        protected IDomainResult<T> Event(INotification @event) => new EventsResult<T>((this as T)!, @event);
+
+        protected IDomainResult<T> Events(params INotification[] events) => new EventsResult<T>((this as T)!, events);
+
+        protected IDomainResult<T> NoEvents() => new EmptyResult<T>((this as T)!);
+        
+        protected static IDomainResult<T> Event(INotification @event, T model) => new EventsResult<T>(model, @event);
     }
 }

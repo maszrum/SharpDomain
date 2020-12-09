@@ -2,14 +2,15 @@
 using VotingSystem.Core.Models;
 using VotingSystem.Persistence.Entities;
 
+// ReSharper disable once UnusedType.Global
+
 namespace VotingSystem.Persistence.Mappers
 {
-    // ReSharper disable once UnusedType.Global
-    internal class MyModelToEntity : Profile
+    internal class VoteToEntity : Profile
     {
-        public MyModelToEntity()
+        public VoteToEntity()
         {
-            CreateMap<Vote, MyModelEntity>();
+            CreateMap<Vote, VoteEntity>();
         }
     }
 }
