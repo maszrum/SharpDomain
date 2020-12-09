@@ -9,18 +9,50 @@ namespace VotingSystem.Persistence.InMemory.Datastore
     {
         public InMemoryDatastore()
         {
-            _myEntityStore = new EntityDatastore<QuestionEntity>();
+            _answers = new EntityDatastore<AnswerEntity>();
+            _answerResults = new EntityDatastore<AnswerResultEntity>();
+            _questions = new EntityDatastore<QuestionEntity>();
+            _questionResults = new EntityDatastore<QuestionResultEntity>();
+            _votes = new EntityDatastore<VoteEntity>();
+            _voters = new EntityDatastore<VoterEntity>();
             
             _dataStores = new IEntityDatastore[] 
             {
-                _myEntityStore
+                _answers,
+                _answerResults,
+                _questions,
+                _questionResults,
+                _votes,
+                _voters
             };
         }
         
-        private readonly EntityDatastore<QuestionEntity> _myEntityStore;
-        private readonly IEntityDatastore[] _dataStores;
+        // answers
+        private readonly EntityDatastore<AnswerEntity> _answers;
+        public IDictionary<Guid, AnswerEntity> Answers => _answers.Models;
         
-        public IDictionary<Guid, QuestionEntity> MyModels => _myEntityStore.Models;
+        // answer results
+        private readonly EntityDatastore<AnswerResultEntity> _answerResults;
+        public IDictionary<Guid, AnswerResultEntity> AnswerResults => _answerResults.Models;
+        
+        // questions
+        private readonly EntityDatastore<QuestionEntity> _questions;
+        public IDictionary<Guid, QuestionEntity> Questions => _questions.Models;
+        
+        // question results
+        private readonly EntityDatastore<QuestionResultEntity> _questionResults;
+        public IDictionary<Guid, QuestionResultEntity> QuestionResults => _questionResults.Models;
+        
+        // votes
+        private readonly EntityDatastore<VoteEntity> _votes;
+        public IDictionary<Guid, VoteEntity> Votes => _votes.Models;
+        
+        // voters
+        private readonly EntityDatastore<VoterEntity> _voters;
+        public IDictionary<Guid, VoterEntity> Voters => _voters.Models;
+        
+        // all data stores
+        private readonly IEntityDatastore[] _dataStores;
         
         public Task<InMemoryTransaction> BeginTransaction()
         {
