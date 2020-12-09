@@ -9,12 +9,12 @@ using VotingSystem.Persistence.RepositoryInterfaces;
 namespace VotingSystem.Persistence.InMemory.MyModelRepository
 {
     // ReSharper disable once UnusedType.Global
-    internal class MyModelWriteRepository : IMyModelWriteRepository
+    internal class AnswersWriteRepository
     {
         private readonly InMemoryDatastore _datastore;
         private readonly IMapper _mapper;
 
-        public MyModelWriteRepository(
+        public AnswersWriteRepository(
             InMemoryDatastore datastore, 
             IMapper mapper)
         {
