@@ -6,5 +6,6 @@ namespace VotingSystem.Persistence.Entities
     {
         public Guid Id { get; set; }
         public string Pesel { get; set; } = string.Empty;
+        public bool IsAdministrator { get; set; }
     }
 }
