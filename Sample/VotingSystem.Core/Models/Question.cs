@@ -27,11 +27,13 @@ namespace VotingSystem.Core.Models
         
         public static IDomainResult<Question> Create(string questionText, IEnumerable<string> answers)
         {
+            var questionId = Guid.NewGuid();
+            
             var answerModels = answers.Select(
                     (answerText, index) =>
                     {
                         var answerId = Guid.NewGuid();
-                        var questionAnswer = new Answer(answerId, answerText, index);
+                        var questionAnswer = new Answer(answerId, questionId, index, answerText);
                         return questionAnswer;
                     })
                 .ToList();
@@ -42,8 +44,7 @@ namespace VotingSystem.Core.Models
                 throw new Exception();
             }
             
-            var id = Guid.NewGuid();
-            var question = new Question(id, questionText, answerModels);
+            var question = new Question(questionId, questionText, answerModels);
             
             var @event = new QuestionCreated(question);
             

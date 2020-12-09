@@ -7,15 +7,19 @@ namespace VotingSystem.Core.Models
     {
         public Answer(
             Guid id, 
-            string text, 
-            int order)
+            Guid questionId,
+            int order,
+            string text)
         {
             Id = id;
-            Text = text;
+            QuestionId = questionId;
             Order = order;
+            Text = text;
         }
         
         public override Guid Id { get; }
+        
+        public Guid QuestionId { get; }
         
         public int Order { get; }
         
