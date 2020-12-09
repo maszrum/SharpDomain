@@ -2,7 +2,7 @@
 
 namespace VotingSystem.Core.ValueObjects
 {
-    public class Pesel : IEquatable<Pesel>
+    public class Pesel : IEquatable<Pesel>, IEquatable<string>
     {
         public Pesel(string? pesel)
         {
@@ -31,8 +31,11 @@ namespace VotingSystem.Core.ValueObjects
             return obj.GetType() == GetType() && Equals((Pesel) obj);
         }
 
-        public override int GetHashCode() => StringComparer.InvariantCulture.GetHashCode(Code);
-        
+        public bool Equals(string other) => 
+            string.Equals(other, Code, StringComparison.InvariantCulture);
+
+        public override int GetHashCode() => Code.GetHashCode();
+
         public static Pesel ValidateAndCreate(string? pesel)
         {
             if (string.IsNullOrWhiteSpace(pesel))
@@ -43,7 +46,7 @@ namespace VotingSystem.Core.ValueObjects
             
             // TODO: validate pesel
 
-            return new(pesel);
+            return new Pesel(pesel);
         }
     }
 }
