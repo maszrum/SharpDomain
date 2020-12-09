@@ -33,8 +33,14 @@ namespace VotingSystem.Core.ValueObjects
 
         public override int GetHashCode() => StringComparer.InvariantCulture.GetHashCode(Code);
         
-        public static Pesel Create(string pesel)
+        public static Pesel ValidateAndCreate(string? pesel)
         {
+            if (string.IsNullOrWhiteSpace(pesel))
+            {
+                // TODO: proper exception
+                throw new Exception();
+            }
+            
             // TODO: validate pesel
 
             return new(pesel);
