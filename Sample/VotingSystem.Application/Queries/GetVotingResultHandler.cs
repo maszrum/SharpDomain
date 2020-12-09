@@ -8,9 +8,9 @@ using VotingSystem.Application.ViewModels;
 
 namespace VotingSystem.Application.Queries
 {
-    internal class GetVotingResultHandler : IRequestHandler<GetVotingResult, VotingResultViewModel>
+    internal class GetVotingResultHandler : IRequestHandler<GetVotingResult, QuestionResultViewModel>
     {
-        public Task<VotingResultViewModel> Handle(GetVotingResult request, CancellationToken cancellationToken)
+        public Task<QuestionResultViewModel> Handle(GetVotingResult request, CancellationToken cancellationToken)
         {
             // TODO
             throw new NotImplementedException();

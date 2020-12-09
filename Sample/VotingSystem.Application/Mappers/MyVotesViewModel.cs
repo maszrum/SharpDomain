@@ -1,17 +1,16 @@
 ﻿using System.Collections.Generic;
 using AutoMapper;
-using VotingSystem.Application.ViewModels;
 using VotingSystem.Core.Models;
 
 // ReSharper disable once UnusedType.Global
 
 namespace VotingSystem.Application.Mappers
 {
-    internal class QuestionsListToViewModel : Profile
+    internal class MyVotesViewModel : Profile
     {
-        public QuestionsListToViewModel()
+        public MyVotesViewModel()
         {
-            CreateMap<IEnumerable<Question>, QuestionsListViewModel>();
+            CreateMap<IEnumerable<Vote>, MyVotesViewModel>();
         }
     }
 }
