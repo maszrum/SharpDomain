@@ -19,7 +19,7 @@ namespace VotingSystem.Core.Models
         
         public Pesel Pesel { get; }
 
-        public static IDomainResult<Voter> Create(string pesel)
+        public static IDomainResult<Voter> Create(string? pesel)
         {
             var id = Guid.NewGuid();
             var peselValue = new Pesel(pesel);

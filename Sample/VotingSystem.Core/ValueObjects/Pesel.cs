@@ -4,8 +4,14 @@ namespace VotingSystem.Core.ValueObjects
 {
     public class Pesel : IEquatable<Pesel>
     {
-        public Pesel(string pesel)
+        public Pesel(string? pesel)
         {
+            if (string.IsNullOrWhiteSpace(pesel))
+            {
+                // TODO: proper exception
+                throw new Exception();
+            }
+            
             Code = pesel;
         }
 
