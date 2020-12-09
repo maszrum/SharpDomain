@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using SharpDomain.Core;
@@ -25,6 +26,12 @@ namespace VotingSystem.Application.EventHandlers
         public async Task Handle(VotePosted notification, CancellationToken cancellationToken)
         {
             var answerResult = await _votingResultsRepository.GetAnswerResultByAnswerId(notification.AnswerId);
+            
+            if (answerResult is null)
+            {
+                // TODO: proper exception
+                throw new Exception("not found");
+            }
             
             answerResult.IncrementVotes()
                 .CollectEvents(_domainEvents);
