@@ -14,12 +14,12 @@ namespace VotingSystem.Application.Queries
     internal class GetQuestionResultHandler : IRequestHandler<GetQuestionResult, QuestionResultViewModel>
     {
         private readonly IMapper _mapper;
-        private readonly IVotingResultsRepository _votingResultsRepository;
+        private readonly IQuestionResultsRepository _questionResultsRepository;
 
-        public GetQuestionResultHandler(IMapper mapper, IVotingResultsRepository votingResultsRepository)
+        public GetQuestionResultHandler(IMapper mapper, IQuestionResultsRepository questionResultsRepository)
         {
             _mapper = mapper;
-            _votingResultsRepository = votingResultsRepository;
+            _questionResultsRepository = questionResultsRepository;
         }
 
         public async Task<QuestionResultViewModel> Handle(GetQuestionResult request, CancellationToken cancellationToken)
@@ -27,7 +27,7 @@ namespace VotingSystem.Application.Queries
             // TODO: validate request
             // user not voted? -> access denied
             
-            var questionResult = await _votingResultsRepository.GetQuestionResultByQuestionId(request.QuestionId);
+            var questionResult = await _questionResultsRepository.GetQuestionResultByQuestionId(request.QuestionId);
             
             if (questionResult is null)
             {
