@@ -9,5 +9,6 @@ namespace VotingSystem.Core.InfrastructureAbstractions
     {
         Task<Voter?> GetVoterByPesel(Pesel pesel);
         Task<bool> VoterExists(Guid voterId);
+        Task<int> GetVotersCount();
     }
 }
