@@ -26,7 +26,7 @@ namespace VotingSystem.Persistence.InMemory.MyModelRepository
         {
             var entity = _mapper.Map<Vote, QuestionEntity>(model);
             
-            _datastore.MyModels.Add(entity.Id, entity);
+            //_datastore.MyModels.Add(entity.Id, entity);
             
             return Task.CompletedTask;
         }
@@ -35,14 +35,14 @@ namespace VotingSystem.Persistence.InMemory.MyModelRepository
         {
             var entity = _mapper.Map<Vote, QuestionEntity>(model);
             
-            _datastore.MyModels[entity.Id] = entity;
+            //_datastore.MyModels[entity.Id] = entity;
             
             return Task.CompletedTask;
         }
 
         public Task Delete(Guid id)
         {
-            _datastore.MyModels.Remove(id);
+            //_datastore.MyModels.Remove(id);
             
             return Task.CompletedTask;
         }
