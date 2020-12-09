@@ -4,7 +4,7 @@ using VotingSystem.Application.ViewModels;
 
 namespace VotingSystem.Application.Queries
 {
-    public class GetVotingResult : IRequest<VotingResultViewModel>
+    public class GetVotingResult : IRequest<QuestionResultViewModel>
     {
         public GetVotingResult(Guid questionId, Guid voterId)
         {

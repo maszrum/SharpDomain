@@ -6,11 +6,11 @@ using VotingSystem.Core.Models;
 
 namespace VotingSystem.Application.Mappers
 {
-    internal class QuestionToViewModel : Profile
+    internal class QuestionResultToViewModel : Profile
     {
-        public QuestionToViewModel()
+        public QuestionResultToViewModel()
         {
-            CreateMap<Question, QuestionViewModel>();
+            CreateMap<QuestionResult, QuestionResultViewModel>();
         }
     }
 }

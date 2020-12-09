@@ -1,6 +1,6 @@
 ﻿namespace VotingSystem.Application.ViewModels
 {
-    public class VotingResultViewModel
+    public class QuestionResultViewModel
     {
         // TODO
     }
