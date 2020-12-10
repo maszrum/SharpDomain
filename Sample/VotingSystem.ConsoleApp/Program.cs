@@ -7,7 +7,6 @@ using SharpDomain.Core;
 using SharpDomain.AutoTransaction;
 using SharpDomain.Persistence;
 using VotingSystem.Application.Commands;
-using VotingSystem.Application.Queries;
 using VotingSystem.Persistence.Entities;
 using VotingSystem.Persistence.InMemory;
 
@@ -43,11 +42,14 @@ namespace VotingSystem.ConsoleApp
             await Run(scope);
         }
         
-        private static Task Run(IComponentContext context)
+        private static async Task Run(IComponentContext context)
         {
             var mediator = context.Resolve<IMediator>();
             
-            throw new NotImplementedException();
+            var createVoter = new CreateVoter("94040236185");
+            var createVoterResponse = await mediator.Send(createVoter);
+
+            Console.WriteLine(createVoterResponse);
         }
     }
 }
