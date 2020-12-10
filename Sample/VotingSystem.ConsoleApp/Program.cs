@@ -74,7 +74,10 @@ namespace VotingSystem.ConsoleApp
                 voterId: createVoterResponse.Id);
             var getQuestionResultResponse = await mediator.Send(getQuestionResult);
             
-            Console.WriteLine(getQuestionResultResponse);
+            var getQuestions = new GetQuestions();
+            var getQuestionsResponse = await mediator.Send(getQuestions);
+            
+            Console.WriteLine(getQuestionsResponse);
         }
     }
 }
