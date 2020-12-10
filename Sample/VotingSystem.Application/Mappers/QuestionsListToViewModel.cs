@@ -11,7 +11,10 @@ namespace VotingSystem.Application.Mappers
     {
         public QuestionsListToViewModel()
         {
-            CreateMap<IEnumerable<Question>, QuestionsListViewModel>();
+            CreateMap<IEnumerable<Question>, QuestionsListViewModel>()
+                .ForMember(
+                    source => source.Questions, 
+                    opt => opt.MapFrom(questions => questions));
         }
     }
 }
