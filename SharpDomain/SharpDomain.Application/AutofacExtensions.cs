@@ -2,8 +2,6 @@
 using System.Linq;
 using System.Reflection;
 using Autofac;
-using AutoMapper;
-using AutoMapper.Configuration;
 using MediatR;
 using MediatR.Pipeline;
 using SharpDomain.EventHandlerRegistration;
@@ -45,9 +43,7 @@ namespace SharpDomain.Application
         {
             return containerBuilder
                 .RegisterMediatR()
-                .RegisterRequestHandlers(assembly)
-                .RegisterAutomapper()
-                .RegisterMappers(assembly);
+                .RegisterRequestHandlers(assembly);
         }
         
         private static ContainerBuilder RegisterMediatR(this ContainerBuilder containerBuilder)
@@ -95,47 +91,6 @@ namespace SharpDomain.Application
                 .RegisterTypes(requestHandlerTypes)
                 .InstancePerDependency()
                 .AsImplementedInterfaces();
-            
-            return containerBuilder;
-        } 
-        
-        private static ContainerBuilder RegisterAutomapper(this ContainerBuilder containerBuilder)
-        {
-            containerBuilder
-                .RegisterType<MapperConfigurationExpression>()
-                .AsSelf()
-                .SingleInstance();
-            
-            containerBuilder.Register(c =>
-            {
-                var context = c.Resolve<IComponentContext>();
-                var configExpression = context.Resolve<MapperConfigurationExpression>();
-                return new MapperConfiguration(configExpression);
-            })
-                .AsSelf()
-                .SingleInstance();
-            
-            containerBuilder.Register(c =>
-            {
-               var context = c.Resolve<IComponentContext>();
-               var config = context.Resolve<MapperConfiguration>();
-               return config.CreateMapper(context.Resolve);
-            })
-                .As<IMapper>()
-                .InstancePerLifetimeScope();
-            
-            return containerBuilder;
-        }
-        
-        private static ContainerBuilder RegisterMappers(
-            this ContainerBuilder containerBuilder, 
-            Assembly assembly)
-        {
-            containerBuilder.RegisterBuildCallback(context =>
-            {
-                var mappings = context.Resolve<MapperConfigurationExpression>();
-                mappings.AddMaps(assembly);
-            });
             
             return containerBuilder;
         }

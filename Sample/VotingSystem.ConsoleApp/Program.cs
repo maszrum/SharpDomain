@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Autofac;
 using MediatR;
 using SharpDomain.Application;
+using SharpDomain.AutoMapper;
 using SharpDomain.Core;
 using SharpDomain.AutoTransaction;
 using SharpDomain.FluentValidation;
@@ -37,6 +38,7 @@ namespace VotingSystem.ConsoleApp
                         config.ForbidWriteRepositoriesInHandlersExceptIn(persistenceAssembly);
                     })
                 .RegisterFluentValidation(applicationAssembly)
+                .RegisterAutoMapper(applicationAssembly, persistenceAssembly)
                 .RegisterPersistenceLayer(persistenceAssembly)
                 .RegisterInMemoryPersistence()
                 .RegisterAutoTransaction(inMemoryPersistenceAssembly);
@@ -55,6 +57,9 @@ namespace VotingSystem.ConsoleApp
             var createVoter = new CreateVoter("94040236188");
             var createVoterResponse = await mediator.Send(createVoter);
 
+            var logIn = new LogIn(createVoterResponse.Pesel);
+            var logInResponse = await mediator.Send(logIn);
+            
             var createQuestion = new CreateQuestion(
                 questionText: "Sample question?", 
                 answers: new List<string>
@@ -83,6 +88,8 @@ namespace VotingSystem.ConsoleApp
             var getMyVotesResponse = await mediator.Send(getMyVotes);
             
             Console.WriteLine(createVoterResponse);
+            Console.WriteLine();
+            Console.WriteLine(logInResponse);
             Console.WriteLine();
             Console.WriteLine(createQuestionResponse);
             Console.WriteLine();
