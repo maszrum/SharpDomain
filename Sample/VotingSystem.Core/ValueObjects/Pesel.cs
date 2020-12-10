@@ -36,6 +36,8 @@ namespace VotingSystem.Core.ValueObjects
 
         public override int GetHashCode() => Code.GetHashCode();
 
+        public override string ToString() => Code;
+
         public static Pesel ValidateAndCreate(string? pesel)
         {
             if (string.IsNullOrWhiteSpace(pesel))

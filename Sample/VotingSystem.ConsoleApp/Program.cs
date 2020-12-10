@@ -79,7 +79,17 @@ namespace VotingSystem.ConsoleApp
             var getQuestions = new GetQuestions();
             var getQuestionsResponse = await mediator.Send(getQuestions);
             
+            var myVotes = new GetMyVotes();
+            
+            Console.WriteLine(createVoterResponse);
+            Console.WriteLine();
+            Console.WriteLine(createQuestionResponse);
+            Console.WriteLine();
+            Console.WriteLine(getQuestionResultResponse);
+            Console.WriteLine();
             Console.WriteLine(getQuestionsResponse);
+            
+            Console.ReadKey();
         }
     }
 }
