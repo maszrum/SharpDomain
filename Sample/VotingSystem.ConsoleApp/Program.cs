@@ -79,7 +79,8 @@ namespace VotingSystem.ConsoleApp
             var getQuestions = new GetQuestions();
             var getQuestionsResponse = await mediator.Send(getQuestions);
             
-            var myVotes = new GetMyVotes();
+            var getMyVotes = new GetMyVotes(createVoterResponse.Id);
+            var getMyVotesResponse = await mediator.Send(getMyVotes);
             
             Console.WriteLine(createVoterResponse);
             Console.WriteLine();
@@ -88,6 +89,8 @@ namespace VotingSystem.ConsoleApp
             Console.WriteLine(getQuestionResultResponse);
             Console.WriteLine();
             Console.WriteLine(getQuestionsResponse);
+            Console.WriteLine();
+            Console.WriteLine(getMyVotesResponse);
             
             Console.ReadKey();
         }
