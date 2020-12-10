@@ -3,12 +3,12 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <Nullable>enable</Nullable>
-        <LangVersion>9</LangVersion>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\VotingSystem.Core\VotingSystem.Core.csproj" />
-      <ProjectReference Include="..\..\SharpDomain\SharpDomain.Persistence\SharpDomain.Persistence.csproj" />
+        <ProjectReference Include="..\..\SharpDomain\SharpDomain.Persistence\SharpDomain.Persistence.csproj" />
+        <ProjectReference Include="..\VotingSystem.Core\VotingSystem.Core.csproj" />
     </ItemGroup>
 
 </Project>

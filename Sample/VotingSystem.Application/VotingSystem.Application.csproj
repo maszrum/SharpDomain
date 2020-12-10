@@ -3,16 +3,16 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <Nullable>enable</Nullable>
-        <LangVersion>9</LangVersion>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Validators" />
+        <Folder Include="Validators" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\VotingSystem.Core\VotingSystem.Core.csproj" />
-      <ProjectReference Include="..\..\SharpDomain\SharpDomain.Application\SharpDomain.Application.csproj" />
+        <ProjectReference Include="..\..\SharpDomain\SharpDomain.Application\SharpDomain.Application.csproj" />
+        <ProjectReference Include="..\VotingSystem.Core\VotingSystem.Core.csproj" />
     </ItemGroup>
 
 </Project>
