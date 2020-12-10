@@ -1,7 +1,10 @@
-﻿namespace VotingSystem.Application.ViewModels
+﻿using System;
+using System.Collections.Generic;
+
+namespace VotingSystem.Application.ViewModels
 {
     public class MyVotesViewModel
     {
-        // TODO
+        public List<Guid> QuestionsId { get; } = new();
     }
 }
