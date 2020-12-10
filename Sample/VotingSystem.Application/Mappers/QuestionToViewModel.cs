@@ -10,6 +10,7 @@ namespace VotingSystem.Application.Mappers
     {
         public QuestionToViewModel()
         {
+            CreateMap<Answer, QuestionViewModel.AnswerViewModel>();
             CreateMap<Question, QuestionViewModel>();
         }
     }
