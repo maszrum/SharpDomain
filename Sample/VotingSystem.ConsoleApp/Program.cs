@@ -53,14 +53,20 @@ namespace VotingSystem.ConsoleApp
             var createVoterResponse = await mediator.Send(createVoter);
 
             var createQuestion = new CreateQuestion(
-                "Sample question?", 
-                new List<string>
+                questionText: "Sample question?", 
+                answers: new List<string>
                 {
                     "First answer", 
                     "Second answer", 
                     "Third answer"
                 });
             var createQuestionResponse = await mediator.Send(createQuestion);
+            
+            var voteFor = new VoteFor(
+                voterId: createVoterResponse.Id, 
+                questionId: createQuestionResponse.Id,
+                answerId: createQuestionResponse.Answers[1].Id);
+            await mediator.Send(voteFor);
             
             Console.WriteLine(createVoterResponse);
             Console.WriteLine(createQuestionResponse);
