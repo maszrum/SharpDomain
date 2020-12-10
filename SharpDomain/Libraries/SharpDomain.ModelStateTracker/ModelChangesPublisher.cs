@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Threading.Tasks;
 
 namespace SharpDomain.ModelStateTracker
 {
     public class ModelChangesPublisher<T> : IDisposable where T : class
     {
-        private Action<ComparisionResult<T>> _publishCallback;
+        private Action<ComparisionResult<T>>? _publishCallback;
         private readonly PropertiesTracker<T> _propertiesTracker;
 
         public ModelChangesPublisher(T model)
@@ -29,7 +28,7 @@ namespace SharpDomain.ModelStateTracker
         
         public void Dispose()
         {
-            if (_publishCallback == default)
+            if (_publishCallback is null)
             {
                 throw new InvalidOperationException(
                     $"method {nameof(OnCompare)} was not called");

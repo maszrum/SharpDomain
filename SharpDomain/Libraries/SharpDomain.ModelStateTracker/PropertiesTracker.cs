@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.InteropServices.ComTypes;
 
 namespace SharpDomain.ModelStateTracker
 {
@@ -7,7 +6,7 @@ namespace SharpDomain.ModelStateTracker
     {
         private readonly T _model;
         
-        private PropertiesSnapshot _snapshot;
+        private PropertiesSnapshot? _snapshot;
 
         public PropertiesTracker(T model)
         {
