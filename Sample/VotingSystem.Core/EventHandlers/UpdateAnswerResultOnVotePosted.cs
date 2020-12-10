@@ -10,12 +10,12 @@ using VotingSystem.Core.InfrastructureAbstractions;
 
 namespace VotingSystem.Core.EventHandlers
 {
-    internal class UpdateVotingResultOnVotePosted : INotificationHandler<VotePosted>
+    internal class UpdateAnswerResultOnVotePosted : INotificationHandler<VotePosted>
     {
         private readonly IDomainEvents _domainEvents;
         private readonly IAnswerResultsRepository _answerResultsRepository;
 
-        public UpdateVotingResultOnVotePosted(
+        public UpdateAnswerResultOnVotePosted(
             IDomainEvents domainEvents, 
             IAnswerResultsRepository answerResultsRepository)
         {
