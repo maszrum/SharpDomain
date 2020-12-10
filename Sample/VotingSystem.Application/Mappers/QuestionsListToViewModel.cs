@@ -13,8 +13,8 @@ namespace VotingSystem.Application.Mappers
         {
             CreateMap<IEnumerable<Question>, QuestionsListViewModel>()
                 .ForMember(
-                    source => source.Questions, 
-                    opt => opt.MapFrom(questions => questions));
+                    dest => dest.Questions, 
+                    opt => opt.MapFrom(src => src));
         }
     }
 }
