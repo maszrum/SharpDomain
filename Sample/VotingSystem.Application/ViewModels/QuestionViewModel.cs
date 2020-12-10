@@ -10,7 +10,7 @@ namespace VotingSystem.Application.ViewModels
         public QuestionViewModel(
             Guid id, 
             string questionText, 
-            List<string> answers)
+            List<AnswerViewModel> answers)
         {
             Id = id;
             QuestionText = questionText;
@@ -21,23 +21,34 @@ namespace VotingSystem.Application.ViewModels
 
         public string QuestionText { get; }
         
-        public List<string> Answers { get; }
+        public List<AnswerViewModel> Answers { get; }
         
         public override string ToString()
         {
             var sb = new StringBuilder()
                 .AppendLine($"# {nameof(Question)}")
-                .AppendLine($"{nameof(Id)}: {Id}")
                 .AppendLine($"{nameof(QuestionText)}: {QuestionText}");
 
             var order = 0;
             foreach (var answer in Answers)
             {
-                sb.AppendLine($"{nameof(Answers)}[{order}]: {answer}");
+                sb.AppendLine($"{nameof(Answers)}[{order}]: {answer.Text}");
                 order++;
             }
             
             return sb.ToString().TrimEnd();
+        }
+        
+        public class AnswerViewModel
+        {
+            public AnswerViewModel(Guid id, string text)
+            {
+                Id = id;
+                Text = text;
+            }
+
+            public Guid Id { get; }
+            public string Text { get; }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Autofac;
 using MediatR;
@@ -33,9 +34,9 @@ namespace VotingSystem.ConsoleApp
                         config.ForbidMediatorInHandlers = true;
                         config.ForbidWriteRepositoriesInHandlersExceptIn(persistenceAssembly);
                     })
-                .RegisterAutoTransaction(inMemoryPersistenceAssembly)
                 .RegisterPersistenceLayer(persistenceAssembly)
-                .RegisterInMemoryPersistence();
+                .RegisterInMemoryPersistence()
+                .RegisterAutoTransaction(inMemoryPersistenceAssembly);
             
             await using var container = containerBuilder.Build();
 
@@ -51,7 +52,18 @@ namespace VotingSystem.ConsoleApp
             var createVoter = new CreateVoter("94040236185");
             var createVoterResponse = await mediator.Send(createVoter);
 
+            var createQuestion = new CreateQuestion(
+                "Sample question?", 
+                new List<string>
+                {
+                    "First answer", 
+                    "Second answer", 
+                    "Third answer"
+                });
+            var createQuestionResponse = await mediator.Send(createQuestion);
+            
             Console.WriteLine(createVoterResponse);
+            Console.WriteLine(createQuestionResponse);
         }
     }
 }
