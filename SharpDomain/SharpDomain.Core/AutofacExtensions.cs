@@ -3,6 +3,7 @@ using System.Linq;
 using System.Reflection;
 using Autofac;
 using MediatR;
+using SharpDomain.EventHandlerRegistration;
 
 namespace SharpDomain.Core
 {
@@ -37,11 +38,14 @@ namespace SharpDomain.Core
                 .Where(IsNotificationHandler)
                 .Select(t => (Type)t)
                 .ToArray();
-            
-            containerBuilder
-                .RegisterTypes(notificationHandlerTypes)
-                .InstancePerDependency()
-                .AsImplementedInterfaces();
+
+            foreach (var notificationHandlerType in notificationHandlerTypes)
+            {
+                containerBuilder
+                    .RegisterType(notificationHandlerType)
+                    .AsDomainEventHandler(notificationHandlerType)
+                    .InstancePerDependency();
+            }
             
             return containerBuilder;
         }
