@@ -37,7 +37,7 @@ namespace VotingSystem.Application.ViewModels
                 order++;
             }
             
-            return sb.ToString();
+            return sb.ToString().TrimEnd();
         }
     }
 }
