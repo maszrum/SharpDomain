@@ -45,7 +45,6 @@ namespace SharpDomain.Application
             return containerBuilder
                 .RegisterMediatR()
                 .RegisterRequestHandlers(assembly)
-                .RegisterNotificationHandlers(assembly)
                 .RegisterAutomapper()
                 .RegisterMappers(assembly);
         }
@@ -95,26 +94,6 @@ namespace SharpDomain.Application
             
             return containerBuilder;
         } 
-        
-        private static ContainerBuilder RegisterNotificationHandlers(
-            this ContainerBuilder containerBuilder,
-            Assembly assembly)
-        {
-            static bool IsNotificationHandler(Type t) =>
-                t.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(INotificationHandler<>));
-
-            var notificationHandlerTypes = assembly.DefinedTypes
-                .Where(IsNotificationHandler)
-                .Select(t => (Type)t)
-                .ToArray();
-            
-            containerBuilder
-                .RegisterTypes(notificationHandlerTypes)
-                .InstancePerDependency()
-                .AsImplementedInterfaces();
-            
-            return containerBuilder;
-        }
         
         private static ContainerBuilder RegisterAutomapper(this ContainerBuilder containerBuilder)
         {
