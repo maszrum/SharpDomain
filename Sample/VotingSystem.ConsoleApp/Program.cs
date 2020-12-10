@@ -6,6 +6,7 @@ using MediatR;
 using SharpDomain.Application;
 using SharpDomain.Core;
 using SharpDomain.AutoTransaction;
+using SharpDomain.FluentValidation;
 using SharpDomain.Persistence;
 using VotingSystem.Application.Commands;
 using VotingSystem.Application.Queries;
@@ -35,6 +36,7 @@ namespace VotingSystem.ConsoleApp
                         config.ForbidMediatorInHandlers = true;
                         config.ForbidWriteRepositoriesInHandlersExceptIn(persistenceAssembly);
                     })
+                .RegisterFluentValidation(applicationAssembly)
                 .RegisterPersistenceLayer(persistenceAssembly)
                 .RegisterInMemoryPersistence()
                 .RegisterAutoTransaction(inMemoryPersistenceAssembly);
@@ -50,7 +52,7 @@ namespace VotingSystem.ConsoleApp
         {
             var mediator = context.Resolve<IMediator>();
             
-            var createVoter = new CreateVoter("94040236185");
+            var createVoter = new CreateVoter("94040236188");
             var createVoterResponse = await mediator.Send(createVoter);
 
             var createQuestion = new CreateQuestion(
