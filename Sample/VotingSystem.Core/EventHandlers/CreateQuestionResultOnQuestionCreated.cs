@@ -7,7 +7,7 @@ using VotingSystem.Core.Models;
 
 // ReSharper disable once UnusedType.Global
 
-namespace VotingSystem.Application.EventHandlers
+namespace VotingSystem.Core.EventHandlers
 {
     internal class CreateQuestionResultOnQuestionCreated : INotificationHandler<QuestionCreated>
     {

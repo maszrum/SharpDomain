@@ -7,6 +7,7 @@ using SharpDomain.Core;
 using SharpDomain.AutoTransaction;
 using SharpDomain.Persistence;
 using VotingSystem.Application.Commands;
+using VotingSystem.Core.Models;
 using VotingSystem.Persistence.Entities;
 using VotingSystem.Persistence.InMemory;
 
@@ -18,12 +19,13 @@ namespace VotingSystem.ConsoleApp
     {
         private static async Task Main(string[] args)
         {
+            var domainAssembly = typeof(Question).Assembly;
             var applicationAssembly = typeof(CreateQuestion).Assembly;
             var persistenceAssembly = typeof(QuestionEntity).Assembly;
             var inMemoryPersistenceAssembly = typeof(Persistence.InMemory.AutofacExtensions).Assembly;
             
             var containerBuilder = new ContainerBuilder()
-                .RegisterDomainLayer()
+                .RegisterDomainLayer(domainAssembly)
                 .RegisterApplicationLayer(
                     assembly: applicationAssembly, 
                     configurationAction: config =>
