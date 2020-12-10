@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
@@ -6,7 +7,7 @@ namespace SharpDomain.ModelStateTracker
 {
     internal class PropertiesSnapshotFactory<T> where T : class
     {
-        private static PropertiesCache<T> _propertiesCache;
+        private static PropertiesCache<T>? _propertiesCache;
         
         private readonly T _model;
 
@@ -36,6 +37,12 @@ namespace SharpDomain.ModelStateTracker
         
         private static IEnumerable<PropertyInfo> GetPropertiesOfModel()
         {
+            if (_propertiesCache is null)
+            {
+                throw new NullReferenceException(
+                    $"{nameof(_propertiesCache)} is null");
+            }
+            
             if (_propertiesCache.IsEmpty)
             {
                 var properties = typeof(T)
