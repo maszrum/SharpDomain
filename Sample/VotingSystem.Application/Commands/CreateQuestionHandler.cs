@@ -25,8 +25,6 @@ namespace VotingSystem.Application.Commands
 
         public async Task<QuestionViewModel> Handle(CreateQuestion request, CancellationToken cancellationToken)
         {
-            // TODO: validate request
-            
             var model = Question.Create(request.QuestionText, request.Answers)
                 .CollectEvents(_domainEvents);
             

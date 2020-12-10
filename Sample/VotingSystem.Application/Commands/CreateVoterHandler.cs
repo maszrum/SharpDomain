@@ -29,8 +29,7 @@ namespace VotingSystem.Application.Commands
 
         public async Task<VoterViewModel> Handle(CreateVoter request, CancellationToken cancellationToken)
         {
-            // TODO: validate request
-            // check if already exists
+            // TODO: check if already exists
             
             var voter = Voter.Create(request.Pesel)
                 .CollectEvents(_domainEvents);

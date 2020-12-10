@@ -12,6 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\..\SharpDomain\Libraries\SharpDomain.FluentValidation\SharpDomain.FluentValidation.csproj" />
         <ProjectReference Include="..\VotingSystem.Application\VotingSystem.Application.csproj" />
         <ProjectReference Include="..\VotingSystem.Persistence\VotingSystem.Persistence.csproj" />
         <ProjectReference Include="..\VotingSystem.Persistence.InMemory\VotingSystem.Persistence.InMemory.csproj" />
