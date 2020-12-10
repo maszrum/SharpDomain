@@ -8,6 +8,7 @@ using SharpDomain.Core;
 using SharpDomain.AutoTransaction;
 using SharpDomain.Persistence;
 using VotingSystem.Application.Commands;
+using VotingSystem.Application.Queries;
 using VotingSystem.Core.Models;
 using VotingSystem.Persistence.Entities;
 using VotingSystem.Persistence.InMemory;
@@ -68,8 +69,12 @@ namespace VotingSystem.ConsoleApp
                 answerId: createQuestionResponse.Answers[1].Id);
             await mediator.Send(voteFor);
             
-            Console.WriteLine(createVoterResponse);
-            Console.WriteLine(createQuestionResponse);
+            var getQuestionResult = new GetQuestionResult(
+                questionId: createQuestionResponse.Id, 
+                voterId: createVoterResponse.Id);
+            var getQuestionResultResponse = await mediator.Send(getQuestionResult);
+            
+            Console.WriteLine(getQuestionResultResponse);
         }
     }
 }
