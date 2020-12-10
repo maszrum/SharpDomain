@@ -15,21 +15,31 @@ namespace VotingSystem.Persistence.EventHandlers
     {
         private readonly IMapper _mapper;
         private readonly IQuestionResultsWriteRepository _questionResultsWriteRepository;
+        private readonly IAnswerResultsWriteRepository _answerResultsWriteRepository;
 
         public QuestionResultCreatedHandler(
             IMapper mapper, 
-            IQuestionResultsWriteRepository questionResultsWriteRepository)
+            IQuestionResultsWriteRepository questionResultsWriteRepository, 
+            IAnswerResultsWriteRepository answerResultsWriteRepository)
         {
             _mapper = mapper;
             _questionResultsWriteRepository = questionResultsWriteRepository;
+            _answerResultsWriteRepository = answerResultsWriteRepository;
         }
 
-        public Task Handle(QuestionResultCreated notification, CancellationToken cancellationToken)
+        public async Task Handle(QuestionResultCreated notification, CancellationToken cancellationToken)
         {
             var questionResult = notification.QuestionResult;
             var questionResultEntity = _mapper.Map<QuestionResult, QuestionResultEntity>(questionResult);
             
-            return _questionResultsWriteRepository.Create(questionResultEntity);
+            await  _questionResultsWriteRepository.Create(questionResultEntity);
+
+            foreach (var answerResult in questionResult.AnswerResults)
+            {
+                var answerResultEntity = _mapper.Map<AnswerResult, AnswerResultEntity>(answerResult);
+                
+                await _answerResultsWriteRepository.Create(answerResultEntity);
+            }
         }
     }
 }

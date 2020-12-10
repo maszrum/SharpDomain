@@ -39,6 +39,25 @@ namespace VotingSystem.Persistence.InMemory.Repositories
             return Task.FromResult((AnswerResult?)answerResults);
         }
 
+        public Task Create(params AnswerResultEntity[] entities)
+        {
+            var anyExist = entities
+                .Any(e => _datastore.AnswerResults.ContainsKey(e.Id));
+            
+            if (anyExist)
+            {
+                // TODO: proper exception
+                throw new Exception();
+            }
+
+            foreach (var entity in entities)
+            {
+                _datastore.AnswerResults.Add(entity.Id, entity);
+            }
+            
+            return Task.CompletedTask;
+        }
+
         public Task Update(AnswerResultEntity entity)
         {
             if (!_datastore.AnswerResults.ContainsKey(entity.Id))

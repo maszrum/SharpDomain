@@ -5,6 +5,7 @@ namespace VotingSystem.Persistence.RepositoryInterfaces
 {
     public interface IAnswerResultsWriteRepository
     {
+        Task Create(params AnswerResultEntity[] entities);
         Task Update(AnswerResultEntity entity);
     }
 }
