@@ -6,6 +6,7 @@ using AutoMapper;
 using AutoMapper.Configuration;
 using MediatR;
 using MediatR.Pipeline;
+using SharpDomain.EventHandlerRegistration;
 
 namespace SharpDomain.Application
 {
@@ -57,8 +58,11 @@ namespace SharpDomain.Application
             
             containerBuilder.Register<ServiceFactory>(context =>
             {
-                var c = context.Resolve<IComponentContext>(); 
-                return t => c.Resolve(t);
+                var c = context.Resolve<IComponentContext>();
+                
+                return t => EventHandlerHelper.IsEventHandler(t) 
+                    ? c.ResolveEventHandlers(t) 
+                    : c.Resolve(t);
             });
             
             // ensure order: behaviors, exception handlers, exception actions
