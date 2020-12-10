@@ -6,6 +6,11 @@ namespace VotingSystem.Application.Queries
 {
     public class GetMyVotes : IRequest<MyVotesViewModel>
     {
-        public Guid VoterId { get; set; }
+        public GetMyVotes(Guid voterId)
+        {
+            VoterId = voterId;
+        }
+
+        public Guid VoterId { get; }
     }
 }
