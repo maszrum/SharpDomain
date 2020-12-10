@@ -2,16 +2,18 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
+        <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\SharpDomain.Core\SharpDomain.Core.csproj" />
+        <PackageReference Include="Autofac" Version="6.1.0" />
+        <PackageReference Include="AutoMapper" Version="10.1.1" />
     </ItemGroup>
-
+    
     <ItemGroup>
-      <PackageReference Include="Autofac" Version="6.1.0" />
-      <PackageReference Include="AutoMapper" Version="10.1.1" />
+        <ProjectReference Include="..\SharpDomain.Core\SharpDomain.Core.csproj" />
+        <ProjectReference Include="..\Libraries\SharpDomain.EventHandlerRegistration\SharpDomain.EventHandlerRegistration.csproj" />
     </ItemGroup>
 
 </Project>
