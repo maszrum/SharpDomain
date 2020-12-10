@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Runtime.ExceptionServices;
+using System.Threading;
 using System.Threading.Tasks;
 using Autofac;
-using MediatR;
 using SharpDomain.Application;
 using SharpDomain.AutoMapper;
 using SharpDomain.Core;
@@ -10,7 +10,6 @@ using SharpDomain.AutoTransaction;
 using SharpDomain.FluentValidation;
 using SharpDomain.Persistence;
 using VotingSystem.Application.Commands;
-using VotingSystem.Application.Queries;
 using VotingSystem.Core.Models;
 using VotingSystem.Persistence.Entities;
 using VotingSystem.Persistence.InMemory;
@@ -46,60 +45,46 @@ namespace VotingSystem.ConsoleApp
             await using var container = containerBuilder.Build();
 
             await using var scope = container.BeginLifetimeScope();
-                
-            await Run(scope);
+
+            var tcs = new CancellationTokenSource();
+            var consoleTask = RunConsole(container)
+                .ContinueWith(task =>
+                {
+                    tcs.Cancel();
+                    
+                    if (task.IsFaulted && task.Exception != default)
+                    {
+                        ExceptionDispatchInfo.Capture(task.Exception).Throw();
+                    }
+                }, CancellationToken.None);
+            
+            var simulationTask = SimulateVoting(container, tcs.Token);
+            
+            try
+            {
+                await Task.WhenAll(consoleTask, simulationTask);
+            }
+            catch (OperationCanceledException) {}
         }
         
-        private static async Task Run(IComponentContext context)
+        private static Task RunConsole(IContainer container)
         {
-            var mediator = context.Resolve<IMediator>();
+            var consoleVoter = new ConsoleVoter(container);
+            return Task.Run(() => consoleVoter.RunBlocking());
+        }
+        
+        private static async Task SimulateVoting(IContainer container, CancellationToken cancellationToken)
+        {
+            var simulatedVoter = new SimulatedVoter(container);
             
-            var createVoter = new CreateVoter("94040236188");
-            var createVoterResponse = await mediator.Send(createVoter);
-
-            var logIn = new LogIn(createVoterResponse.Pesel);
-            var logInResponse = await mediator.Send(logIn);
-            
-            var createQuestion = new CreateQuestion(
-                questionText: "Sample question?", 
-                answers: new List<string>
-                {
-                    "First answer", 
-                    "Second answer", 
-                    "Third answer"
-                });
-            var createQuestionResponse = await mediator.Send(createQuestion);
-            
-            var voteFor = new VoteFor(
-                voterId: createVoterResponse.Id, 
-                questionId: createQuestionResponse.Id,
-                answerId: createQuestionResponse.Answers[1].Id);
-            await mediator.Send(voteFor);
-            
-            var getQuestionResult = new GetQuestionResult(
-                questionId: createQuestionResponse.Id, 
-                voterId: createVoterResponse.Id);
-            var getQuestionResultResponse = await mediator.Send(getQuestionResult);
-            
-            var getQuestions = new GetQuestions();
-            var getQuestionsResponse = await mediator.Send(getQuestions);
-            
-            var getMyVotes = new GetMyVotes(createVoterResponse.Id);
-            var getMyVotesResponse = await mediator.Send(getMyVotes);
-            
-            Console.WriteLine(createVoterResponse);
-            Console.WriteLine();
-            Console.WriteLine(logInResponse);
-            Console.WriteLine();
-            Console.WriteLine(createQuestionResponse);
-            Console.WriteLine();
-            Console.WriteLine(getQuestionResultResponse);
-            Console.WriteLine();
-            Console.WriteLine(getQuestionsResponse);
-            Console.WriteLine();
-            Console.WriteLine(getMyVotesResponse);
-            
-            Console.ReadKey();
+            while (!cancellationToken.IsCancellationRequested)
+            {
+                await simulatedVoter.LogAsRandomVoter();
+                await simulatedVoter.VoteRandomly();
+                simulatedVoter.Logout();
+                
+                await Task.Delay(100, cancellationToken);
+            }
         }
     }
 }
