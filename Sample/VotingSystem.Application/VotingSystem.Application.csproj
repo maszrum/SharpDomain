@@ -7,13 +7,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\SharpDomain\SharpDomain.Application\SharpDomain.Application.csproj" />
-        <ProjectReference Include="..\VotingSystem.Core\VotingSystem.Core.csproj" />
+        <PackageReference Include="AutoMapper" Version="10.1.1" />
+        <PackageReference Include="FluentValidation" Version="9.3.0" />
+        <PackageReference Include="SharpDomain.Application" Version="0.1.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="AutoMapper" Version="10.1.1" />
-      <PackageReference Include="FluentValidation" Version="9.3.0" />
+        <ProjectReference Include="..\VotingSystem.Core\VotingSystem.Core.csproj" />
     </ItemGroup>
 
 </Project>

@@ -7,12 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\SharpDomain\SharpDomain.Persistence\SharpDomain.Persistence.csproj" />
-        <ProjectReference Include="..\VotingSystem.Core\VotingSystem.Core.csproj" />
+        <PackageReference Include="AutoMapper" Version="10.1.1" />
+        <PackageReference Include="SharpDomain.Persistence" Version="0.1.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="AutoMapper" Version="10.1.1" />
+        <ProjectReference Include="..\VotingSystem.Core\VotingSystem.Core.csproj" />
     </ItemGroup>
 
 </Project>

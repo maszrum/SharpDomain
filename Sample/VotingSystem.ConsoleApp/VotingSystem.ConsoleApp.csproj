@@ -8,9 +8,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\SharpDomain\Libraries\SharpDomain.AutoMapper\SharpDomain.AutoMapper.csproj" />
-        <ProjectReference Include="..\..\SharpDomain\Libraries\SharpDomain.AutoTransaction\SharpDomain.AutoTransaction.csproj" />
-        <ProjectReference Include="..\..\SharpDomain\Libraries\SharpDomain.FluentValidation\SharpDomain.FluentValidation.csproj" />
+        <PackageReference Include="SharpDomain.AutoMapper" Version="0.1.0" />
+        <PackageReference Include="SharpDomain.FluentValidation" Version="0.1.0" />
+    </ItemGroup>
+    
+    <ItemGroup>
         <ProjectReference Include="..\VotingSystem.Application\VotingSystem.Application.csproj" />
         <ProjectReference Include="..\VotingSystem.Persistence\VotingSystem.Persistence.csproj" />
         <ProjectReference Include="..\VotingSystem.Persistence.InMemory\VotingSystem.Persistence.InMemory.csproj" />

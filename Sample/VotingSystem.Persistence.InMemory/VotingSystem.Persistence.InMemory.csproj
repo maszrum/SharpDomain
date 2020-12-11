@@ -7,7 +7,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\SharpDomain\Libraries\SharpDomain.AutoTransaction\SharpDomain.AutoTransaction.csproj" />
+        <PackageReference Include="SharpDomain.AutoTransaction" Version="0.1.0" />
+    </ItemGroup>
+
+    <ItemGroup>
         <ProjectReference Include="..\VotingSystem.Persistence\VotingSystem.Persistence.csproj" />
     </ItemGroup>
 
