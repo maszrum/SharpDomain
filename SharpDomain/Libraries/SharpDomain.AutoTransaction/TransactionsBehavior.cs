@@ -6,7 +6,8 @@ using MediatR;
 
 namespace SharpDomain.AutoTransaction
 {
-    internal class TransactionsBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+    internal class TransactionsBehavior<TRequest, TResponse> 
+        : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull
     {
         private readonly ServiceFactory _serviceFactory;
         
