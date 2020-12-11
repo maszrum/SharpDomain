@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VotingSystem.ConsoleApp
+namespace VotingSystem.ConsoleApp.CommandLine
 {
     internal class ConsoleState
     {

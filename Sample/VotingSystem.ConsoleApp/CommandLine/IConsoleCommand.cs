@@ -1,6 +1,6 @@
 ﻿using Autofac;
 
-namespace VotingSystem.ConsoleApp
+namespace VotingSystem.ConsoleApp.CommandLine
 {
     internal interface IConsoleCommand
     {

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Autofac;
-using VotingSystem.ConsoleApp.ConsoleCommands;
+using VotingSystem.ConsoleApp.CommandLine.Commands;
 
-namespace VotingSystem.ConsoleApp
+namespace VotingSystem.ConsoleApp.CommandLine
 {
     internal class ConsoleVoter
     {
