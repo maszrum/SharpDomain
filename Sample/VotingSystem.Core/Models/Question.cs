@@ -33,7 +33,8 @@ namespace VotingSystem.Core.Models
                     (answerText, index) =>
                     {
                         var answerId = Guid.NewGuid();
-                        var questionAnswer = new Answer(answerId, questionId, index, answerText);
+                        var order = index + 1;
+                        var questionAnswer = new Answer(answerId, questionId, order, answerText);
                         return questionAnswer;
                     })
                 .ToList();
