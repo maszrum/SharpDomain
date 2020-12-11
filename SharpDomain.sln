@@ -1,28 +1,36 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.Core", "Shared\SharpDomain.Core\SharpDomain.Core.csproj", "{476B9DC2-DE6A-42C6-8233-7E1078D3F134}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharpDomain", "SharpDomain", "{15648F83-DDF8-4625-BCC3-8558D27F336D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.Application", "Shared\SharpDomain.Application\SharpDomain.Application.csproj", "{B6BF68E8-8EEA-4C2B-AD9C-E020DB15950E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.Core", "SharpDomain\SharpDomain.Core\SharpDomain.Core.csproj", "{476B9DC2-DE6A-42C6-8233-7E1078D3F134}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.Persistence", "Shared\SharpDomain.Persistence\SharpDomain.Persistence.csproj", "{B3E0693E-9293-4F21-A743-95911E4BA264}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.Application", "SharpDomain\SharpDomain.Application\SharpDomain.Application.csproj", "{B6BF68E8-8EEA-4C2B-AD9C-E020DB15950E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleDomain.ConsoleApp", "SampleDomain.ConsoleApp\SampleDomain.ConsoleApp.csproj", "{EE7E068F-10EA-48C6-99C2-3495A4BED07F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.ModelStateTracker", "Shared\Libraries\SharpDomain.ModelStateTracker\SharpDomain.ModelStateTracker.csproj", "{CC9B18FB-029B-47A0-80E5-157838BB1544}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.Persistence", "SharpDomain\SharpDomain.Persistence\SharpDomain.Persistence.csproj", "{B3E0693E-9293-4F21-A743-95911E4BA264}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{ABC25AE1-7A05-43E2-83B5-42A558C324F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.AutoTransaction", "Shared\Libraries\SharpDomain.AutoTransaction\SharpDomain.AutoTransaction.csproj", "{48AA6696-D181-4BBD-B7F2-1F3DDEF876EA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.ModelStateTracker", "SharpDomain\Libraries\SharpDomain.ModelStateTracker\SharpDomain.ModelStateTracker.csproj", "{CC9B18FB-029B-47A0-80E5-157838BB1544}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{15648F83-DDF8-4625-BCC3-8558D27F336D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.AutoTransaction", "SharpDomain\Libraries\SharpDomain.AutoTransaction\SharpDomain.AutoTransaction.csproj", "{48AA6696-D181-4BBD-B7F2-1F3DDEF876EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleDomain.Application", "SampleDomain.Application\SampleDomain.Application.csproj", "{0E598A6F-2CDC-41B8-B1B1-825654131E46}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.EventHandlerRegistration", "SharpDomain\Libraries\SharpDomain.EventHandlerRegistration\SharpDomain.EventHandlerRegistration.csproj", "{E3802E4D-BEC0-441D-962E-B1A566227A75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleDomain.Core", "SampleDomain.Core\SampleDomain.Core.csproj", "{D7965C44-1D25-47F5-AC3D-5077DBE34D0F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample", "Sample", "{27BB8595-9F4D-4519-A994-3544C9C05582}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleDomain.Persistence", "SampleDomain.Persistence\SampleDomain.Persistence.csproj", "{9326BEAC-48CC-43E1-A285-9D02A75BC92A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingSystem.Core", "Sample\VotingSystem.Core\VotingSystem.Core.csproj", "{D7965C44-1D25-47F5-AC3D-5077DBE34D0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleDomain.Persistence.InMemory", "SampleDomain.Persistence.InMemory\SampleDomain.Persistence.InMemory.csproj", "{6D20FC40-93B8-48F0-BC64-3845F3469900}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingSystem.Application", "Sample\VotingSystem.Application\VotingSystem.Application.csproj", "{0E598A6F-2CDC-41B8-B1B1-825654131E46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingSystem.Persistence", "Sample\VotingSystem.Persistence\VotingSystem.Persistence.csproj", "{9326BEAC-48CC-43E1-A285-9D02A75BC92A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingSystem.Persistence.InMemory", "Sample\VotingSystem.Persistence.InMemory\VotingSystem.Persistence.InMemory.csproj", "{6D20FC40-93B8-48F0-BC64-3845F3469900}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingSystem.ConsoleApp", "Sample\VotingSystem.ConsoleApp\VotingSystem.ConsoleApp.csproj", "{EE7E068F-10EA-48C6-99C2-3495A4BED07F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.FluentValidation", "SharpDomain\Libraries\SharpDomain.FluentValidation\SharpDomain.FluentValidation.csproj", "{1C365493-78E8-4287-B072-76A0E6BEBB5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.AutoMapper", "SharpDomain\Libraries\SharpDomain.AutoMapper\SharpDomain.AutoMapper.csproj", "{F1799333-07ED-448F-B25C-04B656856AA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,6 +78,18 @@ Global
 		{6D20FC40-93B8-48F0-BC64-3845F3469900}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D20FC40-93B8-48F0-BC64-3845F3469900}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D20FC40-93B8-48F0-BC64-3845F3469900}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3802E4D-BEC0-441D-962E-B1A566227A75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3802E4D-BEC0-441D-962E-B1A566227A75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3802E4D-BEC0-441D-962E-B1A566227A75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3802E4D-BEC0-441D-962E-B1A566227A75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C365493-78E8-4287-B072-76A0E6BEBB5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C365493-78E8-4287-B072-76A0E6BEBB5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C365493-78E8-4287-B072-76A0E6BEBB5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C365493-78E8-4287-B072-76A0E6BEBB5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1799333-07ED-448F-B25C-04B656856AA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1799333-07ED-448F-B25C-04B656856AA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1799333-07ED-448F-B25C-04B656856AA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1799333-07ED-448F-B25C-04B656856AA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{CC9B18FB-029B-47A0-80E5-157838BB1544} = {ABC25AE1-7A05-43E2-83B5-42A558C324F3}
@@ -78,5 +98,13 @@ Global
 		{B6BF68E8-8EEA-4C2B-AD9C-E020DB15950E} = {15648F83-DDF8-4625-BCC3-8558D27F336D}
 		{476B9DC2-DE6A-42C6-8233-7E1078D3F134} = {15648F83-DDF8-4625-BCC3-8558D27F336D}
 		{B3E0693E-9293-4F21-A743-95911E4BA264} = {15648F83-DDF8-4625-BCC3-8558D27F336D}
+		{0E598A6F-2CDC-41B8-B1B1-825654131E46} = {27BB8595-9F4D-4519-A994-3544C9C05582}
+		{EE7E068F-10EA-48C6-99C2-3495A4BED07F} = {27BB8595-9F4D-4519-A994-3544C9C05582}
+		{D7965C44-1D25-47F5-AC3D-5077DBE34D0F} = {27BB8595-9F4D-4519-A994-3544C9C05582}
+		{9326BEAC-48CC-43E1-A285-9D02A75BC92A} = {27BB8595-9F4D-4519-A994-3544C9C05582}
+		{6D20FC40-93B8-48F0-BC64-3845F3469900} = {27BB8595-9F4D-4519-A994-3544C9C05582}
+		{E3802E4D-BEC0-441D-962E-B1A566227A75} = {ABC25AE1-7A05-43E2-83B5-42A558C324F3}
+		{1C365493-78E8-4287-B072-76A0E6BEBB5D} = {ABC25AE1-7A05-43E2-83B5-42A558C324F3}
+		{F1799333-07ED-448F-B25C-04B656856AA6} = {ABC25AE1-7A05-43E2-83B5-42A558C324F3}
 	EndGlobalSection
 EndGlobal
