@@ -20,7 +20,7 @@ namespace VotingSystem.Application.ViewModels
             
             return new StringBuilder()
                 .AppendLine($"# {nameof(Question)}[]")
-                .AppendLine(questionsString)
+                .Append(questionsString)
                 .ToString();
         }
     }
