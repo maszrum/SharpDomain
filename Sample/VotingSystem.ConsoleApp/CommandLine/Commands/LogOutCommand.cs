@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Autofac;
 
 namespace VotingSystem.ConsoleApp.CommandLine.Commands
@@ -12,19 +14,19 @@ namespace VotingSystem.ConsoleApp.CommandLine.Commands
             _consoleState = consoleState;
         }
 
-        public void Execute(IComponentContext services, string[] args)
+        public Task Execute(IComponentContext services, IReadOnlyList<string> args)
         {
             if (string.IsNullOrEmpty(_consoleState.VoterPesel))
             {
                 Console.WriteLine("You are not logged.");
-                return;
+                return Task.CompletedTask;
             }
             
             _consoleState.VoterPesel = default;
             _consoleState.VoterId = Guid.Empty;
+            
+            return Task.CompletedTask;
         }
-
-        public string GetHelp() => "Some help."; // TODO
 
         public string GetDefinition() => "logout";
     }
