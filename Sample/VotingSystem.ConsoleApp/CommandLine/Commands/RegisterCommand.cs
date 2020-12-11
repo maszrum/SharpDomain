@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Autofac;
 using MediatR;
-using VotingSystem.Application.Queries;
+using VotingSystem.Application.Commands;
 using VotingSystem.Application.ViewModels;
 
 namespace VotingSystem.ConsoleApp.CommandLine.Commands
 {
-    internal class LogInCommand : IConsoleCommand
+    internal class RegisterCommand : IConsoleCommand
     {
         private readonly ConsoleState _consoleState;
 
-        public LogInCommand(ConsoleState consoleState)
+        public RegisterCommand(ConsoleState consoleState)
         {
             _consoleState = consoleState;
         }
@@ -31,30 +31,32 @@ namespace VotingSystem.ConsoleApp.CommandLine.Commands
                 return Task.CompletedTask;
             }
             
-            return LogIn(services, pesel);
+            return Register(services, pesel);
         }
-        
-        private async Task LogIn(IComponentContext services, string pesel)
+
+        private static async Task Register(IComponentContext services, string pesel)
         {
-            var logIn = new LogIn(pesel);
             var mediator = services.Resolve<IMediator>();
+            var createVoter = new CreateVoter(pesel);
             
-            VoterViewModel logInResult;
+            VoterViewModel createVoterResponse;
             try
             {
-                logInResult = await mediator.Send(logIn);
+                createVoterResponse = await mediator.Send(createVoter);
             }
             catch (Exception exception)
             {
                 exception.WriteToConsole();
                 return;
             }
-            
-            _consoleState.VoterId = logInResult.Id;
-            _consoleState.VoterPesel = logInResult.Pesel;
+
+            Console.WriteLine();
+            Console.WriteLine(createVoterResponse.ToString());
+            Console.WriteLine();
+            Console.WriteLine("Now you can login.");
         }
 
-        public string GetDefinition() => "login [pesel]";
+        public string GetDefinition() => "register [pesel]";
         
         private static bool TryParseArgs(IReadOnlyList<string> args, out string pesel)
         {

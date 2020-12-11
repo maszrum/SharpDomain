@@ -10,7 +10,7 @@ namespace VotingSystem.ConsoleApp.CommandLine
     {
         private readonly IContainer _container;
         private readonly ConsoleState _state = new();
-        private readonly Dictionary<string, IConsoleCommand> _commands = new Dictionary<string, IConsoleCommand>();
+        private readonly Dictionary<string, IConsoleCommand> _commands = new ();
         
         public ConsoleVoter(IContainer container)
         {
@@ -20,9 +20,25 @@ namespace VotingSystem.ConsoleApp.CommandLine
         
         private void SetupCommands()
         {
-            _commands.Add("login", new LogInCommand(_state));
-            _commands.Add("add-question", new AddQuestionCommand(_state));
-            _commands.Add("logout", new LogOutCommand(_state));
+            static string GetCommandText(IConsoleCommand command) => 
+                command.GetDefinition().Split(' ')[0];
+
+            var commands = new IConsoleCommand[]
+            {
+                new RegisterCommand(_state),
+                new LogInCommand(_state),
+                new LogOutCommand(_state),
+                new GetQuestionsCommand(_state),
+                new AddQuestionCommand(_state),
+                new VoteCommand(_state),
+                new GetResultCommand(_state)
+            };
+
+            foreach (var command in commands)
+            {
+                var commandText = GetCommandText(command);
+                _commands.Add(commandText, command);
+            }
         }
         
         public void RunBlocking()
@@ -47,12 +63,12 @@ namespace VotingSystem.ConsoleApp.CommandLine
                     
                     if (command == "help")
                     {
-                        ShowHelp(args);
+                        ShowHelp();
                     }
                     else if (_commands.TryGetValue(command, out var commandHandler))
                     {
                         using var scope = _container.BeginLifetimeScope();
-                        commandHandler.Execute(scope, args);
+                        commandHandler.Execute(scope, args).GetAwaiter().GetResult();
                     }
                     else if (!IsQuitCommand(command))
                     {
@@ -67,28 +83,20 @@ namespace VotingSystem.ConsoleApp.CommandLine
         {
             Console.WriteLine();
             Console.WriteLine("Welcome to voting system.");
+            Console.WriteLine("Enter 'q' to quit program.");
             Console.WriteLine();
             
-            ShowHelp(Array.Empty<string>());
+            ShowHelp();
             Console.WriteLine();
         }
 
-        private void ShowHelp(IReadOnlyList<string> args)
+        private void ShowHelp()
         {
-            Console.WriteLine("# Available commands:");
+            Console.WriteLine("Available commands:");
             
-            if (args.Count > 0 && _commands.TryGetValue(args[0], out var commandHandler))
+            foreach (var command in _commands.Values)
             {
-                Console.WriteLine(commandHandler.GetHelp());
-            }
-            else
-            {
-                foreach (var command in _commands.Values)
-                {
-                    Console.WriteLine(command.GetDefinition());
-                }
-
-                Console.WriteLine("Enter help [command] to show command help.");
+                Console.WriteLine($"  {command.GetDefinition()}");
             }
         }
 

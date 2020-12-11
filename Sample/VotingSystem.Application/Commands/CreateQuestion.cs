@@ -8,13 +8,13 @@ namespace VotingSystem.Application.Commands
     {
         public CreateQuestion(
             string questionText, 
-            List<string> answers)
+            IList<string> answers)
         {
             QuestionText = questionText;
             Answers = answers;
         }
 
         public string QuestionText { get; }
-        public List<string> Answers { get; }
+        public IList<string> Answers { get; }
     }
 }
