@@ -10,6 +10,7 @@ using SharpDomain.AutoTransaction;
 using SharpDomain.FluentValidation;
 using SharpDomain.Persistence;
 using VotingSystem.Application.Commands;
+using VotingSystem.ConsoleApp.CommandLine;
 using VotingSystem.Core.Models;
 using VotingSystem.Persistence.Entities;
 using VotingSystem.Persistence.InMemory;

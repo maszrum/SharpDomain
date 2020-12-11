@@ -1,7 +1,7 @@
 ﻿using System;
 using Autofac;
 
-namespace VotingSystem.ConsoleApp.ConsoleCommands
+namespace VotingSystem.ConsoleApp.CommandLine.Commands
 {
     internal class LogOutCommand : IConsoleCommand
     {
