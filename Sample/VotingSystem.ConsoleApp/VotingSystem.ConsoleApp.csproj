@@ -9,6 +9,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\..\SharpDomain\Libraries\SharpDomain.AutoMapper\SharpDomain.AutoMapper.csproj" />
+        <ProjectReference Include="..\..\SharpDomain\Libraries\SharpDomain.AutoTransaction\SharpDomain.AutoTransaction.csproj" />
         <ProjectReference Include="..\..\SharpDomain\Libraries\SharpDomain.FluentValidation\SharpDomain.FluentValidation.csproj" />
         <ProjectReference Include="..\VotingSystem.Application\VotingSystem.Application.csproj" />
         <ProjectReference Include="..\VotingSystem.Persistence\VotingSystem.Persistence.csproj" />

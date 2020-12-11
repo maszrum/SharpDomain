@@ -3,7 +3,22 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <Nullable>enable</Nullable>
-        <LangVersion>latest</LangVersion>
+        <LangVersion>9.0</LangVersion>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+	
+    <PropertyGroup>
+        <PackageId>SharpDomain.ModelStateTracker</PackageId>
+        <Title>SharpDomain.ModelStateTracker</Title>
+        <Version>0.1.0</Version>
+        <Authors>maszrum</Authors>
+        <Company>SharpDomain</Company>
+        <Product>SharpDomain</Product>
+        <Description>Library that helps building DDD application using Autofac</Description>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryUrl>https://github.com/maszrum/SharpDomain</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>ddd, cqrs</PackageTags>
     </PropertyGroup>
 
 </Project>
