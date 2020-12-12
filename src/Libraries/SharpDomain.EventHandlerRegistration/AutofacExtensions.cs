@@ -44,13 +44,11 @@ namespace SharpDomain.EventHandlerRegistration
             
             var persistenceHandlers = (object[])context.ResolveKeyed(PersistenceKey, enumerableType);
             var domainHandlers = (object[])context.ResolveKeyed(DomainKey, enumerableType);
+            var otherHandlers = (object[])context.Resolve(enumerableType);
             
-            var array = Array.CreateInstance(serviceType, persistenceHandlers.Length + domainHandlers.Length);
-            
-            persistenceHandlers.CopyTo(array, 0);
-            domainHandlers.CopyTo(array, persistenceHandlers.Length);
-            
-            return array;
+            return EventHandlerHelper.ConcatArraysOfServices(
+                serviceType, 
+                persistenceHandlers, domainHandlers, otherHandlers);
         }
     }
 }

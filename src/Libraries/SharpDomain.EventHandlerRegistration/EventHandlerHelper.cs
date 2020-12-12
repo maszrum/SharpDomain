@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using MediatR;
 
 namespace SharpDomain.EventHandlerRegistration
@@ -26,6 +27,24 @@ namespace SharpDomain.EventHandlerRegistration
             }
             
             return enumerableArg.GetGenericTypeDefinition() == typeof(INotificationHandler<>);
+        }
+
+        internal static Array ConcatArraysOfServices(Type serviceType, params object[][] arrays)
+        {
+            var servicesCount = arrays.Sum(a => a.Length);
+            var array = Array.CreateInstance(serviceType, servicesCount);
+
+            var copyToIndex = 0;
+            foreach (var services in arrays)
+            {
+                if (services.Length > 0)
+                {
+                    services.CopyTo(array, copyToIndex);
+                    copyToIndex += services.Length;
+                }
+            }
+
+            return array;
         }
     }
 }
