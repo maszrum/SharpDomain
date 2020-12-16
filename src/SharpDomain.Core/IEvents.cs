@@ -2,6 +2,6 @@
 {
     public interface IEvents
     {
-        IEvents Append<TEvent>(TEvent @event) where TEvent : EventBase;
+        void Add(params EventBase[] events);
     }
 }

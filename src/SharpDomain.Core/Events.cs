@@ -4,11 +4,9 @@ namespace SharpDomain.Core
 {
     public class Events : List<EventBase>, IEvents
     {
-        public IEvents Append<TEvent>(TEvent @event) where TEvent : EventBase
+        public void Add(params EventBase[] events)
         {
-            Add(@event);
-            
-            return this;
+            AddRange(events);
         }
         
         public IReadOnlyList<EventBase> Dump()
