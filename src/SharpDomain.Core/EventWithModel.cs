@@ -3,7 +3,7 @@ using MediatR;
 
 namespace SharpDomain.Core
 {
-    public static class EventWithModel
+    internal static class EventWithModel
     {
         public static object CreateForLimitTypes(EventBase @event, Aggregate model)
         {

@@ -7,7 +7,7 @@ using MediatR;
 using SharpDomain.Core;
 using SharpDomain.ModelStateTracker;
 
-namespace SharpDomain.Application
+namespace SharpDomain.Core
 {
     internal class DomainEvents : IDomainEvents
     {

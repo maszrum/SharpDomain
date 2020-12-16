@@ -44,8 +44,7 @@ namespace SharpDomain.Application
         {
             return containerBuilder
                 .RegisterMediatR()
-                .RegisterRequestHandlers(assembly)
-                .RegisterDomainEvents();
+                .RegisterRequestHandlers(assembly);
         }
         
         private static ContainerBuilder RegisterMediatR(this ContainerBuilder containerBuilder)
@@ -93,15 +92,6 @@ namespace SharpDomain.Application
                 .RegisterTypes(requestHandlerTypes)
                 .InstancePerDependency()
                 .AsImplementedInterfaces();
-            
-            return containerBuilder;
-        }
-        
-        private static ContainerBuilder RegisterDomainEvents(this ContainerBuilder containerBuilder)
-        {
-            containerBuilder.RegisterType<DomainEvents>()
-                .As<IDomainEvents>()
-                .InstancePerDependency();
             
             return containerBuilder;
         }
