@@ -4,7 +4,6 @@ using System.Reflection;
 using Autofac;
 using MediatR;
 using MediatR.Pipeline;
-using SharpDomain.Core;
 using SharpDomain.EventHandlerRegistration;
 
 namespace SharpDomain.Application
