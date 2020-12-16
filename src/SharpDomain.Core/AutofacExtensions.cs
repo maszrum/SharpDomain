@@ -14,17 +14,7 @@ namespace SharpDomain.Core
             Assembly assembly)
         {
             return containerBuilder
-                .RegisterDomainEvents()
                 .RegisterEventHandlers(assembly);
-        }
-        
-        private static ContainerBuilder RegisterDomainEvents(this ContainerBuilder containerBuilder)
-        {
-            containerBuilder.RegisterType<DomainEvents>()
-                .As<IDomainEvents>()
-                .InstancePerDependency();
-            
-            return containerBuilder;
         }
         
         private static ContainerBuilder RegisterEventHandlers(

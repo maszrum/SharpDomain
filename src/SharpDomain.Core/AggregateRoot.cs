@@ -1,8 +1,6 @@
-﻿using MediatR;
-
-namespace SharpDomain.Core
+﻿namespace SharpDomain.Core
 {
-    public abstract class AggregateRoot<T> : Aggregate<T> where T : Aggregate<T>
+    public abstract class AggregateRoot : Aggregate
     {
     }
 }

@@ -4,6 +4,7 @@ using System.Reflection;
 using Autofac;
 using MediatR;
 using MediatR.Pipeline;
+using SharpDomain.Core;
 using SharpDomain.EventHandlerRegistration;
 
 namespace SharpDomain.Application
@@ -43,7 +44,8 @@ namespace SharpDomain.Application
         {
             return containerBuilder
                 .RegisterMediatR()
-                .RegisterRequestHandlers(assembly);
+                .RegisterRequestHandlers(assembly)
+                .RegisterDomainEvents();
         }
         
         private static ContainerBuilder RegisterMediatR(this ContainerBuilder containerBuilder)
@@ -91,6 +93,15 @@ namespace SharpDomain.Application
                 .RegisterTypes(requestHandlerTypes)
                 .InstancePerDependency()
                 .AsImplementedInterfaces();
+            
+            return containerBuilder;
+        }
+        
+        private static ContainerBuilder RegisterDomainEvents(this ContainerBuilder containerBuilder)
+        {
+            containerBuilder.RegisterType<DomainEvents>()
+                .As<IDomainEvents>()
+                .InstancePerDependency();
             
             return containerBuilder;
         }

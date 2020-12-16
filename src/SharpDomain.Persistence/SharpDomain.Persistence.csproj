@@ -26,6 +26,7 @@
     </ItemGroup>
     
     <ItemGroup>
+        <ProjectReference Include="..\SharpDomain.Application\SharpDomain.Application.csproj" />
         <ProjectReference Include="..\SharpDomain.Core\SharpDomain.Core.csproj" />
         <ProjectReference Include="..\Libraries\SharpDomain.EventHandlerRegistration\SharpDomain.EventHandlerRegistration.csproj" />
     </ItemGroup>
