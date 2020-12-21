@@ -10,7 +10,7 @@
     <PropertyGroup>
         <PackageId>SharpDomain.Application</PackageId>
         <Title>SharpDomain.Application</Title>
-        <Version>0.1.3</Version>
+        <Version>0.1.4</Version>
         <Authors>maszrum</Authors>
         <Company>SharpDomain</Company>
         <Product>SharpDomain</Product>
@@ -27,7 +27,9 @@
     </ItemGroup>
     
     <ItemGroup>
+        <ProjectReference Include="..\Libraries\SharpDomain.Errors\SharpDomain.Errors.csproj" />
         <ProjectReference Include="..\Libraries\SharpDomain.EventHandlerRegistration\SharpDomain.EventHandlerRegistration.csproj" />
+        <ProjectReference Include="..\SharpDomain.Core\SharpDomain.Core.csproj" />
     </ItemGroup>
 
 </Project>

@@ -5,10 +5,13 @@ using System.Threading.Tasks;
 using FluentValidation;
 using FluentValidation.Results;
 using MediatR;
+using SharpDomain.Application;
 
 namespace SharpDomain.FluentValidation
 {
-    internal class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull
+    internal class ValidationBehavior<TRequest, TData> : IPipelineBehavior<TRequest, Response<TData>> 
+        where TRequest : notnull
+        where TData : class
     {
         private readonly IEnumerable<IValidator<TRequest>> _validators;
 
@@ -17,7 +20,10 @@ namespace SharpDomain.FluentValidation
             _validators = validators;
         }
 
-        public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
+        public async Task<Response<TData>> Handle(
+            TRequest request, 
+            CancellationToken cancellationToken, 
+            RequestHandlerDelegate<Response<TData>> next)
         {
             var context = new ValidationContext<TRequest>(request);
 
@@ -35,7 +41,7 @@ namespace SharpDomain.FluentValidation
             
             if (failures.Any())
             {
-                throw new ValidationException(failures);
+                return failures.ToError();
             }
             
             return await next();

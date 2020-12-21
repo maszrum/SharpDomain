@@ -43,7 +43,8 @@ namespace SharpDomain.Application
         {
             return containerBuilder
                 .RegisterMediatR()
-                .RegisterRequestHandlers(assembly);
+                .RegisterRequestHandlers(assembly)
+                .RegisterDomainExceptionBehavior();
         }
         
         private static ContainerBuilder RegisterMediatR(this ContainerBuilder containerBuilder)
@@ -91,6 +92,17 @@ namespace SharpDomain.Application
                 .RegisterTypes(requestHandlerTypes)
                 .InstancePerDependency()
                 .AsImplementedInterfaces();
+            
+            return containerBuilder;
+        }
+        
+        private static ContainerBuilder RegisterDomainExceptionBehavior(
+            this ContainerBuilder containerBuilder)
+        {
+            containerBuilder
+                .RegisterGeneric(typeof(DomainExceptionBehavior<,>))
+                .AsImplementedInterfaces()
+                .InstancePerLifetimeScope();
             
             return containerBuilder;
         }

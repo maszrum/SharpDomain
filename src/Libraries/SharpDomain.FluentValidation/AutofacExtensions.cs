@@ -7,7 +7,7 @@ using MediatR;
 
 namespace SharpDomain.FluentValidation
 {
-    public static class ExtensionMethods
+    public static class AutofacExtensions
     {
         public static ContainerBuilder RegisterFluentValidation(
             this ContainerBuilder containerBuilder,
