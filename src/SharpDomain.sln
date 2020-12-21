@@ -8,17 +8,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.Persistence", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{ABC25AE1-7A05-43E2-83B5-42A558C324F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.ModelStateTracker", "Libraries\SharpDomain.ModelStateTracker\SharpDomain.ModelStateTracker.csproj", "{CC9B18FB-029B-47A0-80E5-157838BB1544}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.AutoTransaction", "Libraries\SharpDomain.AutoTransaction\SharpDomain.AutoTransaction.csproj", "{48AA6696-D181-4BBD-B7F2-1F3DDEF876EA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.EventHandlerRegistration", "Libraries\SharpDomain.EventHandlerRegistration\SharpDomain.EventHandlerRegistration.csproj", "{E3802E4D-BEC0-441D-962E-B1A566227A75}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.FluentValidation", "Libraries\SharpDomain.FluentValidation\SharpDomain.FluentValidation.csproj", "{1C365493-78E8-4287-B072-76A0E6BEBB5D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.AutoMapper", "Libraries\SharpDomain.AutoMapper\SharpDomain.AutoMapper.csproj", "{F1799333-07ED-448F-B25C-04B656856AA6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.Errors", "Libraries\SharpDomain.Errors\SharpDomain.Errors.csproj", "{1B4162EE-BE5D-4446-A23E-63FA13080010}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.IoC", "SharpDomain.IoC\SharpDomain.IoC.csproj", "{F1678274-6BEA-49D1-ACAA-12E67A7561BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,18 +36,10 @@ Global
 		{B3E0693E-9293-4F21-A743-95911E4BA264}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3E0693E-9293-4F21-A743-95911E4BA264}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3E0693E-9293-4F21-A743-95911E4BA264}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CC9B18FB-029B-47A0-80E5-157838BB1544}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CC9B18FB-029B-47A0-80E5-157838BB1544}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CC9B18FB-029B-47A0-80E5-157838BB1544}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CC9B18FB-029B-47A0-80E5-157838BB1544}.Release|Any CPU.Build.0 = Release|Any CPU
 		{48AA6696-D181-4BBD-B7F2-1F3DDEF876EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{48AA6696-D181-4BBD-B7F2-1F3DDEF876EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48AA6696-D181-4BBD-B7F2-1F3DDEF876EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48AA6696-D181-4BBD-B7F2-1F3DDEF876EA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E3802E4D-BEC0-441D-962E-B1A566227A75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E3802E4D-BEC0-441D-962E-B1A566227A75}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E3802E4D-BEC0-441D-962E-B1A566227A75}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E3802E4D-BEC0-441D-962E-B1A566227A75}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1C365493-78E8-4287-B072-76A0E6BEBB5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1C365493-78E8-4287-B072-76A0E6BEBB5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C365493-78E8-4287-B072-76A0E6BEBB5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -62,11 +52,13 @@ Global
 		{1B4162EE-BE5D-4446-A23E-63FA13080010}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B4162EE-BE5D-4446-A23E-63FA13080010}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B4162EE-BE5D-4446-A23E-63FA13080010}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1678274-6BEA-49D1-ACAA-12E67A7561BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1678274-6BEA-49D1-ACAA-12E67A7561BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1678274-6BEA-49D1-ACAA-12E67A7561BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1678274-6BEA-49D1-ACAA-12E67A7561BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{CC9B18FB-029B-47A0-80E5-157838BB1544} = {ABC25AE1-7A05-43E2-83B5-42A558C324F3}
 		{48AA6696-D181-4BBD-B7F2-1F3DDEF876EA} = {ABC25AE1-7A05-43E2-83B5-42A558C324F3}
-		{E3802E4D-BEC0-441D-962E-B1A566227A75} = {ABC25AE1-7A05-43E2-83B5-42A558C324F3}
 		{1C365493-78E8-4287-B072-76A0E6BEBB5D} = {ABC25AE1-7A05-43E2-83B5-42A558C324F3}
 		{F1799333-07ED-448F-B25C-04B656856AA6} = {ABC25AE1-7A05-43E2-83B5-42A558C324F3}
 		{1B4162EE-BE5D-4446-A23E-63FA13080010} = {ABC25AE1-7A05-43E2-83B5-42A558C324F3}

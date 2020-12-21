@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using MediatR;
 
-namespace SharpDomain.EventHandlerRegistration
+namespace SharpDomain.IoC.EventHandler
 {
-    public static class EventHandlerHelper
+    internal static class EventHandlerHelper
     {
         public static bool IsEventHandler(Type type)
         {

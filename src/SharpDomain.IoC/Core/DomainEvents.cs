@@ -5,9 +5,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using SharpDomain.Core;
-using SharpDomain.ModelStateTracker;
+using SharpDomain.Core.ModelStateTracking;
 
-namespace SharpDomain.Core
+namespace SharpDomain.IoC.Core
 {
     internal class DomainEvents : IDomainEvents
     {

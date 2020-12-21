@@ -6,19 +6,19 @@
         <LangVersion>9.0</LangVersion>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
-	
+
     <PropertyGroup>
-        <PackageId>SharpDomain.EventHandlerRegistration</PackageId>
-        <Title>SharpDomain.EventHandlerRegistration</Title>
-        <Version>0.1.4</Version>
+        <PackageId>SharpDomain.IoC</PackageId>
+        <Title>SharpDomain.IoC</Title>
+        <Version>0.2.0</Version>
         <Authors>maszrum</Authors>
         <Company>SharpDomain</Company>
         <Product>SharpDomain</Product>
-        <Description>Library that helps building DDD application using Autofac</Description>
+        <Description>IoC (Autofac) registrations for SharpDomain library</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/maszrum/SharpDomain</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
-        <PackageTags>ddd, cqrs</PackageTags>
+        <PackageTags>ddd, cqrs, autofac</PackageTags>
     </PropertyGroup>
 
     <ItemGroup>
@@ -26,4 +26,8 @@
         <PackageReference Include="MediatR" Version="9.0.0" />
     </ItemGroup>
 
+    <ItemGroup>
+        <ProjectReference Include="..\SharpDomain.Application\SharpDomain.Application.csproj" />
+    </ItemGroup>
+    
 </Project>

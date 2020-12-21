@@ -2,7 +2,7 @@
 using System.Linq;
 using MediatR;
 
-namespace SharpDomain.Application
+namespace SharpDomain.IoC.Application
 {
     internal class DependencyLegalityChecker
     {

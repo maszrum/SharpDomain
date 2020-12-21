@@ -10,7 +10,7 @@
     <PropertyGroup>
         <PackageId>SharpDomain.Persistence</PackageId>
 		<Title>SharpDomain.Persistence</Title>
-        <Version>0.1.4</Version>
+        <Version>0.2.0</Version>
         <Authors>maszrum</Authors>
         <Company>SharpDomain</Company>
         <Product>SharpDomain</Product>

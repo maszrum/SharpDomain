@@ -4,9 +4,10 @@ using System.Reflection;
 using Autofac;
 using MediatR;
 using MediatR.Pipeline;
-using SharpDomain.EventHandlerRegistration;
+using SharpDomain.Application;
+using SharpDomain.IoC.EventHandler;
 
-namespace SharpDomain.Application
+namespace SharpDomain.IoC.Application
 {
     public static class AutofacExtensions
     {

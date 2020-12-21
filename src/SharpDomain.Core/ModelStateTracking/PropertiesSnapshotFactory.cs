@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace SharpDomain.ModelStateTracker
+namespace SharpDomain.Core.ModelStateTracking
 {
     internal class PropertiesSnapshotFactory<T> where T : class
     {

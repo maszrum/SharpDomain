@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SharpDomain.ModelStateTracker
+namespace SharpDomain.Core.ModelStateTracking
 {
     internal class PropertiesSnapshot
     {

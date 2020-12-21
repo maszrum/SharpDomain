@@ -6,7 +6,7 @@ using SharpDomain.Errors;
 
 namespace SharpDomain.Application
 {
-    internal class DomainExceptionBehavior<TRequest, TData> : IPipelineBehavior<TRequest, Response<TData>> 
+    public class DomainExceptionBehavior<TRequest, TData> : IPipelineBehavior<TRequest, Response<TData>> 
         where TRequest : notnull
         where TData : class
     {

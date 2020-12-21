@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SharpDomain.ModelStateTracker
+namespace SharpDomain.Core.ModelStateTracking
 {
     public class ModelChangesPublisher<T> : IDisposable where T : class
     {

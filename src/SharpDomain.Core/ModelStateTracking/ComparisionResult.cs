@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace SharpDomain.ModelStateTracker
+namespace SharpDomain.Core.ModelStateTracking
 {
     public class ComparisionResult<T>
     {

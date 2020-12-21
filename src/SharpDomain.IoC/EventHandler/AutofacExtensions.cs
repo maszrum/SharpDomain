@@ -3,9 +3,9 @@ using Autofac;
 using Autofac.Builder;
 using MediatR;
 
-namespace SharpDomain.EventHandlerRegistration
+namespace SharpDomain.IoC.EventHandler
 {
-    public static class AutofacExtensions
+    internal static class AutofacExtensions
     {
         private const string PersistenceKey = "Persistence";
         private const string DomainKey = "Domain";

@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace SharpDomain.ModelStateTracker
+namespace SharpDomain.Core.ModelStateTracking
 {
-    public class PropertiesTracker<T> where T : class
+    internal class PropertiesTracker<T> where T : class
     {
         private readonly T _model;
         

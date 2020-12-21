@@ -3,22 +3,21 @@ using System.Linq;
 using System.Reflection;
 using Autofac;
 using MediatR;
-using SharpDomain.EventHandlerRegistration;
+using SharpDomain.IoC.EventHandler;
 
-namespace SharpDomain.Core
+namespace SharpDomain.IoC.Persistence
 {
     public static class AutofacExtensions
     {
-        public static ContainerBuilder RegisterDomainLayer(
-            this ContainerBuilder containerBuilder, 
+        public static ContainerBuilder RegisterPersistenceLayer(
+            this ContainerBuilder containerBuilder,
             Assembly assembly)
         {
             return containerBuilder
-                .RegisterEventHandlers(assembly)
-                .RegisterDomainEvents();
+                .RegisterPersistenceHandlers(assembly);
         }
         
-        private static ContainerBuilder RegisterEventHandlers(
+        private static ContainerBuilder RegisterPersistenceHandlers(
             this ContainerBuilder containerBuilder, 
             Assembly assembly)
         {
@@ -34,18 +33,9 @@ namespace SharpDomain.Core
             {
                 containerBuilder
                     .RegisterType(notificationHandlerType)
-                    .AsDomainEventHandler(notificationHandlerType)
+                    .AsPersistenceEventHandler(notificationHandlerType)
                     .InstancePerDependency();
             }
-            
-            return containerBuilder;
-        }
-        
-        private static ContainerBuilder RegisterDomainEvents(this ContainerBuilder containerBuilder)
-        {
-            containerBuilder.RegisterType<DomainEvents>()
-                .As<IDomainEvents>()
-                .InstancePerDependency();
             
             return containerBuilder;
         }

@@ -1,7 +1,6 @@
 ﻿using System;
-using SharpDomain.ModelStateTracker;
 
-namespace SharpDomain.Core
+namespace SharpDomain.Core.ModelStateTracking
 {
     public static class AggregateExtensions
     {
