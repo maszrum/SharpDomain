@@ -43,7 +43,7 @@ namespace SharpDomain.IoC.Core
 
         public IDomainEvents CollectFrom<TModel>(TModel model) where TModel : Aggregate
         {
-            var bindings = model.DumpEvents()
+            var bindings = model.Events.Dump()
                 .Select(e =>
                 {
                     var withModel = EventWithModel.CreateForLimitTypes(e, model);

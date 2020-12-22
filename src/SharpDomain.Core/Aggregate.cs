@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace SharpDomain.Core
 {
@@ -8,9 +7,7 @@ namespace SharpDomain.Core
         public abstract Guid Id { get; }
         
         private readonly Events _events = new();
-        protected IEvents Events => _events;
-        
-        public IReadOnlyList<EventBase> DumpEvents() => _events.Dump();
+        public IEvents Events => _events;
 
         public override int GetHashCode() => Id.GetHashCode();
     }
