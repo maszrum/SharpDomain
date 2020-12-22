@@ -5,7 +5,7 @@ namespace SharpDomain.Core.ModelStateTracking
 {
     internal class PropertiesSnapshot
     {
-        private readonly Dictionary<string, int?> _propertyValues = new Dictionary<string, int?>();
+        private readonly Dictionary<string, int?> _propertyValues = new();
 
         public int? this[string propertyName]
         {

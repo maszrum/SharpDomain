@@ -5,8 +5,8 @@ namespace SharpDomain.Core.ModelStateTracking
 {
     internal class PropertiesCache<T> where T : class
     {
-        private readonly Dictionary<string, PropertyInfo> _properties = new Dictionary<string, PropertyInfo>();
-        private readonly object _lock = new object();
+        private readonly Dictionary<string, PropertyInfo> _properties = new();
+        private readonly object _lock = new();
         
         public bool IsEmpty { get; private set; } = true;
         
