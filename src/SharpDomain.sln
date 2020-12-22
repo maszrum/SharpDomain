@@ -4,7 +4,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.Core", "SharpDo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.Application", "SharpDomain.Application\SharpDomain.Application.csproj", "{B6BF68E8-8EEA-4C2B-AD9C-E020DB15950E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.Persistence", "SharpDomain.Persistence\SharpDomain.Persistence.csproj", "{B3E0693E-9293-4F21-A743-95911E4BA264}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.Infrastructure", "SharpDomain.Infrastructure\SharpDomain.Infrastructure.csproj", "{B3E0693E-9293-4F21-A743-95911E4BA264}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{ABC25AE1-7A05-43E2-83B5-42A558C324F3}"
 EndProject

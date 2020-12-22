@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using MediatR;
 using SharpDomain.Core;
 
-namespace SharpDomain.Persistence
+namespace SharpDomain.Infrastructure
 {
     public abstract class InfrastructureHandler<TEvent, TModel> 
         : INotificationHandler<EventWithModel<TEvent, TModel>> 

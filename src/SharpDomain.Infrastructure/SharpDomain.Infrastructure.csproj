@@ -8,9 +8,9 @@
     </PropertyGroup>
 	
     <PropertyGroup>
-        <PackageId>SharpDomain.Persistence</PackageId>
-		<Title>SharpDomain.Persistence</Title>
-        <Version>0.2.0</Version>
+        <PackageId>SharpDomain.Infrastructure</PackageId>
+		<Title>SharpDomain.Infrastructure</Title>
+        <Version>0.2.1</Version>
         <Authors>maszrum</Authors>
         <Company>SharpDomain</Company>
         <Product>SharpDomain</Product>

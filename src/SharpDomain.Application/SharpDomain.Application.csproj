@@ -10,7 +10,7 @@
     <PropertyGroup>
         <PackageId>SharpDomain.Application</PackageId>
         <Title>SharpDomain.Application</Title>
-        <Version>0.2.0</Version>
+        <Version>0.2.1</Version>
         <Authors>maszrum</Authors>
         <Company>SharpDomain</Company>
         <Product>SharpDomain</Product>
