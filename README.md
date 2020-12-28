@@ -1,5 +1,7 @@
 # SharpDomain
 
+An example application that uses SharpDomain can be found in the repository: [maszrum/SharpDomain.Example](https://github.com/maszrum/SharpDomain.Example).
+
 ## Solution directories structure
 
 - YourApp.Core
