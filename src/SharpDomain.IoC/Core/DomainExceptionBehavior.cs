@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using MediatR;
 using SharpDomain.Core;
-using SharpDomain.Errors;
+using SharpDomain.Responses;
 
-namespace SharpDomain.Application
+namespace SharpDomain.IoC.Core
 {
     public class DomainExceptionBehavior<TRequest, TData> : IPipelineBehavior<TRequest, Response<TData>> 
         where TRequest : notnull

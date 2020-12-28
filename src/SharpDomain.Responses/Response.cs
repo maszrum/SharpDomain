@@ -1,7 +1,6 @@
 ﻿using System;
-using SharpDomain.Errors;
 
-namespace SharpDomain.Application
+namespace SharpDomain.Responses
 {
     // thanks to @somekind from 4p
     // https://4programmers.net/Forum/C_i_.NET/345421-zwracanie_odpowiedzi_serwisu?p=1727950#id1727950

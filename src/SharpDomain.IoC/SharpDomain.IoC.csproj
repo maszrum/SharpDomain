@@ -10,7 +10,7 @@
     <PropertyGroup>
         <PackageId>SharpDomain.IoC</PackageId>
         <Title>SharpDomain.IoC</Title>
-        <Version>0.2.1</Version>
+        <Version>0.2.2</Version>
         <Authors>maszrum</Authors>
         <Company>SharpDomain</Company>
         <Product>SharpDomain</Product>
@@ -27,7 +27,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\SharpDomain.Application\SharpDomain.Application.csproj" />
+      <ProjectReference Include="..\SharpDomain.Responses\SharpDomain.Responses.csproj" />
+      <ProjectReference Include="..\SharpDomain.Core\SharpDomain.Core.csproj" />
     </ItemGroup>
     
 </Project>

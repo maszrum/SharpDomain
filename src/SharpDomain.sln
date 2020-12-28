@@ -1,22 +1,27 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.Core", "SharpDomain.Core\SharpDomain.Core.csproj", "{476B9DC2-DE6A-42C6-8233-7E1078D3F134}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpDomain.Core", "SharpDomain.Core\SharpDomain.Core.csproj", "{476B9DC2-DE6A-42C6-8233-7E1078D3F134}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.Application", "SharpDomain.Application\SharpDomain.Application.csproj", "{B6BF68E8-8EEA-4C2B-AD9C-E020DB15950E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpDomain.Application", "SharpDomain.Application\SharpDomain.Application.csproj", "{B6BF68E8-8EEA-4C2B-AD9C-E020DB15950E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.Infrastructure", "SharpDomain.Infrastructure\SharpDomain.Infrastructure.csproj", "{B3E0693E-9293-4F21-A743-95911E4BA264}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpDomain.Infrastructure", "SharpDomain.Infrastructure\SharpDomain.Infrastructure.csproj", "{B3E0693E-9293-4F21-A743-95911E4BA264}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{ABC25AE1-7A05-43E2-83B5-42A558C324F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.AutoTransaction", "Libraries\SharpDomain.AutoTransaction\SharpDomain.AutoTransaction.csproj", "{48AA6696-D181-4BBD-B7F2-1F3DDEF876EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpDomain.AutoTransaction", "Libraries\SharpDomain.AutoTransaction\SharpDomain.AutoTransaction.csproj", "{48AA6696-D181-4BBD-B7F2-1F3DDEF876EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.FluentValidation", "Libraries\SharpDomain.FluentValidation\SharpDomain.FluentValidation.csproj", "{1C365493-78E8-4287-B072-76A0E6BEBB5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpDomain.FluentValidation", "Libraries\SharpDomain.FluentValidation\SharpDomain.FluentValidation.csproj", "{1C365493-78E8-4287-B072-76A0E6BEBB5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.AutoMapper", "Libraries\SharpDomain.AutoMapper\SharpDomain.AutoMapper.csproj", "{F1799333-07ED-448F-B25C-04B656856AA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpDomain.AutoMapper", "Libraries\SharpDomain.AutoMapper\SharpDomain.AutoMapper.csproj", "{F1799333-07ED-448F-B25C-04B656856AA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.Errors", "Libraries\SharpDomain.Errors\SharpDomain.Errors.csproj", "{1B4162EE-BE5D-4446-A23E-63FA13080010}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpDomain.Responses", "SharpDomain.Responses\SharpDomain.Responses.csproj", "{1B4162EE-BE5D-4446-A23E-63FA13080010}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.IoC", "SharpDomain.IoC\SharpDomain.IoC.csproj", "{F1678274-6BEA-49D1-ACAA-12E67A7561BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpDomain.IoC", "SharpDomain.IoC\SharpDomain.IoC.csproj", "{F1678274-6BEA-49D1-ACAA-12E67A7561BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDomain.AccessControl", "Libraries\SharpDomain.AccessControl\SharpDomain.AccessControl.csproj", "{45889FE3-628D-426B-B1B0-FDD032B8605A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,11 +61,21 @@ Global
 		{F1678274-6BEA-49D1-ACAA-12E67A7561BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1678274-6BEA-49D1-ACAA-12E67A7561BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1678274-6BEA-49D1-ACAA-12E67A7561BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45889FE3-628D-426B-B1B0-FDD032B8605A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45889FE3-628D-426B-B1B0-FDD032B8605A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45889FE3-628D-426B-B1B0-FDD032B8605A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45889FE3-628D-426B-B1B0-FDD032B8605A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{48AA6696-D181-4BBD-B7F2-1F3DDEF876EA} = {ABC25AE1-7A05-43E2-83B5-42A558C324F3}
 		{1C365493-78E8-4287-B072-76A0E6BEBB5D} = {ABC25AE1-7A05-43E2-83B5-42A558C324F3}
 		{F1799333-07ED-448F-B25C-04B656856AA6} = {ABC25AE1-7A05-43E2-83B5-42A558C324F3}
-		{1B4162EE-BE5D-4446-A23E-63FA13080010} = {ABC25AE1-7A05-43E2-83B5-42A558C324F3}
+		{45889FE3-628D-426B-B1B0-FDD032B8605A} = {ABC25AE1-7A05-43E2-83B5-42A558C324F3}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C74277AF-31A8-41A5-8BAB-C4C7209B323A}
 	EndGlobalSection
 EndGlobal

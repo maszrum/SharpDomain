@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+    <LangVersion>9.0</LangVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>SharpDomain.AccessControl</PackageId>
+    <Title>SharpDomain.AccessControl</Title>
+    <Version>0.2.2</Version>
+    <Authors>maszrum</Authors>
+    <Company>SharpDomain</Company>
+    <Product>SharpDomain</Product>
+    <Description>Adds authentication and authorization to SharpDomain based application</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/maszrum/SharpDomain</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>ddd, cqrs, authentication, authorization</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.1.0" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\SharpDomain.Responses\SharpDomain.Responses.csproj" />
+  </ItemGroup>
+  
+</Project>

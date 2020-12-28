@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace SharpDomain.Errors
+namespace SharpDomain.Responses
 {
     public class ObjectNotFoundError : ErrorBase
     {

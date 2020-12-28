@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using FluentValidation;
 using FluentValidation.Results;
 using MediatR;
-using SharpDomain.Application;
+using SharpDomain.Responses;
 
 namespace SharpDomain.FluentValidation
 {

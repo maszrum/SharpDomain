@@ -16,9 +16,10 @@ namespace SharpDomain.IoC.Core
         {
             return containerBuilder
                 .RegisterEventHandlers(assembly)
-                .RegisterDomainEvents();
+                .RegisterDomainEvents()
+                .RegisterDomainExceptionBehavior();
         }
-        
+
         private static ContainerBuilder RegisterEventHandlers(
             this ContainerBuilder containerBuilder, 
             Assembly assembly)
@@ -48,6 +49,17 @@ namespace SharpDomain.IoC.Core
                 .As<IDomainEvents>()
                 .InstancePerDependency();
             
+            return containerBuilder;
+        }
+
+        private static ContainerBuilder RegisterDomainExceptionBehavior(
+            this ContainerBuilder containerBuilder)
+        {
+            containerBuilder
+                .RegisterGeneric(typeof(DomainExceptionBehavior<,>))
+                .AsImplementedInterfaces()
+                .InstancePerLifetimeScope();
+
             return containerBuilder;
         }
     }

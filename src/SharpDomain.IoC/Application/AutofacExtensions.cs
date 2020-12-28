@@ -4,7 +4,6 @@ using System.Reflection;
 using Autofac;
 using MediatR;
 using MediatR.Pipeline;
-using SharpDomain.Application;
 using SharpDomain.IoC.EventHandler;
 
 namespace SharpDomain.IoC.Application
@@ -44,8 +43,7 @@ namespace SharpDomain.IoC.Application
         {
             return containerBuilder
                 .RegisterMediatR()
-                .RegisterRequestHandlers(assembly)
-                .RegisterDomainExceptionBehavior();
+                .RegisterRequestHandlers(assembly);
         }
         
         private static ContainerBuilder RegisterMediatR(this ContainerBuilder containerBuilder)
@@ -93,17 +91,6 @@ namespace SharpDomain.IoC.Application
                 .RegisterTypes(requestHandlerTypes)
                 .InstancePerDependency()
                 .AsImplementedInterfaces();
-            
-            return containerBuilder;
-        }
-        
-        private static ContainerBuilder RegisterDomainExceptionBehavior(
-            this ContainerBuilder containerBuilder)
-        {
-            containerBuilder
-                .RegisterGeneric(typeof(DomainExceptionBehavior<,>))
-                .AsImplementedInterfaces()
-                .InstancePerLifetimeScope();
             
             return containerBuilder;
         }

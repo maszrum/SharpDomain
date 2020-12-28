@@ -1,4 +1,4 @@
-﻿namespace SharpDomain.Errors
+﻿namespace SharpDomain.Responses
 {
     public class AuthenticationError : ErrorBase
     {

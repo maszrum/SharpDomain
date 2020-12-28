@@ -8,13 +8,13 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <PackageId>SharpDomain.Errors</PackageId>
-        <Title>SharpDomain.Errors</Title>
-        <Version>0.2.1</Version>
+        <PackageId>SharpDomain.Responses</PackageId>
+        <Title>SharpDomain.Responses</Title>
+        <Version>0.2.2</Version>
         <Authors>maszrum</Authors>
         <Company>SharpDomain</Company>
         <Product>SharpDomain</Product>
-        <Description>Standard error classes for SharpDomain library</Description>
+        <Description>Standard response classes for SharpDomain library</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/maszrum/SharpDomain</RepositoryUrl>
         <RepositoryType>git</RepositoryType>

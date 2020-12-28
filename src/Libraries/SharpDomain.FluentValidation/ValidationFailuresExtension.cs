@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using FluentValidation.Results;
-using SharpDomain.Errors;
+using SharpDomain.Responses;
 
 namespace SharpDomain.FluentValidation
 {

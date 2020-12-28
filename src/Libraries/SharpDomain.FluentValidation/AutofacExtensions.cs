@@ -23,9 +23,8 @@ namespace SharpDomain.FluentValidation
             static bool IsValidatorType(Type t) =>
                 t.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IValidator<>));
             
-            var types = assembly.DefinedTypes
+            var types = assembly.GetTypes()
                 .Where(IsValidatorType)
-                .Select(t => t.AsType())
                 .ToArray();
             
             containerBuilder

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
-using SharpDomain.Errors;
+using SharpDomain.Responses;
 
 namespace SharpDomain.Application
 {

@@ -10,7 +10,7 @@
     <PropertyGroup>
         <PackageId>SharpDomain.FluentValidation</PackageId>
         <Title>SharpDomain.FluentValidation</Title>
-        <Version>0.2.1</Version>
+        <Version>0.2.2</Version>
         <Authors>maszrum</Authors>
         <Company>SharpDomain</Company>
         <Product>SharpDomain</Product>
@@ -28,7 +28,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\SharpDomain.Application\SharpDomain.Application.csproj" />
-      <ProjectReference Include="..\SharpDomain.Errors\SharpDomain.Errors.csproj" />
+      <ProjectReference Include="..\..\SharpDomain.Responses\SharpDomain.Responses.csproj" />
     </ItemGroup>
 
 </Project>
