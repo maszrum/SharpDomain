@@ -2,23 +2,17 @@
 
 namespace SharpDomain.Responses
 {
-    public static class DomainError
+    public class DomainError : ErrorBase
     {
-        public static DomainError<TException> FromException<TException>(TException exception) 
-            where TException : Exception =>
-            new DomainError<TException>(exception);
-    }
-    
-    public class DomainError<TException> : ErrorBase where TException : Exception
-    {
-        public DomainError(TException exception)
+        public DomainError(Exception exception)
         {
             Exception = exception;
             ExceptionType = exception.GetType();
         }
 
-        public TException Exception { get; }
+        public Exception Exception { get; }
         public Type ExceptionType { get; }
-        public override string Message => Exception.Message;
+        
+        public override string Message => $"{ExceptionType.Name}: {Exception.Message}";
     }
 }

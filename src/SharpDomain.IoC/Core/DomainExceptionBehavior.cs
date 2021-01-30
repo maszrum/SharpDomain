@@ -19,7 +19,7 @@ namespace SharpDomain.IoC.Core
             }
             catch (DomainException exception)
             {
-                return DomainError.FromException(exception);
+                return new DomainError(exception);
             }
         }
     }
