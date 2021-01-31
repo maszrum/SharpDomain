@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <Nullable>enable</Nullable>
+        <LangVersion>9.0</LangVersion>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PackageId>SharpDomain.NUnit</PackageId>
+        <Title>SharpDomain.NUnit</Title>
+        <Version>0.2.4</Version>
+        <Authors>maszrum</Authors>
+        <Company>SharpDomain</Company>
+        <Product>SharpDomain</Product>
+        <Description>Adds NUnit support to SharpDomain based application</Description>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryUrl>https://github.com/maszrum/SharpDomain</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>ddd, cqrs, nunit</PackageTags>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="NUnit" Version="3.13.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\SharpDomain.IoC\SharpDomain.IoC.csproj" />
+    </ItemGroup>
+
+</Project>
