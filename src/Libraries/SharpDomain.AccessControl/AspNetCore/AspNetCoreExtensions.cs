@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using SharpDomain.AccessControl;
 
-namespace VotingSystem.AccessControl.AspNetCore
+namespace SharpDomain.AccessControl.AspNetCore
 {
     public static class AspNetCoreExtensions
     {

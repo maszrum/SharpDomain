@@ -1,8 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using SharpDomain.AccessControl;
 
-namespace VotingSystem.AccessControl.AspNetCore
+namespace SharpDomain.AccessControl.AspNetCore
 {
     public class AuthenticationMiddleware<TIdentity> : IMiddleware
         where TIdentity : IIdentity

@@ -1,6 +1,4 @@
-﻿using SharpDomain.AccessControl;
-
-namespace VotingSystem.AccessControl.AspNetCore
+﻿namespace SharpDomain.AccessControl.AspNetCore
 {
     public interface IAuthenticationService<TIdentity> : IIdentityService<TIdentity>
         where TIdentity : IIdentity

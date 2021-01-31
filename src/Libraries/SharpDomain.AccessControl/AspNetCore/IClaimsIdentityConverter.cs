@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Security.Claims;
-using SharpDomain.AccessControl;
 
-namespace VotingSystem.AccessControl.AspNetCore
+namespace SharpDomain.AccessControl.AspNetCore
 {
     public interface IClaimsIdentityConverter
     {
