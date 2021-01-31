@@ -9,10 +9,10 @@ namespace SharpDomain.NUnit
     public abstract class IntegrationTest<TSystemBuilder> where TSystemBuilder : SystemBuilder, new()
     {
         private IContainer? _container;
-        private IContainer Container
+        protected IContainer Container
         {
             get => _container ?? throw new NullReferenceException();
-            set => _container = value;
+            private set => _container = value;
         }
         
         private IMediator? _mediator;
