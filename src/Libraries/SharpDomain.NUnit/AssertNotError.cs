@@ -3,7 +3,7 @@ using SharpDomain.Responses;
 
 namespace SharpDomain.NUnit
 {
-    internal static class AssertNotError
+    public static class AssertNotError
     {
         public static TData Of<TData>(Response<TData> response) where TData : class
         {

@@ -5,7 +5,7 @@ namespace SharpDomain.NUnit
 {
     // must use TError in static class because TData type cannot be inferred when
     // public static TError Of<TError, TData>(Response<TData> response)
-    internal static class AssertError<TError> where TError : ErrorBase
+    public static class AssertError<TError> where TError : ErrorBase
     {
         public static TError Of<TData>(Response<TData> response) 
             where TData : class 
