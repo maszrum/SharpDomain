@@ -49,14 +49,14 @@ namespace SharpDomain.IoC
         {
             for (var i = 0; i < _onBuildActionsContainer.ActionsCount; i++)
             {
-                await using var scope = container.BeginLifetimeScope();
-                
                 if (_onBuildActionsContainer.TryGetSyncAction(i, out var syncAction))
                 {
+                    await using var scope = container.BeginLifetimeScope();
                     syncAction(scope);
                 }
                 else if (_onBuildActionsContainer.TryGetAsyncAction(i, out var asyncAction))
                 {
+                    await using var scope = container.BeginLifetimeScope();
                     await asyncAction(scope);
                 }
             }

@@ -1,49 +1,20 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Autofac;
+﻿using Autofac;
+using MediatR;
 
 namespace SharpDomain.IoC
 {
     public static class InitializeExtension
     {
-        public static TBuilder InitializeIfNeed<TBuilder>(this TBuilder systemBuilder) 
+        public static TBuilder Initialize<TBuilder>(this TBuilder systemBuilder, InitializationType initializationType) 
             where TBuilder : SystemBuilder
         {
             systemBuilder.OnBuild(context =>
             {
-                var initializers = context.Resolve<IEnumerable<ISystemInitializer>>();
-                return InitializeIfNeed(initializers);
+                var mediator = context.Resolve<IMediator>();
+                return mediator.Publish(new InitializeNotification(initializationType));
             });
             
             return systemBuilder;
-        }
-        
-        public static TBuilder InitializeForcefully<TBuilder>(this TBuilder systemBuilder) 
-            where TBuilder : SystemBuilder
-        {
-            systemBuilder.OnBuild(context =>
-            {
-                var initializers = context.Resolve<IEnumerable<ISystemInitializer>>();
-                return InitializeForcefully(initializers);
-            });
-            
-            return systemBuilder;
-        }
-        
-        private static async Task InitializeIfNeed(IEnumerable<ISystemInitializer> initializers)
-        {
-            foreach (var initializer in initializers)
-            {
-                await initializer.InitializeIfNeed();
-            }
-        }
-        
-        private static async Task InitializeForcefully(IEnumerable<ISystemInitializer> initializers)
-        {
-            foreach (var initializer in initializers)
-            {
-                await initializer.InitializeForcefully();
-            }
         }
     }
 }
