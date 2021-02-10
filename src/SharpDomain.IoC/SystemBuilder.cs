@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Autofac;
 
 namespace SharpDomain.IoC
 {
     public abstract class SystemBuilder
     {
+        private readonly ActionsContainer _onBuildActionsContainer = new();
+            
         protected ContainerBuilder ContainerBuilder { get; private set; } = new();
         
         public SystemBuilder UseContainerBuilder(ContainerBuilder containerBuilder)
@@ -21,6 +24,44 @@ namespace SharpDomain.IoC
             return this;
         }
         
-        public IContainer Build() => ContainerBuilder.Build();
+        public SystemBuilder OnBuild(Func<IComponentContext, Task> action)
+        {
+            _onBuildActionsContainer.Add(action);
+            return this;
+        }
+        
+        public SystemBuilder OnBuild(Action<IComponentContext> action)
+        {
+            _onBuildActionsContainer.Add(action);
+            return this;
+        }
+        
+        public Task<IContainer> Build()
+        {
+            var container = ContainerBuilder.Build();
+            
+            return _onBuildActionsContainer.ActionsCount > 0 
+                ? InvokeBuildActions(container) 
+                : Task.FromResult(container);
+        }
+        
+        private async Task<IContainer> InvokeBuildActions(IContainer container)
+        {
+            for (var i = 0; i < _onBuildActionsContainer.ActionsCount; i++)
+            {
+                await using var scope = container.BeginLifetimeScope();
+                
+                if (_onBuildActionsContainer.TryGetSyncAction(i, out var syncAction))
+                {
+                    syncAction(scope);
+                }
+                else if (_onBuildActionsContainer.TryGetAsyncAction(i, out var asyncAction))
+                {
+                    await asyncAction(scope);
+                }
+            }
+            
+            return container;
+        }
     }
 }

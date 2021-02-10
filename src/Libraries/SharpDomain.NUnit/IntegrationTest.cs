@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Autofac;
 using MediatR;
 using NUnit.Framework;
@@ -23,13 +24,13 @@ namespace SharpDomain.NUnit
         }
         
         [SetUp]
-        public void InitApplication()
+        public async Task InitApplication()
         {
             var systemBuilder = new TSystemBuilder();
             
             ConfigureSystem(systemBuilder);
             
-            Container = systemBuilder
+            Container = await systemBuilder
                 .WireUpApplication()
                 .Build();
             
