@@ -8,7 +8,7 @@ namespace SharpDomain.AccessControl
 {
     internal class AuthorizationPipelineBehavior<TRequest, TData> : IPipelineBehavior<TRequest, Response<TData>>
         where TRequest : notnull
-        where TData : class
+        where TData : notnull
     {
         private readonly AuthorizablesConfigurations _authorizablesConfigurations;
         private readonly ServiceFactory _serviceFactory;

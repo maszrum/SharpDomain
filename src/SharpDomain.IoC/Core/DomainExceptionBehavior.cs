@@ -8,7 +8,7 @@ namespace SharpDomain.IoC.Core
 {
     public class DomainExceptionBehavior<TRequest, TData> : IPipelineBehavior<TRequest, Response<TData>> 
         where TRequest : notnull
-        where TData : class
+        where TData : notnull
     {
         public async Task<Response<TData>> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<Response<TData>> next)
         {

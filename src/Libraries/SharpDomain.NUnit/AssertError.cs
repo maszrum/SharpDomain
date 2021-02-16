@@ -7,8 +7,8 @@ namespace SharpDomain.NUnit
     // public static TError Of<TError, TData>(Response<TData> response)
     public static class AssertError<TError> where TError : ErrorBase
     {
-        public static TError Of<TData>(Response<TData> response) 
-            where TData : class 
+        public static TError Of<TData>(Response<TData> response)
+            where TData : notnull
         {
             if (!response.IsError)
             {

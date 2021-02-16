@@ -32,7 +32,7 @@ namespace SharpDomain.AccessControl
             Assembly applicationAssembly)
         {
             static bool IsAuthorizable(Type t) =>
-                t.GetInterfaces().Contains(typeof(IAuthorizable));
+                t.GetInterfaces().Contains(typeof(IAuthorizationRequired));
 
             containerBuilder.RegisterBuildCallback(container =>
             {
@@ -46,7 +46,7 @@ namespace SharpDomain.AccessControl
                     (var requestType, var responseType) = RequestTypeHelper.GetRequestAndResponseTypes(authorizableType);
                     var requestHandlerType = typeof(IRequestHandler<,>).MakeGenericType(requestType, responseType);
 
-                    var requestHandlerInstance = (IAuthorizable)scope.Resolve(requestHandlerType);
+                    var requestHandlerInstance = (IAuthorizationRequired)scope.Resolve(requestHandlerType);
 
                     var configuration = new AuthorizationConfiguration();
                     requestHandlerInstance.ConfigureAuthorization(configuration);

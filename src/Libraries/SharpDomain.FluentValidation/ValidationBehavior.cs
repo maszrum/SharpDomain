@@ -11,7 +11,7 @@ namespace SharpDomain.FluentValidation
 {
     internal class ValidationBehavior<TRequest, TData> : IPipelineBehavior<TRequest, Response<TData>> 
         where TRequest : notnull
-        where TData : class
+        where TData : notnull
     {
         private readonly IEnumerable<IValidator<TRequest>> _validators;
 

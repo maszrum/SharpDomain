@@ -10,6 +10,6 @@ namespace SharpDomain.Application
     {
         public abstract Task<Response<Empty>> Handle(TCommand request, CancellationToken cancellationToken);
         
-        protected Empty Nothing() => new();
+        protected Empty Success() => new();
     }
 }

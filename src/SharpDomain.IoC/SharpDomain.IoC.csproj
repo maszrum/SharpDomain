@@ -10,7 +10,7 @@
     <PropertyGroup>
         <PackageId>SharpDomain.IoC</PackageId>
         <Title>SharpDomain.IoC</Title>
-        <Version>0.2.8</Version>
+        <Version>0.2.14</Version>
         <Authors>maszrum</Authors>
         <Company>SharpDomain</Company>
         <Product>SharpDomain</Product>

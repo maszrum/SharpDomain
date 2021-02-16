@@ -5,7 +5,8 @@ namespace SharpDomain.NUnit
 {
     public static class AssertNotError
     {
-        public static TData Of<TData>(Response<TData> response) where TData : class
+        public static TData Of<TData>(Response<TData> response)
+            where TData : notnull
         {
             if (response.IsError)
             {
