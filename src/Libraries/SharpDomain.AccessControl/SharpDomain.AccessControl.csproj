@@ -10,7 +10,7 @@
   <PropertyGroup>
     <PackageId>SharpDomain.AccessControl</PackageId>
     <Title>SharpDomain.AccessControl</Title>
-    <Version>0.2.16</Version>
+    <Version>0.2.17</Version>
     <Authors>maszrum</Authors>
     <Company>SharpDomain</Company>
     <Product>SharpDomain</Product>
