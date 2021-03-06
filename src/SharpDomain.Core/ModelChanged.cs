@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace SharpDomain.Core
 {
-    public class ModelChanged<T> : EventBase
+    public class ModelChanged<T> : EventBase where T : Aggregate
     {
         public ModelChanged(IEnumerable<string> propertiesChanged)
         {
