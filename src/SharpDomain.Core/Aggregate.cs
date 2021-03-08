@@ -10,20 +10,20 @@ namespace SharpDomain.Core
         public IEvents Events => _events;
 
         protected static void CheckRule<TRules>(Func<TRules, RuleResult> ruleFunction) 
-            where TRules : new()
+            where TRules : Rules, new()
         {
             var rule = new TRules();
             var ruleResult = ruleFunction(rule);
             
             if (!ruleResult.IsCorrect)
             {
-                throw new InvalidOperationException(
-                    $"{ruleResult.ErrorCode} : {ruleResult.ErrorMessage}"); // TODO
+                throw new BrokenRuleException(
+                    ruleResult.ErrorMessage, ruleResult.ErrorCode);
             }
         }
         
         protected static void CheckRules<TRules>(params Func<TRules, RuleResult>[] ruleFunctions) 
-            where TRules : new()
+            where TRules : Rules, new()
         {
             foreach (var ruleFunction in ruleFunctions)
             {
@@ -32,5 +32,15 @@ namespace SharpDomain.Core
         }
         
         public override int GetHashCode() => Id.GetHashCode();
+    }
+    
+    public abstract class Aggregate<TDefaultRules> : Aggregate 
+        where TDefaultRules : Rules, new()
+    {
+        protected void CheckRule(Func<TDefaultRules, RuleResult> ruleFunction) => 
+            CheckRule<TDefaultRules>(ruleFunction);
+        
+        protected void CheckRules(params Func<TDefaultRules, RuleResult>[] ruleFunctions) =>
+            CheckRules<TDefaultRules>(ruleFunctions);
     }
 }
